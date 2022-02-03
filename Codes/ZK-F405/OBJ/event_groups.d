@@ -41,6 +41,7 @@
 ..\obj\event_groups.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\event_groups.o: ..\SYSTEM\usart\usart.h
 ..\obj\event_groups.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\event_groups.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\event_groups.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\event_groups.o: ..\FreeRTOS\include\portable.h
 ..\obj\event_groups.o: ..\FreeRTOS\include\deprecated_definitions.h

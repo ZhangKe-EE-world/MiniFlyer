@@ -6,25 +6,11 @@
 #include "FreeRTOS.h"					//FreeRTOS使用		  
 #include "task.h"
 #endif
-//////////////////////////////////////////////////////////////////////////////////  
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32F407开发板
-//使用SysTick的普通计数模式对延迟进行管理(支持OS)
-//包括delay_us,delay_ms
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//创建日期:2014/5/2
-//版本：V1.3
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2014-2024
-//All rights reserved
-//********************************************************************************
-//修改说明
-////////////////////////////////////////////////////////////////////////////////// 
+
 
 static u8  fac_us=0;							//us延时倍乘数			   
 static u16 fac_ms=0;							//ms延时倍乘数,在os下,代表每个节拍的ms数
-
+static u32 sysTickCnt=0;
  
 extern void xPortSysTickHandler(void);
  
@@ -36,7 +22,22 @@ void SysTick_Handler(void)
         xPortSysTickHandler();	
     }
 }
-			   
+
+/********************************************************
+*getSysTickCnt()
+*调度开启之前 返回 sysTickCnt
+*调度开启之前 返回 xTaskGetTickCount()
+*********************************************************/
+u32 getSysTickCnt(void)
+{
+	if(xTaskGetSchedulerState()!=taskSCHEDULER_NOT_STARTED)	/*系统已经运行*/
+		return xTaskGetTickCount();
+	else
+		return sysTickCnt;
+}
+
+
+
 //初始化延迟函数
 //SYSTICK的时钟固定为AHB时钟，基础例程里面SYSTICK时钟频率为AHB/8
 //这里为了兼容FreeRTOS，所以将SYSTICK的时钟频率改为AHB的频率！

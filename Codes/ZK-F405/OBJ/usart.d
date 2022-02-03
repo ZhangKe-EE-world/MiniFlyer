@@ -40,6 +40,7 @@
 ..\obj\usart.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\usart.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\usart.o: ..\FreeRTOS\include\FreeRTOSConfig.h
+..\obj\usart.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\usart.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\usart.o: ..\FreeRTOS\include\portable.h
 ..\obj\usart.o: ..\FreeRTOS\include\deprecated_definitions.h

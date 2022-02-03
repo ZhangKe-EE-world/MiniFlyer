@@ -40,6 +40,7 @@
 ..\obj\croutine.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\croutine.o: ..\SYSTEM\usart\usart.h
 ..\obj\croutine.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\croutine.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\croutine.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\croutine.o: ..\FreeRTOS\include\portable.h
 ..\obj\croutine.o: ..\FreeRTOS\include\deprecated_definitions.h

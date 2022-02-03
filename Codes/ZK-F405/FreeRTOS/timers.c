@@ -1080,6 +1080,15 @@ Timer_t * const pxTimer = ( Timer_t * ) xTimer;
 		return xReturn;
 	}
 
+
+	
+	
+	
+	
+	
+	
+	
+	
 #endif /* INCLUDE_xTimerPendFunctionCall */
 /*-----------------------------------------------------------*/
 

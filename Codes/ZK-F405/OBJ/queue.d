@@ -42,6 +42,7 @@
 ..\obj\queue.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\queue.o: ..\SYSTEM\usart\usart.h
 ..\obj\queue.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\queue.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\queue.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\queue.o: ..\FreeRTOS\include\portable.h
 ..\obj\queue.o: ..\FreeRTOS\include\deprecated_definitions.h

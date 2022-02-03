@@ -42,6 +42,7 @@
 ..\obj\tasks.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\tasks.o: ..\SYSTEM\usart\usart.h
 ..\obj\tasks.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\tasks.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\tasks.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\tasks.o: ..\FreeRTOS\include\portable.h
 ..\obj\tasks.o: ..\FreeRTOS\include\deprecated_definitions.h
