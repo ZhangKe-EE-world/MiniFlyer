@@ -1,0 +1,16 @@
+Change Component Designator: OldDesignator=R1 NewDesignator=R2
+Change Component Designator: OldDesignator=R2 NewDesignator=R3
+Change Component Designator: OldDesignator=R3 NewDesignator=R4
+Change Component Designator: OldDesignator=R4 NewDesignator=R5
+Change Component Designator: OldDesignator=R5 NewDesignator=R6
+Added Component: Designator=D1(LED_0603_G)
+Added Component: Designator=R1(Res-0603-M)
+Added Pin To Net: NetName=LED0 Pin=D1-2
+Added Pin To Net: NetName=3.3V Pin=R1-2
+Change Net Name : Old Net Name=NetR1_1 New Net Name=NetR2_1
+Change Net Name : Old Net Name=NetR5_2 New Net Name=NetR6_2
+Added Pin To Net: NetName=NetD1_1 Pin=D1-1
+Added Pin To Net: NetName=NetD1_1 Pin=R1-1
+Added Net: Name=NetD1_1
+Added Member To Class: ClassName=原理图 Member=Component D1 LED_SMD_GREEN
+Added Member To Class: ClassName=原理图 Member=Component R6 10K

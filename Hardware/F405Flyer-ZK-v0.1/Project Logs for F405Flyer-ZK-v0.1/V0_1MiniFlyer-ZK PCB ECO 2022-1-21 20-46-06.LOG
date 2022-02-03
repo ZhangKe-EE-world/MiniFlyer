@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=U3_TX Pin=U1-51
+Removed Pin From Net: NetName=U3_RX Pin=U1-52
+Added Pin To Net: NetName=U3_TX Pin=U1-29
+Added Pin To Net: NetName=U3_RX Pin=U1-30
+Added Room: Name=‘≠¿ÌÕº

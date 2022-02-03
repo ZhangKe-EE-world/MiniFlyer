@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=U3_TX Pin=P5-3
+Removed Pin From Net: NetName=U3_RX Pin=P5-4
+Added Pin To Net: NetName=U3_RX Pin=P5-3
+Added Pin To Net: NetName=U3_TX Pin=P5-4
+Added Member To Class: ClassName=原理图 Member=Component P1 PWM1
+Added Room: Name=原理图

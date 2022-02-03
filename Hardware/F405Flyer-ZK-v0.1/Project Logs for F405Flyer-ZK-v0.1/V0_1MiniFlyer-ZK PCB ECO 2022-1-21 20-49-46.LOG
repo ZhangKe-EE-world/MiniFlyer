@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=U1_TX Pin=P5-3
+Removed Pin From Net: NetName=U1_RX Pin=P5-4
+Removed Pin From Net: NetName=U3_RX Pin=P8-3
+Removed Pin From Net: NetName=U3_TX Pin=P8-4
+Added Pin To Net: NetName=U3_TX Pin=P5-3
+Added Pin To Net: NetName=U3_RX Pin=P5-4
+Added Pin To Net: NetName=U4_RX Pin=P8-3
+Added Pin To Net: NetName=U4_RX Pin=U1-52
+Added Net: Name=U4_RX
+Added Pin To Net: NetName=U4_TX Pin=P8-4
+Added Pin To Net: NetName=U4_TX Pin=U1-51
+Added Net: Name=U4_TX
+Added Room: Name=‘≠¿ÌÕº

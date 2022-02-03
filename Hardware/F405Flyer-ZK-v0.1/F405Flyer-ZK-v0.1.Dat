@@ -1,0 +1,25 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~F405Flyer-ZK-v0.1.PrjPcb|ReportField=ProjectFullPath~C:\Users\19717\Desktop\MiniFlyerV0_1\Hardware\F405Flyer-ZK-v0.1\F405Flyer-ZK-v0.1.PrjPcb|ReportField=Title~Bill of Materials For Project [F405Flyer-ZK-v0.1.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~44|ReportField=ReportTime~16:12:57|ReportField=ReportDate~2022/1/24|ReportField=ReportDateTime~2022/1/24 16:12:57|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2022/1/24|ReportField=CurrentTime~16:12:54|ReportField=Date~|ReportField=DocumentFullPathAndName~C:\Users\19717\Desktop\MiniFlyerV0_1\Hardware\F405Flyer-ZK-v0.1\原理图.SchDoc|ReportField=DocumentName~原理图.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2022/1/21|ReportField=Organization~|ReportField=ProjectName~F405Flyer-ZK-v0.1.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~F405Flyer-ZK-v0.1.PrjPcb|ReportField=DataSourceFullPath~C:\Users\19717\Desktop\MiniFlyerV0_1\Hardware\F405Flyer-ZK-v0.1\F405Flyer-ZK-v0.1.PrjPcb
+1|220uf|贴片电解电容|C1, C2, C5, C6|CAPE_D_6.3X6.6X5.4|CAPE-SMD|4
+2|0.1uf|贴片陶瓷电容|C3, C4, C7, C8, C9, C10, C11, C12, C13, C14, C15, C19, C20, C22|Cap-0603|CAP|14
+3|2.2uf|贴片陶瓷电容|C16, C17|Cap-0603|CAP|2
+4|2.2nf|贴片陶瓷电容|C18|Cap-0603|CAP|1
+5|10nf|贴片陶瓷电容|C21|Cap-0603|CAP|1
+6|LED_SMD_GREEN|发光二极管|D1|LED_0603_G|LED_SMD_GREEN|1
+7|AMS1117-3.3||IC1, IC2|AMS1117|AMS1117|2
+8|MPU-6050|传感器|IC3|QFN24 4X4_N|MPU-6000|1
+9|BMP280|气压传感器|IC4|BMP280 LGA8|BMP280|1
+10|PWM1||P1|Header 2.54X3|Header_3|1
+11|PWM2||P2|Header 2.54X3|Header_3|1
+12|PWM3||P3|Header 2.54X3|Header_3|1
+13|PWM4||P4|Header 2.54X3|Header_3|1
+14|UART1||P5|Header 2.54X4|Header_4|1
+15|SWD||P6|Header 2.54X4|Header_4|1
+16|SBUS||P7|Header 2.54X3|Header_3|1
+17|GPS||P8|Header 2.54X6|Header_6|1
+18|SS8050|高频放大-NPN型|Q1|SOT23-3L|8050-SMD|1
+19|330R|贴片电阻|R1|Res-0603-M|RES|1
+20|10K|贴片电阻|R2, R6|Res-0603-M|RES|2
+21|4.7K|贴片电阻|R3, R4|Res-0603-M|RES|2
+22|10K|贴片电阻|R5|Res-0603|RES|1
+23|STM32F405RGT6|Flaah:256/RAM:48/IO:51|U1|LQFP64 10X10_L|STM32F405RGT6|1
+24|8MHz|3脚无源晶振|X1|XTAL-3215-3P|XTAL-3P|1
