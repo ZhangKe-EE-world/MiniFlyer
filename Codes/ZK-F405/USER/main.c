@@ -28,7 +28,7 @@
 
 
 
-
+//开始任务句柄
 TaskHandle_t startTaskHandle;
 static void startTask(void *arg);
 
@@ -36,7 +36,7 @@ static void startTask(void *arg);
 
 //电调初始化
 //任务优先级
-#define ESCinit_TASK_PRIO		10
+#define ESCinit_TASK_PRIO		6
 //任务堆栈大小	
 #define ESCinit_STK_SIZE 		256  
 //任务句柄
@@ -47,9 +47,9 @@ void escinit_task(void *pvParameters);
 
 //传感器数据获取和处理
 //任务优先级
-#define SENSORS_TASK_PRIO		4
+#define SENSORS_TASK_PRIO		5
 //任务堆栈大小	
-#define SENSORS_STK_SIZE 		1024  
+#define SENSORS_STK_SIZE 		512  
 //任务句柄
 TaskHandle_t SENSORS_Task_Handler;
 //任务函数
@@ -59,7 +59,7 @@ void sensors_task(void *pvParameters);
 //任务优先级
 #define RUNTIMESTATS_TASK_PRIO	3
 //任务堆栈大小	
-#define RUNTIMESTATS_STK_SIZE 	1024  
+#define RUNTIMESTATS_STK_SIZE 	512  
 //任务句柄
 TaskHandle_t RunTimeStats_Handler;
 //任务函数
@@ -85,7 +85,7 @@ int main()
 		{
 			printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
 		}
-		printf("dmp 初始化成功！-----%d\n",mpu_dmp_init());
+
 	
 	xTaskCreate(startTask, "START_TASK", 300, NULL, 2, &startTaskHandle);	/*创建起始任务*/
 	
@@ -170,7 +170,7 @@ void escinit_task(void *pvParameters)
 		TIM_SetCompare3(TIM3,499);
 		TIM_SetCompare4(TIM3,499);
 		vTaskDelay(1000);
-		//油门行程校准和解锁
+		//油门行程校准和电调解锁
 
 		LED0_OFF;
 		vTaskDelete (ESCinitTask_Handler);
@@ -187,12 +187,12 @@ void sensors_task(void *pvParameters)
 	float pitch,roll,yaw; 		//欧拉角
 	short aacx,aacy,aacz;		//加速度传感器原始数据
 	short gyrox,gyroy,gyroz;	//陀螺仪原始数据 
-	u8 report=1;	
+	u8 report=0;	
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
-		//4ms运行一次
-		vTaskDelayUntil(&lastWakeTime, 4);
+		//5ms运行一次
+		vTaskDelayUntil(&lastWakeTime, 5);
 		BMP_Temperature = BMP280_Get_Temperature();
 		BMP_Pressure = BMP280_Get_Pressure();
 		if(mpu_dmp_get_data(&pitch,&roll,&yaw)==0)//需要速率足够大才能防止dmp队列溢出，故取队列频率最好和传感器DMP解算速率协调
@@ -210,7 +210,7 @@ void sensors_task(void *pvParameters)
 //RunTimeStats任务
 void RunTimeStats_task(void *pvParameters)
 {
-	u8 report=1;
+	u8 report=0;
 	while(1)
 	{
 		if(report)

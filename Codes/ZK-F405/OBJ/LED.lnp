@@ -10,6 +10,7 @@
 "..\obj\inv_mpu_dmp_motion_driver.o"
 "..\obj\upper.o"
 "..\obj\timer.o"
+"..\obj\sbus.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"
