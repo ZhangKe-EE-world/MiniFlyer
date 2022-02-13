@@ -59,3 +59,5 @@
 ..\obj\main.o: ..\HARDWARE\BMP280\bmp280.h
 ..\obj\main.o: ..\SYSTEM\pwm\pwm.h
 ..\obj\main.o: ..\HARDWARE\Upper_Computer\Upper.h
+..\obj\main.o: ..\HARDWARE\S-BUS\sbus.h
+..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h

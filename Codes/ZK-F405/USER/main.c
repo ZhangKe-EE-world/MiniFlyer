@@ -20,7 +20,7 @@
 #include "bmp280.h"
 #include "pwm.h"
 #include "Upper.h"
-
+#include "sbus.h"
 
 
 
@@ -55,6 +55,15 @@ TaskHandle_t SENSORS_Task_Handler;
 //任务函数
 void sensors_task(void *pvParameters);
 
+//遥控数据获取和处理
+//任务优先级
+#define RC_TASK_PRIO		4
+//任务堆栈大小	
+#define RC_STK_SIZE 		512 
+//任务句柄
+TaskHandle_t RC_Task_Handler;
+//任务函数
+void RC_task(void *pvParameters);
 
 //任务优先级
 #define RUNTIMESTATS_TASK_PRIO	3
@@ -78,6 +87,7 @@ int main()
 	ledInit();			/*led初始化*/
 	uart_init(500000);
 	TIM3_PWM_Init();/*PWM初始化为50Hz*/
+	SBUSInit();//SBUS
 	IIC_Init();
 	while(	MPU_Init()	);
 	Bmp_Init ();
@@ -123,13 +133,20 @@ void startTask(void *arg)
 											
 	//创建RunTimeStats任务
 	xTaskCreate((TaskFunction_t )RunTimeStats_task,     
-                (const char*    )"RunTimeStats_task",   
-                (uint16_t       )RUNTIMESTATS_STK_SIZE,
-                (void*          )NULL,
-                (UBaseType_t    )RUNTIMESTATS_TASK_PRIO,
-                (TaskHandle_t*  )&RunTimeStats_Handler); 							
+							(const char*    )"RunTimeStats_task",   
+							(uint16_t       )RUNTIMESTATS_STK_SIZE,
+							(void*          )NULL,
+							(UBaseType_t    )RUNTIMESTATS_TASK_PRIO,
+							(TaskHandle_t*  )&RunTimeStats_Handler); 							
 							
-							
+	//创建RC任务
+	xTaskCreate((TaskFunction_t )RC_task,     
+							(const char*    )"RC_task",   
+							(uint16_t       )RC_STK_SIZE,
+							(void*          )NULL,
+							(UBaseType_t    )RC_TASK_PRIO,
+							(TaskHandle_t*  )&RC_Task_Handler); 							
+														
 							
 							
 							
@@ -224,7 +241,22 @@ void RunTimeStats_task(void *pvParameters)
 	}
 }
 
-
+//RC任务
+void RC_task(void *pvParameters)
+{
+	u8 t=0;
+	u32 lastWakeTime = getSysTickCnt();
+	while(1)
+	{
+		vTaskDelayUntil(&lastWakeTime, 50);
+		Sbus_Data_Count(USART2_RX_BUF);
+		for(t=0;t<18;t++)
+		{
+			printf("%d ",CH[t]);
+		}
+		printf("\n");
+	}
+}
 
 
 

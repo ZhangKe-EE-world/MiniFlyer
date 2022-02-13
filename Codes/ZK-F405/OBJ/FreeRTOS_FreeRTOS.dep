@@ -1,6 +1,6 @@
 Dependencies for Project 'FreeRTOS', Target 'FreeRTOS': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\main.c)(0x62039F59)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x6208F107)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\USER\stm32f4xx.h)(0x57FC593E)
 I (..\CORE\core_cm4.h)(0x57FC593F)
@@ -60,6 +60,8 @@ I (..\HARDWARE\MPU6050_IIC\eMPL\inv_mpu_dmp_motion_driver.h)(0x5430BEB7)
 I (..\HARDWARE\BMP280\bmp280.h)(0x61F4F8DB)
 I (..\SYSTEM\pwm\pwm.h)(0x61F26E5A)
 I (..\HARDWARE\Upper_Computer\Upper.h)(0x61FB7128)
+I (..\HARDWARE\S-BUS\sbus.h)(0x6208E40C)
+I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdbool.h)(0x6025237C)
 F (.\stm32f4xx_it.c)(0x5836DA14)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
 I (stm32f4xx_it.h)(0x57FC593E)
 I (stm32f4xx.h)(0x57FC593E)
@@ -459,7 +461,7 @@ I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC593F)
 I (..\HARDWARE\LED\led.h)(0x5B584BAF)
 I (..\SYSTEM\usart\usart.h)(0x61F1505A)
 I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (..\HARDWARE\S-BUS\sbus.c)(0x62078271)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\sbus.o --omf_browse ..\obj\sbus.crf --depend ..\obj\sbus.d)
+F (..\HARDWARE\S-BUS\sbus.c)(0x6208EE96)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\sbus.o --omf_browse ..\obj\sbus.crf --depend ..\obj\sbus.d)
 I (..\USER\stm32f4xx.h)(0x57FC593E)
 I (..\CORE\core_cm4.h)(0x57FC593F)
 I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -495,7 +497,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC593F)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC593F)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC593F)
 I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (..\HARDWARE\S-BUS\sbus.h)(0x620780F7)
+I (..\HARDWARE\S-BUS\sbus.h)(0x6208E40C)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\SYSTEM\delay\delay.h)(0x61FBDA7C)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x573F3A17)

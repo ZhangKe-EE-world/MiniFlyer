@@ -11,7 +11,6 @@
 #include "task.h"
 #include "queue.h"
 
-
 #define CPPM_TIMER                   TIM9
 #define CPPM_TIMER_RCC               RCC_APB2Periph_TIM9
 #define CPPM_GPIO_RCC                RCC_AHB1Periph_GPIOA
@@ -22,211 +21,113 @@
 
 #define CPPM_TIM_PRESCALER           (168-1) 
 
-
-static xQueueHandle captureQueue;
-static uint16_t prevCapureVal;
-static bool captureFlag;
-static bool isAvailible;
-
-
-//cppm
-
-static uint8_t currChannel = 0;
-uint16_t rcData[CH_NUM];//捕获PPM的通道信号值
-rcLinkState_t rcLinkState;
-failsafeState_t  failsafeState;
-
-
-void cppmInit(void)
+//SBUS硬件初始化
+void SBUSInit(void)
 {
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-	TIM_ICInitTypeDef  TIM_ICInitStructure;
-	GPIO_InitTypeDef GPIO_InitStructure;
-	NVIC_InitTypeDef NVIC_InitStructure;
+	SBUS_Configuration();
+}
+
+/**
+  * @name   SBUS_Configuration
+  * @brief  Configure SBUS(Usart2) clock, gpio and nvic:
+  *         SBUS_RX  USART2_RX  PA3
+  * @param  None
+  * @retval None
+  */
+void SBUS_Configuration(void)
+{
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef  NVIC_InitStructure;
 
 	RCC_AHB1PeriphClockCmd(CPPM_GPIO_RCC, ENABLE);
-	RCC_APB2PeriphClockCmd(CPPM_TIMER_RCC, ENABLE);
-
-	//配置PPM信号输入引脚（PA3）
-	GPIO_StructInit(&GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2,ENABLE);
+	
 	GPIO_InitStructure.GPIO_Pin = CPPM_GPIO_PIN;
-	GPIO_Init(CPPM_GPIO_PORT, &GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_AF;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+//	/*PA9连接AF7，复用为USART1_TX*/
+//	GPIO_PinAFConfig(GPIOA,GPIO_PinSource9,GPIO_AF_USART1);
+	/*PA3连接AF?，复用为USART2_RX*/
+	GPIO_PinAFConfig(GPIOA,GPIO_PinSource3,GPIO_AF_USART2);
 
-	GPIO_PinAFConfig(CPPM_GPIO_PORT, CPPM_GPIO_SOURCE, CPPM_GPIO_AF);
 
-	//配置定时器1us tick
-	TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
-	TIM_TimeBaseStructure.TIM_Prescaler = CPPM_TIM_PRESCALER;
-	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseInit(CPPM_TIMER, &TIM_TimeBaseStructure);
+	//  波特率100000 8个数据位 偶校验位 2个停止位
+	USART_InitStructure.USART_BaudRate = 100000;
+	USART_InitStructure.USART_WordLength = USART_WordLength_9b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_Even;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx;
 
-	//配置输入捕获
-	TIM_ICStructInit(&TIM_ICInitStructure);
-	TIM_ICInitStructure.TIM_Channel = TIM_Channel_2;
-	TIM_ICInit(CPPM_TIMER, &TIM_ICInitStructure);
+	USART_Init(USART2, &USART_InitStructure);
 
-	NVIC_InitStructure.NVIC_IRQChannel = TIM1_BRK_TIM9_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 5;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
-	captureQueue = xQueueCreate(64, sizeof(uint16_t));
+	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
+	USART_ITConfig(USART2, USART_IT_IDLE, ENABLE);
 
-	TIM_ITConfig(CPPM_TIMER, TIM_IT_Update | TIM_IT_CC2, ENABLE);
-	TIM_Cmd(CPPM_TIMER, ENABLE);
+	USART_Cmd(USART2, ENABLE);
 }
 
 
-bool cppmIsAvailible(void)
+uint8_t USART2_RX_BUF[26];
+
+/**
+  * @name   USART2_IRQHandler
+  * @brief  This function handles USART2 Handler
+  * @param  None
+  * @retval None
+  */
+void USART2_IRQHandler(void)
 {
-	return isAvailible;
-}
+	uint8_t res;
+	uint8_t clear = 0;
+	static uint8_t Rx_Sta = 1;
 
-int cppmGetTimestamp(uint16_t *timestamp)
-{
-//	ASSERT(timestamp);
-
-	return xQueueReceive(captureQueue, timestamp, 20);
-}
-
-void cppmClearQueue(void)
-{
-	xQueueReset(captureQueue);
-}
-
-uint16_t capureVal;
-uint16_t capureValDiff;
-
-void TIM1_BRK_TIM9_IRQHandler(void)
-{
-	portBASE_TYPE xHigherPriorityTaskWoken = pdFALSE;
-
-	if(TIM_GetITStatus(CPPM_TIMER, TIM_IT_CC2) != RESET)
+	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
 	{
-		if(TIM_GetFlagStatus(CPPM_TIMER, TIM_FLAG_CC2OF) != RESET)
-		{
-		  //TODO: Handle overflow error
-		}
-
-		capureVal = TIM_GetCapture2(CPPM_TIMER);
-		capureValDiff = capureVal - prevCapureVal;
-		prevCapureVal = capureVal;
-
-		xQueueSendFromISR(captureQueue, &capureValDiff, &xHigherPriorityTaskWoken);
- 
-		captureFlag = true;
-		TIM_ClearITPendingBit(CPPM_TIMER, TIM_IT_CC2);
+		res =USART2->DR;
+		USART2_RX_BUF[Rx_Sta++] = res;
 	}
-
-	if(TIM_GetITStatus(CPPM_TIMER, TIM_IT_Update) != RESET)
+	else if(USART_GetITStatus(USART2, USART_IT_IDLE) != RESET)
 	{
-		// Update input status
-		isAvailible = (captureFlag == true);
-		captureFlag = false;
-		TIM_ClearITPendingBit(CPPM_TIMER, TIM_IT_Update);
+		clear = USART2->SR;
+		clear = USART2->DR;
+		USART2_RX_BUF[0] = Rx_Sta - 1;
+		Rx_Sta = 1;
 	}
 }
+uint16_t CH[18];  // 通道值
+uint8_t  rc_flag = 0;
 
-
-void rxInit(void)
+void Sbus_Data_Count(uint8_t *buf)
 {
-	cppmInit();
+	CH[ 0] = ((int16_t)buf[ 2] >> 0 | ((int16_t)buf[ 3] << 8 )) & 0x07FF;
+	CH[ 1] = ((int16_t)buf[ 3] >> 3 | ((int16_t)buf[ 4] << 5 )) & 0x07FF;
+	CH[ 2] = ((int16_t)buf[ 4] >> 6 | ((int16_t)buf[ 5] << 2 )  | (int16_t)buf[ 6] << 10 ) & 0x07FF;
+	CH[ 3] = ((int16_t)buf[ 6] >> 1 | ((int16_t)buf[ 7] << 7 )) & 0x07FF;
+	CH[ 4] = ((int16_t)buf[ 7] >> 4 | ((int16_t)buf[ 8] << 4 )) & 0x07FF;
+	CH[ 5] = ((int16_t)buf[ 8] >> 7 | ((int16_t)buf[ 9] << 1 )  | (int16_t)buf[10] <<  9 ) & 0x07FF;
+	CH[ 6] = ((int16_t)buf[10] >> 2 | ((int16_t)buf[11] << 6 )) & 0x07FF;
+	CH[ 7] = ((int16_t)buf[11] >> 5 | ((int16_t)buf[12] << 3 )) & 0x07FF;
+	
+	CH[ 8] = ((int16_t)buf[13] << 0 | ((int16_t)buf[14] << 8 )) & 0x07FF;
+	CH[ 9] = ((int16_t)buf[14] >> 3 | ((int16_t)buf[15] << 5 )) & 0x07FF;
+	CH[10] = ((int16_t)buf[15] >> 6 | ((int16_t)buf[16] << 2 )  | (int16_t)buf[17] << 10 ) & 0x07FF;
+	CH[11] = ((int16_t)buf[17] >> 1 | ((int16_t)buf[18] << 7 )) & 0x07FF;
+	CH[12] = ((int16_t)buf[18] >> 4 | ((int16_t)buf[19] << 4 )) & 0x07FF;
+	CH[13] = ((int16_t)buf[19] >> 7 | ((int16_t)buf[20] << 1 )  | (int16_t)buf[21] <<  9 ) & 0x07FF;
+	CH[14] = ((int16_t)buf[21] >> 2 | ((int16_t)buf[22] << 6 )) & 0x07FF;
+	CH[15] = ((int16_t)buf[22] >> 5 | ((int16_t)buf[23] << 3 )) & 0x07FF;
 }
 
-void ppmTask(void *param)
-{
-	uint16_t ppm;
-	uint32_t currentTick;
-	while(1)
-	{
-		currentTick = getSysTickCnt();
-		
-		if(cppmGetTimestamp(&ppm) == pdTRUE)//20ms阻塞式获取PPM脉冲值
-		{
-			if (cppmIsAvailible() && ppm < 2100)//判断PPM帧结束
-			{
-				if(currChannel < CH_NUM)
-				{
-					rcData[currChannel] = ppm;
-				}
-				currChannel++;
-			}
-			else//接收完一帧数据
-			{
-				currChannel = 0;
-				rcLinkState.linkState = true;
-				if (rcData[THROTTLE] < 950 || rcData[THROTTLE] > 2100)//无效脉冲，说明接收机输出了失控保护的值
-					rcLinkState.invalidPulse = true;
-				else
-					rcLinkState.invalidPulse = false;
-				rcLinkState.realLinkTime = currentTick;
-			}
-		}
-		
-		if (currentTick - rcLinkState.realLinkTime > 1000)//1S没接收到信号说明遥控器连接失败
-		{
-			rcLinkState.linkState = false;
-		}	
-	}
-}
 
-//void rxTask(void *param)
-//{	
-//	u32 tick = 0;
-//	u32 lastWakeTime = getSysTickCnt();
-//	uint32_t currentTick;
-//	
-//	while (1)
-//	{
-//		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ));//1KHz运行频率
-//		
-//		if (RATE_DO_EXECUTE(RATE_50_HZ, tick))
-//		{
-//			currentTick = getSysTickCnt();
-//			
-//			//处理遥杆命令和辅助通道模式切换
-//			if (rcLinkState.linkState == true)
-//			{
-////				processRcStickPositions();
-////				processRcAUXPositions();
-//			}
-//			
-//			//处理解锁状态下遥控失去连接
-//			if (ARMING_FLAG(ARMED))
-//			{
-//				if (rcLinkState.linkState == false || rcLinkState.invalidPulse == true)//遥控失去连接或无效脉冲
-//				{
-//					if (failsafeState.failsafeActive == false)
-//					{
-//						if (currentTick > failsafeState.throttleLowPeriod )//有一段低油门时间（如5秒），说明飞机在地上可直接关闭电机
-//						{
-//							mwDisarm();
-//						}
-//						else 
-//						{
-//							failsafeState.failsafeActive = true;
-//							commanderActiveFailsafe();//激活失控保护自动降落
-//						}
-//					}
-//				}
-//				else//遥控连接正常
-//				{
-//					throttleStatus_e throttleStatus = calculateThrottleStatus();
-//					if (throttleStatus == THROTTLE_HIGH)
-//					{
-//						failsafeState.throttleLowPeriod = currentTick + 5000;//5000表示需要低油门的时间（5秒）
-//					}
-//				}
-//			}
-//			else
-//			{
-//				failsafeState.throttleLowPeriod = 0;
-//			}
-//			
-//		}
-//		tick++;
-//	}
-//}
+
+
 
