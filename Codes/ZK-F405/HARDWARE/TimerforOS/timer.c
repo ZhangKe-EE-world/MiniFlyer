@@ -15,7 +15,7 @@ void ConfigureTimeForRunTimeStats(void)
 	TIM2_Int_Init(50-1,84-1);	//初始化TIM2
 }
 
-//通用定时器3中断初始化
+//通用定时器2中断初始化
 //arr：自动重装值。
 //psc：时钟预分频数
 //定时器溢出时间计算方法:Tout=((arr+1)*(psc+1))/Ft us.

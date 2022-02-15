@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\FreeRTOS\include;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\HARDWARE\BMP280;..\HARDWARE\IIC;..\HARDWARE\LED;..\HARDWARE\MPU6050_IIC;..\HARDWARE\MPU6050_IIC\eMPL;..\SYSTEM\pwm;..\HARDWARE\PID;..\HARDWARE\Upper_Computer;..\HARDWARE\TimerforOS;..\HARDWARE\S-BUS</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\FreeRTOS\include;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\HARDWARE\BMP280;..\HARDWARE\IIC;..\HARDWARE\LED;..\HARDWARE\MPU6050_IIC;..\HARDWARE\MPU6050_IIC\eMPL;..\SYSTEM\pwm;..\HARDWARE\PID;..\HARDWARE\Upper_Computer;..\HARDWARE\TimerforOS;..\HARDWARE\S-BUS;..\HARDWARE\FlightSystem</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -447,6 +447,11 @@
               <FileName>sbus.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\S-BUS\sbus.c</FilePath>
+            </File>
+            <File>
+              <FileName>flight_system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\FlightSystem\flight_system.c</FilePath>
             </File>
           </Files>
         </Group>

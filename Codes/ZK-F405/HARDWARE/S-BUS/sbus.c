@@ -21,6 +21,10 @@
 
 #define CPPM_TIM_PRESCALER           (168-1) 
 
+
+
+
+
 //SBUSÓ²¼þ³õÊ¼»¯
 void SBUSInit(void)
 {

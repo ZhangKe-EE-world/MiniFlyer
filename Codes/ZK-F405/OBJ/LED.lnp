@@ -11,6 +11,7 @@
 "..\obj\upper.o"
 "..\obj\timer.o"
 "..\obj\sbus.o"
+"..\obj\flight_system.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"

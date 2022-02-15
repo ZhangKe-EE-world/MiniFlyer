@@ -50,6 +50,7 @@
 ..\obj\main.o: ..\FreeRTOS\include\mpu_wrappers.h
 ..\obj\main.o: ..\FreeRTOS\include\task.h
 ..\obj\main.o: ..\FreeRTOS\include\list.h
+..\obj\main.o: ..\FreeRTOS\include\event_groups.h
 ..\obj\main.o: ..\FreeRTOS\include\timers.h
 ..\obj\main.o: ..\HARDWARE\IIC\myiic.h
 ..\obj\main.o: ..\HARDWARE\LED\led.h
@@ -61,3 +62,4 @@
 ..\obj\main.o: ..\HARDWARE\Upper_Computer\Upper.h
 ..\obj\main.o: ..\HARDWARE\S-BUS\sbus.h
 ..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\main.o: ..\HARDWARE\FlightSystem\flight_system.h

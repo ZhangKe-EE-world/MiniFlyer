@@ -9,7 +9,7 @@
 #include "timer.h"
 //#include "queue.h"
 //#include "semphr.h"
-//#include "event_groups.h"
+#include "event_groups.h"
 #include "timers.h"
 
 #include "myiic.h"
@@ -21,7 +21,7 @@
 #include "pwm.h"
 #include "Upper.h"
 #include "sbus.h"
-
+#include "flight_system.h"
 
 
 
@@ -65,6 +65,7 @@ TaskHandle_t RC_Task_Handler;
 //任务函数
 void RC_task(void *pvParameters);
 
+//任务时间统计任务
 //任务优先级
 #define RUNTIMESTATS_TASK_PRIO	3
 //任务堆栈大小	
@@ -77,6 +78,41 @@ void RunTimeStats_task(void *pvParameters);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//事件句柄
+static EventGroupHandle_t RCtask_Handle =NULL; 
+
+//事件宏
+#define Esc_Unlocked 			(0x01<<0)
+#define Flight_Unlocked 	(0x01<<1)
+#define RC_Connected		 	(0x01<<2)
+
+
+
+//参数宏
+#define ESC_MAX (1000-1)
+#define ESC_MIN (500-1)
+
+#define DELTA 5
+#define RC_L1MIN (312+DELTA)
+#define RC_L1MAX (1912-DELTA)
+#define RC_L2MIN (608+DELTA)
+#define RC_L2MAX (1408-DELTA)
+#define RC_R1MIN (312+DELTA)
+#define RC_R1MAX (1912-DELTA)
+
+
+FlightStatedef FlightSystemFlag;//飞行状态
 char RunTimeInfo[400];		//保存任务运行时间信息
 
 int main() 
@@ -91,11 +127,13 @@ int main()
 	IIC_Init();
 	while(	MPU_Init()	);
 	Bmp_Init ();
-		while(mpu_dmp_init())
-		{
-			printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
-		}
+	while(mpu_dmp_init())
+	{
+		printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
+	}
 
+	//全局标志初始化
+	FlightSystemFlag.all=0;
 	
 	xTaskCreate(startTask, "START_TASK", 300, NULL, 2, &startTaskHandle);	/*创建起始任务*/
 	
@@ -112,7 +150,8 @@ void startTask(void *arg)
 {
 	taskENTER_CRITICAL();	/*进入临界区*/
 	
-	
+	//创建事件句柄
+	RCtask_Handle = xEventGroupCreate(); 
 	
 		//创建电调初始化任务
 	xTaskCreate((TaskFunction_t )escinit_task,     	
@@ -176,19 +215,20 @@ void escinit_task(void *pvParameters)
 	{
 		LED0_ON;
 
-		TIM_SetCompare1(TIM3,999);
-		TIM_SetCompare2(TIM3,999);
-		TIM_SetCompare3(TIM3,999);
-		TIM_SetCompare4(TIM3,999);
+		TIM_SetCompare1(TIM3,ESC_MAX);
+		TIM_SetCompare2(TIM3,ESC_MAX);
+		TIM_SetCompare3(TIM3,ESC_MAX);
+		TIM_SetCompare4(TIM3,ESC_MAX);
 
 		vTaskDelay(1000);
-		TIM_SetCompare1(TIM3,499);
-		TIM_SetCompare2(TIM3,499);
-		TIM_SetCompare3(TIM3,499);
-		TIM_SetCompare4(TIM3,499);
+		TIM_SetCompare1(TIM3,ESC_MIN);
+		TIM_SetCompare2(TIM3,ESC_MIN);
+		TIM_SetCompare3(TIM3,ESC_MIN);
+		TIM_SetCompare4(TIM3,ESC_MIN);
 		vTaskDelay(1000);
 		//油门行程校准和电调解锁
-
+		
+		xEventGroupSetBits(RCtask_Handle,Esc_Unlocked);//标志电调已解锁
 		LED0_OFF;
 		vTaskDelete (ESCinitTask_Handler);
 	}   
@@ -208,7 +248,7 @@ void sensors_task(void *pvParameters)
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
-		//5ms运行一次
+		//5ms运行一次,IIC速率较慢且底层采用的是while，导致该任务运行占用较长时间
 		vTaskDelayUntil(&lastWakeTime, 5);
 		BMP_Temperature = BMP280_Get_Temperature();
 		BMP_Pressure = BMP280_Get_Pressure();
@@ -245,16 +285,68 @@ void RunTimeStats_task(void *pvParameters)
 void RC_task(void *pvParameters)
 {
 	u8 t=0;
+	u8 report=0;
+	u16 FlightUnlockCnt=0;
+	u16 FlightLockCnt=0;
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
+		//等电调解锁后开启
+		xEventGroupWaitBits(RCtask_Handle, /* 事件对象句柄 */ 
+												Esc_Unlocked,/* 接收任务感兴趣的事件 */ 
+												pdFALSE, /* 退出时不清除事件位 */ 
+												pdTRUE, /* 满足感兴趣的所有事件 */ 
+												portMAX_DELAY);/* 指定超时时间,一直等 */ 
 		vTaskDelayUntil(&lastWakeTime, 50);
 		Sbus_Data_Count(USART2_RX_BUF);
-		for(t=0;t<18;t++)
+		
+		if(FlightSystemFlag.byte.FlightUnlock==0)//飞行锁定时
 		{
-			printf("%d ",CH[t]);
+			if(CH[2]<=RC_L1MIN&&CH[3]>=RC_L2MAX)//左摇杆往右下打3s即可解锁飞行
+			{
+				FlightUnlockCnt++;
+				if(FlightUnlockCnt>=60)
+				{
+					xEventGroupSetBits(RCtask_Handle,Flight_Unlocked);//标志飞行已解锁
+					FlightSystemFlag.byte.FlightUnlock=1;
+					printf("Flight unlocked!!\n");
+					FlightUnlockCnt=0;
+				}
+			}
+			else
+			{
+				FlightUnlockCnt=0;
+			}
 		}
-		printf("\n");
+		else//飞行解锁时
+		{
+			if(CH[2]<=RC_L1MIN&&CH[3]<=RC_L2MIN)//左摇杆往左下打3s即可锁定飞行
+			{
+				FlightLockCnt++;
+				if(FlightLockCnt>=60)
+				{
+					xEventGroupClearBits(RCtask_Handle,Flight_Unlocked);//清解锁标志
+					FlightSystemFlag.byte.FlightUnlock=0;
+					printf("Flight locked!!\n");
+					FlightLockCnt=0;
+				}
+			}
+			else
+			{
+				FlightLockCnt=0;
+			}
+		}
+
+		
+		//通道数据上传
+		if(report)
+		{
+			for(t=0;t<18;t++)
+			{
+				printf("%d--%d ",t,CH[t]);
+			}
+			printf("\n");
+		}
 	}
 }
 
