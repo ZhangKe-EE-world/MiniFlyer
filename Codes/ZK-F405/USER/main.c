@@ -78,42 +78,17 @@ void RunTimeStats_task(void *pvParameters);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //事件句柄
 static EventGroupHandle_t RCtask_Handle =NULL; 
 
-//事件宏
-#define Esc_Unlocked 			(0x01<<0)
-#define Flight_Unlocked 	(0x01<<1)
-#define RC_Connected		 	(0x01<<2)
 
 
 
-//参数宏
-#define ESC_MAX (1000-1)
-#define ESC_MIN (500-1)
 
-#define DELTA 5
-#define RC_L1MIN (312+DELTA)
-#define RC_L1MAX (1912-DELTA)
-#define RC_L2MIN (608+DELTA)
-#define RC_L2MAX (1408-DELTA)
-#define RC_R1MIN (312+DELTA)
-#define RC_R1MAX (1912-DELTA)
-
-
+//全局变量及标志位声明
 FlightStatedef FlightSystemFlag;//飞行状态
 char RunTimeInfo[400];		//保存任务运行时间信息
+
 
 int main() 
 {
@@ -131,6 +106,7 @@ int main()
 	{
 		printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
 	}
+	pid_param_Init();
 
 	//全局标志初始化
 	FlightSystemFlag.all=0;
@@ -243,8 +219,8 @@ void sensors_task(void *pvParameters)
 	double	BMP_Pressure,BMP_Temperature;
 	float pitch,roll,yaw; 		//欧拉角
 	short aacx,aacy,aacz;		//加速度传感器原始数据
-	short gyrox,gyroy,gyroz;	//陀螺仪原始数据 
-	u8 report=0;	
+	short gyrox,gyroy,gyroz;	//陀螺仪原始数据 short型用于上位机，在做内环PID计算时需要强制转换为float型
+	u8 report=0;
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
@@ -256,6 +232,9 @@ void sensors_task(void *pvParameters)
 		{ 
 			MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
 			MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据
+			if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>550)
+				state_control(gyrox,gyroy,gyroz,pitch,roll,yaw,0.005f);
+			if(0)printf("yaw -- %f\npitch -- %f\nroll -- %f\n",yaw,pitch,roll);
 			if(report)mpu6050_send_data(aacx,aacy,aacz,gyrox,gyroy,gyroz);//用自定义帧发送加速度和陀螺仪原始数据，report决定是否开启
 			if(report)usart1_report_imu(aacx,aacy,aacz,gyrox,gyroy,gyroz,(int)(roll*100),(int)(pitch*100),(int)(yaw*10));
 		}
@@ -270,13 +249,23 @@ void RunTimeStats_task(void *pvParameters)
 	u8 report=0;
 	while(1)
 	{
+		vTaskDelay (500);
 		if(report)
 		{
+			vTaskDelay (500);
 			memset(RunTimeInfo,0,400);				//信息缓冲区清零
 			vTaskGetRunTimeStats(RunTimeInfo);		//获取任务运行时间信息
 			printf("任务名\t\t\t运行时间\t运行所占百分比\r\n");
 			printf("%s\r\n",RunTimeInfo);
-			vTaskDelay (2000);
+			
+		}
+		if(FlightSystemFlag.byte.FlightUnlock==1)
+		{
+			LED0_TOGGLE;
+		}
+		else
+		{
+			LED0_OFF;
 		}
 	}
 }
@@ -288,6 +277,7 @@ void RC_task(void *pvParameters)
 	u8 report=0;
 	u16 FlightUnlockCnt=0;
 	u16 FlightLockCnt=0;
+//	u16 Throttle=0;
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
@@ -302,7 +292,7 @@ void RC_task(void *pvParameters)
 		
 		if(FlightSystemFlag.byte.FlightUnlock==0)//飞行锁定时
 		{
-			if(CH[2]<=RC_L1MIN&&CH[3]>=RC_L2MAX)//左摇杆往右下打3s即可解锁飞行
+			if(CH[2]<=(RC_L1MIN+DELTA)&&CH[3]>=(RC_L2MAX-DELTA))//左摇杆往右下打3s即可解锁飞行
 			{
 				FlightUnlockCnt++;
 				if(FlightUnlockCnt>=60)
@@ -320,7 +310,7 @@ void RC_task(void *pvParameters)
 		}
 		else//飞行解锁时
 		{
-			if(CH[2]<=RC_L1MIN&&CH[3]<=RC_L2MIN)//左摇杆往左下打3s即可锁定飞行
+			if(CH[2]<=(RC_L1MIN+DELTA)&&CH[3]<=(RC_L2MIN+DELTA))//左摇杆往左下打3s即可锁定飞行
 			{
 				FlightLockCnt++;
 				if(FlightLockCnt>=60)
@@ -336,6 +326,19 @@ void RC_task(void *pvParameters)
 				FlightLockCnt=0;
 			}
 		}
+		if(CH[2]<=(RC_OFF+DELTA))//遥控器不在线时
+		{
+			FlightSystemFlag.byte.RCOnline=0;
+		}
+		else
+			if(CH[2]>=(RC_ON-DELTA))
+			{
+				FlightSystemFlag.byte.RCOnline=1;
+			}
+			else
+			{
+				printf("unknowing state!\n");
+			}
 
 		
 		//通道数据上传

@@ -1,6 +1,6 @@
 Dependencies for Project 'FreeRTOS', Target 'FreeRTOS': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (.\main.c)(0x620A9276)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x6211132A)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\USER\stm32f4xx.h)(0x57FC593E)
 I (..\CORE\core_cm4.h)(0x57FC593F)
@@ -63,7 +63,7 @@ I (..\SYSTEM\pwm\pwm.h)(0x61F26E5A)
 I (..\HARDWARE\Upper_Computer\Upper.h)(0x61FB7128)
 I (..\HARDWARE\S-BUS\sbus.h)(0x6208E40C)
 I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdbool.h)(0x6025237C)
-I (..\HARDWARE\FlightSystem\flight_system.h)(0x620A8E3F)
+I (..\HARDWARE\FlightSystem\flight_system.h)(0x621110DB)
 F (.\stm32f4xx_it.c)(0x5836DA14)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
 I (stm32f4xx_it.h)(0x57FC593E)
 I (stm32f4xx.h)(0x57FC593E)
@@ -254,7 +254,7 @@ I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC593F)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC593F)
 I (..\HARDWARE\BMP280\bmp280.h)(0x61F4F8DB)
 I (..\HARDWARE\IIC\myiic.h)(0x61F538C5)
-F (..\HARDWARE\MPU6050_IIC\mpu6050_iic.c)(0x61FB932B)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\mpu6050_iic.o --omf_browse ..\obj\mpu6050_iic.crf --depend ..\obj\mpu6050_iic.d)
+F (..\HARDWARE\MPU6050_IIC\mpu6050_iic.c)(0x6210C12E)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\mpu6050_iic.o --omf_browse ..\obj\mpu6050_iic.crf --depend ..\obj\mpu6050_iic.d)
 I (..\HARDWARE\IIC\myiic.h)(0x61F538C5)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\USER\stm32f4xx.h)(0x57FC593E)
@@ -463,7 +463,7 @@ I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC593F)
 I (..\HARDWARE\LED\led.h)(0x620A88D4)
 I (..\SYSTEM\usart\usart.h)(0x61F1505A)
 I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (..\HARDWARE\S-BUS\sbus.c)(0x620A7CFB)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\sbus.o --omf_browse ..\obj\sbus.crf --depend ..\obj\sbus.d)
+F (..\HARDWARE\S-BUS\sbus.c)(0x620B6BA1)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\sbus.o --omf_browse ..\obj\sbus.crf --depend ..\obj\sbus.d)
 I (..\USER\stm32f4xx.h)(0x57FC593E)
 I (..\CORE\core_cm4.h)(0x57FC593F)
 I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -516,7 +516,46 @@ I (..\FreeRTOS\include\mpu_wrappers.h)(0x573F3A17)
 I (..\FreeRTOS\include\task.h)(0x573F3A16)
 I (..\FreeRTOS\include\list.h)(0x573F3A17)
 I (..\FreeRTOS\include\queue.h)(0x573F3A17)
-F (..\HARDWARE\FlightSystem\flight_system.c)(0x620A8213)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\flight_system.o --omf_browse ..\obj\flight_system.crf --depend ..\obj\flight_system.d)
+F (..\HARDWARE\FlightSystem\flight_system.c)(0x621119C2)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\flight_system.o --omf_browse ..\obj\flight_system.crf --depend ..\obj\flight_system.d)
+I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (..\HARDWARE\S-BUS\sbus.h)(0x6208E40C)
+I (..\SYSTEM\sys\sys.h)(0x5836D870)
+I (..\USER\stm32f4xx.h)(0x57FC593E)
+I (..\CORE\core_cm4.h)(0x57FC593F)
+I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (..\CORE\core_cmInstr.h)(0x57FC593F)
+I (..\CORE\core_cmFunc.h)(0x57FC593F)
+I (..\CORE\core_cm4_simd.h)(0x57FC593F)
+I (..\USER\system_stm32f4xx.h)(0x57FC593E)
+I (..\USER\stm32f4xx_conf.h)(0x57FC593E)
+I (..\FWLIB\inc\stm32f4xx_adc.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_crc.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_dbgmcu.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_dma.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_exti.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_flash.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_gpio.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_i2c.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_iwdg.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_pwr.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_rcc.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_rtc.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_sdio.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_spi.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_syscfg.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_tim.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_usart.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_wwdg.h)(0x57FC593F)
+I (..\FWLIB\inc\misc.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_cryp.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_hash.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_rng.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC593F)
+I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC593F)
+I (C:\Program Files (x86)\Keil\ARM\ARMCC\include\stdbool.h)(0x6025237C)
+I (..\HARDWARE\FlightSystem\flight_system.h)(0x621110DB)
 F (..\SYSTEM\delay\delay.c)(0x61FBD9DD)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
 I (..\SYSTEM\delay\delay.h)(0x61FBDA7C)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
@@ -650,7 +689,7 @@ I (..\FreeRTOS\include\portable.h)(0x573F3A17)
 I (..\FreeRTOS\include\deprecated_definitions.h)(0x573F3A17)
 I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x573F3A17)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x573F3A17)
-F (..\SYSTEM\pwm\pwm.c)(0x61F26ED3)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\pwm.o --omf_browse ..\obj\pwm.crf --depend ..\obj\pwm.d)
+F (..\SYSTEM\pwm\pwm.c)(0x6210BB0A)(-c --cpu Cortex-M4.fp.sp -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\HARDWARE\BMP280 -I ..\HARDWARE\IIC -I ..\HARDWARE\LED -I ..\HARDWARE\MPU6050_IIC -I ..\HARDWARE\MPU6050_IIC\eMPL -I ..\SYSTEM\pwm -I ..\HARDWARE\PID -I ..\HARDWARE\Upper_Computer -I ..\HARDWARE\TimerforOS -I ..\HARDWARE\S-BUS -I ..\HARDWARE\FlightSystem-IC:\Users\19717\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-D__UVISION_VERSION="535" -DSTM32F405xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o ..\obj\pwm.o --omf_browse ..\obj\pwm.crf --depend ..\obj\pwm.d)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\USER\stm32f4xx.h)(0x57FC593E)
 I (..\CORE\core_cm4.h)(0x57FC593F)
