@@ -190,18 +190,17 @@ void escinit_task(void *pvParameters)
 	while(1)
 	{
 		LED0_ON;
-
-		TIM_SetCompare1(TIM3,ESC_MAX);
-		TIM_SetCompare2(TIM3,ESC_MAX);
-		TIM_SetCompare3(TIM3,ESC_MAX);
 		TIM_SetCompare4(TIM3,ESC_MAX);
+		TIM_SetCompare3(TIM3,ESC_MAX);
+		TIM_SetCompare2(TIM3,ESC_MAX);
+		TIM_SetCompare1(TIM3,ESC_MAX);
 
-		vTaskDelay(1000);
-		TIM_SetCompare1(TIM3,ESC_MIN);
-		TIM_SetCompare2(TIM3,ESC_MIN);
-		TIM_SetCompare3(TIM3,ESC_MIN);
+
+		vTaskDelay(4000);
 		TIM_SetCompare4(TIM3,ESC_MIN);
-		vTaskDelay(1000);
+		TIM_SetCompare3(TIM3,ESC_MIN);
+		TIM_SetCompare2(TIM3,ESC_MIN);
+		TIM_SetCompare1(TIM3,ESC_MIN);
 		//油门行程校准和电调解锁
 		
 		xEventGroupSetBits(RCtask_Handle,Esc_Unlocked);//标志电调已解锁
@@ -232,7 +231,7 @@ void sensors_task(void *pvParameters)
 		{ 
 			MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
 			MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据
-			if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>550)
+			if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>RC_L1MIN)
 				state_control(gyrox,gyroy,gyroz,pitch,roll,yaw,0.005f);
 			if(0)printf("yaw -- %f\npitch -- %f\nroll -- %f\n",yaw,pitch,roll);
 			if(report)mpu6050_send_data(aacx,aacy,aacz,gyrox,gyroy,gyroz);//用自定义帧发送加速度和陀螺仪原始数据，report决定是否开启
@@ -249,6 +248,12 @@ void RunTimeStats_task(void *pvParameters)
 	u8 report=0;
 	while(1)
 	{
+		//等电调解锁后开启
+		xEventGroupWaitBits(RCtask_Handle, /* 事件对象句柄 */ 
+												Esc_Unlocked,/* 接收任务感兴趣的事件 */ 
+												pdFALSE, /* 退出时不清除事件位 */ 
+												pdTRUE, /* 满足感兴趣的所有事件 */ 
+												portMAX_DELAY);/* 指定超时时间,一直等 */ 
 		vTaskDelay (500);
 		if(report)
 		{
@@ -289,12 +294,12 @@ void RC_task(void *pvParameters)
 												portMAX_DELAY);/* 指定超时时间,一直等 */ 
 		vTaskDelayUntil(&lastWakeTime, 50);
 		Sbus_Data_Count(USART2_RX_BUF);
-		
 		if(FlightSystemFlag.byte.FlightUnlock==0)//飞行锁定时
 		{
 			if(CH[2]<=(RC_L1MIN+DELTA)&&CH[3]>=(RC_L2MAX-DELTA))//左摇杆往右下打3s即可解锁飞行
 			{
 				FlightUnlockCnt++;
+//				printf("test1\n");
 				if(FlightUnlockCnt>=60)
 				{
 					xEventGroupSetBits(RCtask_Handle,Flight_Unlocked);//标志飞行已解锁
@@ -317,6 +322,10 @@ void RC_task(void *pvParameters)
 				{
 					xEventGroupClearBits(RCtask_Handle,Flight_Unlocked);//清解锁标志
 					FlightSystemFlag.byte.FlightUnlock=0;
+					TIM_SetCompare1(TIM3,499);
+					TIM_SetCompare2(TIM3,499);
+					TIM_SetCompare3(TIM3,499);
+					TIM_SetCompare4(TIM3,499);
 					printf("Flight locked!!\n");
 					FlightLockCnt=0;
 				}

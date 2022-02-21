@@ -32,21 +32,37 @@ PidObject *(pPidObject[])={&pidRateX,&pidRateY,&pidRateZ,&pidRoll,&pidPitch,&pid
 //PID在此处修改
 void pid_param_Init(void)//PID参数初始化
 {
-	pidRateX.kp = 3.f;
-	pidRateY.kp = 3.f;
-	pidRateZ.kp = 1.0f;
+	pidRateX.kp = 0.5f;
+	pidRateY.kp = 0.5f;
+	pidRateZ.kp = 0.5f;
 	
-	pidRateX.ki = 0.05f;
-	pidRateY.ki = 0.05f;
-	pidRateZ.ki = 0.02f;	
+	pidRateX.ki = 0.005f;
+	pidRateY.ki = 0.005f;
+	pidRateZ.ki = 0.002f;	
 	
-	pidRateX.kd = 0.3f;
-	pidRateY.kd = 0.3f;
-	pidRateZ.kd = 0.3f;	
+	pidRateX.kd = 0.03f;
+	pidRateY.kd = 0.03f;
+	pidRateZ.kd = 0.03f;	
 	
-	pidPitch.kp = 10.0f;
-	pidRoll.kp = 10.0f;
-	pidYaw.kp = 8.0f;	
+	pidPitch.kp = 1.0f;
+	pidRoll.kp = 1.0f;
+	pidYaw.kp = 0.8f;	
+	
+	pidRateX.IntegLimitHigh  = 50.0f;
+	pidRateY.IntegLimitHigh = 50.0f;
+	pidRateZ.IntegLimitHigh= 50.0f;
+	
+	pidRateX.OutLimitHigh  = 100.0f;
+	pidRateY.OutLimitHigh = 100.0f;
+	pidRateZ.OutLimitHigh= 100.0f;
+	
+	pidPitch.IntegLimitHigh  = 50.0f;
+	pidRoll.IntegLimitHigh = 50.0f;
+	pidYaw.IntegLimitHigh= 50.0f;
+	
+	pidPitch.OutLimitHigh  = 100.0f;
+	pidRoll.OutLimitHigh = 100.0f;
+	pidYaw.OutLimitHigh= 100.0f;
 	
 	pidRest(pPidObject,6); //批量复位PID数据，防止上次遗留的数据影响本次控制
 
@@ -94,13 +110,13 @@ void pidUpdate(PidObject* pid,const float dt)
 
 	pid->integ += error * dt;	 //误差积分累加值
 
-	//pid->integ = LIMIT(pid->integ,pid->IntegLimitLow,pid->IntegLimitHigh); //进行积分限幅
+	pid->integ = LIMIT(pid->integ,pid->IntegLimitLow,pid->IntegLimitHigh); //进行积分限幅
 
 	deriv = (error - pid->prevError)/dt;  //前后两次误差做微分
 
 	pid->out = pid->kp * error + pid->ki * pid->integ + pid->kd * deriv;//PID输出
 
-	//pid->out = LIMIT(pid->out,pid->OutLimitLow,pid->OutLimitHigh); //输出限幅
+	pid->out = LIMIT(pid->out,pid->OutLimitLow,pid->OutLimitHigh); //输出限幅
 	
 	pid->prevError = error;  //更新上次的误差
 		
@@ -130,42 +146,45 @@ void state_control(float gx,float gy,float gz,float pitch,float roll,float yaw,f
 {
 	u16 Throttle=0;
 	Throttle=(ESC_MAX-ESC_MIN)*(CH[2]-RC_L1MIN)/RC_RANGE+ESC_MIN;//获取基础油门值
-	
-	pidRateX.measured = gx * Gyro_G; //内环测量值 角度/秒
-	pidRateY.measured = gy * Gyro_G;
-	pidRateZ.measured = gz * Gyro_G;
+	if(Throttle>520)
+	{
+		pidRateX.measured = gx * Gyro_G; //内环测量值 角度/秒
+		pidRateY.measured = gy * Gyro_G;
+		pidRateZ.measured = gz * Gyro_G;
 
-	pidPitch.measured = pitch; //外环测量值 单位：角度
-	pidRoll.measured = roll;
-	pidYaw.measured = yaw;
-	
-	pidUpdate(&pidRoll,dt);    //调用PID处理函数来处理外环	横滚角PID		
-	pidRateX.desired = pidRoll.out; //将外环的PID输出作为内环PID的期望值即为串级PID
-	pidUpdate(&pidRateX,dt);  //再调用内环
+		pidPitch.measured = pitch; //外环测量值 单位：角度
+		pidRoll.measured = roll;
+		pidYaw.measured = yaw;
+		
+		pidUpdate(&pidRoll,dt);    //调用PID处理函数来处理外环	横滚角PID		
+		pidRateX.desired = pidRoll.out; //将外环的PID输出作为内环PID的期望值即为串级PID
+		pidUpdate(&pidRateX,dt);  //再调用内环
 
-	pidUpdate(&pidPitch,dt);    //调用PID处理函数来处理外环	俯仰角PID	
-	pidRateY.desired = pidPitch.out;  
-	pidUpdate(&pidRateY,dt); //再调用内环
-	
-	CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
-	
-	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849); //留100给姿态控制
-	
-	MOTOR1 +=    + pidRateX.out - pidRateY.out + pidRateZ.out;//; 姿态输出分配给各个电机的控制量
-	MOTOR2 +=    - pidRateX.out - pidRateY.out - pidRateZ.out ;//;
-	MOTOR3 +=    - pidRateX.out + pidRateY.out + pidRateZ.out;
-	MOTOR4 +=    + pidRateX.out + pidRateY.out - pidRateZ.out;//;
-	
-//	MOTOR1 +=    + pidRateX.out - pidRateY.out;
-//	MOTOR2 +=    - pidRateX.out - pidRateY.out;
-//	MOTOR3 +=    - pidRateX.out + pidRateY.out;
-//	MOTOR4 +=    + pidRateX.out + pidRateY.out;
+		pidUpdate(&pidPitch,dt);    //调用PID处理函数来处理外环	俯仰角PID	
+		pidRateY.desired = pidPitch.out;  
+		pidUpdate(&pidRateY,dt); //再调用内环
+		
+		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
+		
+		MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849); //留100给姿态控制
+		
+		MOTOR1 +=    + pidRateX.out - pidRateY.out + pidRateZ.out;//; 姿态输出分配给各个电机的控制量
+		MOTOR2 +=    - pidRateX.out - pidRateY.out - pidRateZ.out ;//;
+		MOTOR3 +=    - pidRateX.out + pidRateY.out + pidRateZ.out;
+		MOTOR4 +=    + pidRateX.out + pidRateY.out - pidRateZ.out;//;
+	}
+	else
+	{
+		MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849); //留100给姿态控制
+	}
+
+
 	
 	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,499,949));
 	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,949));
 	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,949));
 	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,949));
-	printf("1--%d\n2--%d\n3--%d\n4--%d\n",LIMIT(MOTOR1,499,949),LIMIT(MOTOR2,499,949),LIMIT(MOTOR3,499,949),LIMIT(MOTOR4,499,949));
+	printf("1--%d\n2--%d\n3--%d\n4--%d\n",LIMIT(MOTOR1,549,949),LIMIT(MOTOR2,549,949),LIMIT(MOTOR3,549,949),LIMIT(MOTOR4,549,949));
 
 }
 

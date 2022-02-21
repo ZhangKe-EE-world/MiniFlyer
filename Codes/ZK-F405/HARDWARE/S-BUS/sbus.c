@@ -91,9 +91,8 @@ uint8_t USART2_RX_BUF[26];
 void USART2_IRQHandler(void)
 {
 	uint8_t res;
-	volatile uint8_t clear = 0;
+	uint8_t clear = 0;
 	static uint8_t Rx_Sta = 1;
-
 	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
 	{
 		res =USART2->DR;

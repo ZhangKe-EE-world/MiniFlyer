@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun Feb 20 00:24:40 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Feb 21 22:41:55 2022
 <BR><P>
 <H3>Maximum Stack Usage =        552 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -593,14 +593,14 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_file
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupWaitBits
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupClearBits
 <LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskStartScheduler
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelete
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunTimeStats_task
@@ -623,7 +623,7 @@ Global Symbols
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortStartScheduler
 <LI><a href="#[192]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskIncrementTick
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSwitchContext
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskPriorityDisinherit
@@ -646,7 +646,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 </UL>
 
 <P><STRONG><a name="[97]"></a>_printf_str</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, _printf_str.o(.text))
@@ -677,7 +677,7 @@ Global Symbols
 <P><STRONG><a name="[145]"></a>memcmp</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, memcmp.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = memcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
 <P><STRONG><a name="[173]"></a>strcpy</STRONG> (Thumb, 72 bytes, Stack size 12 bytes, strcpy.o(.text))
@@ -689,7 +689,7 @@ Global Symbols
 <P><STRONG><a name="[174]"></a>strlen</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, strlen.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = strlen
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 <LI><a href="#[172]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvWriteNameToBuffer
 </UL>
 
@@ -707,12 +707,12 @@ Global Symbols
 <P><STRONG><a name="[8f]"></a>__aeabi_memset</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, aeabi_memset.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
 </UL>
 
-<P><STRONG><a name="[c8]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
+<P><STRONG><a name="[cc]"></a>__aeabi_memclr</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, rt_memclr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunTimeStats_task
 </UL>
 
@@ -749,9 +749,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[89]"></a>_printf_int_common</STRONG> (Thumb, 178 bytes, Stack size 32 bytes, _printf_intcommon.o(.text))
@@ -938,29 +938,29 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledInit
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
-<P><STRONG><a name="[ce]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
+<P><STRONG><a name="[d2]"></a>GPIO_PinAFConfig</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, stm32f4xx_gpio.o(i.GPIO_PinAFConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIO_PinAFConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
-<P><STRONG><a name="[120]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
+<P><STRONG><a name="[124]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ResetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;escinit_task
 </UL>
 
-<P><STRONG><a name="[cb]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
+<P><STRONG><a name="[cf]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_SetBits))
 <BR><BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;escinit_task
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunTimeStats_task
 </UL>
 
-<P><STRONG><a name="[ca]"></a>GPIO_ToggleBits</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ToggleBits))
+<P><STRONG><a name="[ce]"></a>GPIO_ToggleBits</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(i.GPIO_ToggleBits))
 <BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunTimeStats_task
 </UL>
 
@@ -1115,12 +1115,12 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
+<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Gyroscope
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Get_Accelerometer
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 </UL>
 
@@ -1182,7 +1182,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
@@ -1191,10 +1191,10 @@ Global Symbols
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
 <LI><a href="#[141]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_accel_fsr
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
 <LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_lp_accel_mode
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 </UL>
 
@@ -1208,11 +1208,11 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[d0]"></a>NVIC_Init</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, misc.o(i.NVIC_Init))
+<P><STRONG><a name="[d4]"></a>NVIC_Init</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = NVIC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
 </UL>
 
@@ -1223,56 +1223,61 @@ Global Symbols
 <P><STRONG><a name="[b2]"></a>RCC_AHB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_AHB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledInit
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
-<P><STRONG><a name="[cd]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
+<P><STRONG><a name="[d1]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
 </UL>
 
-<P><STRONG><a name="[e7]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphResetCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[eb]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphResetCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
-<P><STRONG><a name="[e6]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphResetCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<P><STRONG><a name="[ea]"></a>RCC_APB2PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB2PeriphResetCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
 </UL>
 
-<P><STRONG><a name="[e9]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[ed]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 132 bytes, Stack size 16 bytes, stm32f4xx_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[69]"></a>RC_task</STRONG> (Thumb, 250 bytes, Stack size 16 bytes, main.o(i.RC_task))
+<P><STRONG><a name="[69]"></a>RC_task</STRONG> (Thumb, 288 bytes, Stack size 16 bytes, main.o(i.RC_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248 + Unknown Stack Size
 <LI>Call Chain = RC_task &rArr; xEventGroupWaitBits &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupWaitBits
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupClearBits
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSysTickCnt
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sbus_Data_Count
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.startTask)
 </UL>
-<P><STRONG><a name="[68]"></a>RunTimeStats_task</STRONG> (Thumb, 84 bytes, Stack size 0 bytes, main.o(i.RunTimeStats_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 320 + Unknown Stack Size
+<P><STRONG><a name="[68]"></a>RunTimeStats_task</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, main.o(i.RunTimeStats_task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 328 + Unknown Stack Size
 <LI>Call Chain = RunTimeStats_task &rArr; vTaskGetRunTimeStats &rArr; uxTaskGetSystemState &rArr; prvListTasksWithinSingleList &rArr; vTaskGetInfo &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ToggleBits
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<BR>[Calls]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupWaitBits
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ToggleBits
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
+<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.startTask)
 </UL>
@@ -1280,217 +1285,221 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[cc]"></a>SBUS_Configuration</STRONG> (Thumb, 156 bytes, Stack size 40 bytes, sbus.o(i.SBUS_Configuration), UNUSED)
+<P><STRONG><a name="[d0]"></a>SBUS_Configuration</STRONG> (Thumb, 156 bytes, Stack size 40 bytes, sbus.o(i.SBUS_Configuration), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
 
 <P><STRONG><a name="[c4]"></a>Sbus_Data_Count</STRONG> (Thumb, 262 bytes, Stack size 0 bytes, sbus.o(i.Sbus_Data_Count))
 <BR><BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 </UL>
 
-<P><STRONG><a name="[103]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, misc.o(i.SysTick_CLKSourceConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<P><STRONG><a name="[107]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, misc.o(i.SysTick_CLKSourceConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 </UL>
 
 <P><STRONG><a name="[c]"></a>SysTick_Handler</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, delay.o(i.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
 <LI>Call Chain = SysTick_Handler &rArr; xPortSysTickHandler &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
-<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortSysTickHandler
+<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortSysTickHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
 <P><STRONG><a name="[5f]"></a>SystemInit</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, system_stm32f4xx.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SystemInit &rArr; SetSysClock
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(.text)
 </UL>
 <P><STRONG><a name="[29]"></a>TIM2_IRQHandler</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, timer.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM2_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
 <P><STRONG><a name="[ae]"></a>TIM2_Int_Init</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, timer.o(i.TIM2_Int_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = TIM2_Int_Init &rArr; TIM_TimeBaseInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<BR>[Calls]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConfigureTimeForRunTimeStats
 </UL>
 
-<P><STRONG><a name="[db]"></a>TIM3_PWM_Init</STRONG> (Thumb, 244 bytes, Stack size 64 bytes, pwm.o(i.TIM3_PWM_Init))
+<P><STRONG><a name="[df]"></a>TIM3_PWM_Init</STRONG> (Thumb, 244 bytes, Stack size 64 bytes, pwm.o(i.TIM3_PWM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = TIM3_PWM_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
-<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
-<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
-<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
-<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
-<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
-<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PreloadConfig
-<LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
-<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
+<LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
+<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
+<LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3Init
+<LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2PreloadConfig
+<LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2Init
+<LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PreloadConfig
+<LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
+<LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
+<LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e5]"></a>TIM_ARRPreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ARRPreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<P><STRONG><a name="[e9]"></a>TIM_ARRPreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ARRPreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[d7]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
+<P><STRONG><a name="[db]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[da]"></a>TIM_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<P><STRONG><a name="[de]"></a>TIM_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
 </UL>
 
-<P><STRONG><a name="[dc]"></a>TIM_DeInit</STRONG> (Thumb, 284 bytes, Stack size 8 bytes, stm32f4xx_tim.o(i.TIM_DeInit))
+<P><STRONG><a name="[e0]"></a>TIM_DeInit</STRONG> (Thumb, 284 bytes, Stack size 8 bytes, stm32f4xx_tim.o(i.TIM_DeInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIM_DeInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
-<LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
+<BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphResetCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[d6]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_GetITStatus))
+<P><STRONG><a name="[da]"></a>TIM_GetITStatus</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_GetITStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d9]"></a>TIM_ITConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
+<P><STRONG><a name="[dd]"></a>TIM_ITConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_ITConfig))
 <BR><BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
 </UL>
 
-<P><STRONG><a name="[dd]"></a>TIM_OC1Init</STRONG> (Thumb, 88 bytes, Stack size 12 bytes, stm32f4xx_tim.o(i.TIM_OC1Init))
+<P><STRONG><a name="[e1]"></a>TIM_OC1Init</STRONG> (Thumb, 88 bytes, Stack size 12 bytes, stm32f4xx_tim.o(i.TIM_OC1Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_OC1Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[e1]"></a>TIM_OC1PreloadConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC1PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<P><STRONG><a name="[e5]"></a>TIM_OC1PreloadConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC1PreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[de]"></a>TIM_OC2Init</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_OC2Init))
+<P><STRONG><a name="[e2]"></a>TIM_OC2Init</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_OC2Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC2Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[e2]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC2PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<P><STRONG><a name="[e6]"></a>TIM_OC2PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC2PreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[df]"></a>TIM_OC3Init</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_OC3Init))
+<P><STRONG><a name="[e3]"></a>TIM_OC3Init</STRONG> (Thumb, 116 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_OC3Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC3Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[e3]"></a>TIM_OC3PreloadConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC3PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<P><STRONG><a name="[e7]"></a>TIM_OC3PreloadConfig</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC3PreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[e0]"></a>TIM_OC4Init</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_OC4Init))
+<P><STRONG><a name="[e4]"></a>TIM_OC4Init</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, stm32f4xx_tim.o(i.TIM_OC4Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIM_OC4Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[e4]"></a>TIM_OC4PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC4PreloadConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<P><STRONG><a name="[e8]"></a>TIM_OC4PreloadConfig</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_OC4PreloadConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 </UL>
 
-<P><STRONG><a name="[121]"></a>TIM_SetCompare1</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare1))
+<P><STRONG><a name="[c6]"></a>TIM_SetCompare1</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare1))
 <BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;escinit_task
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 </UL>
 
-<P><STRONG><a name="[122]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare2))
+<P><STRONG><a name="[c7]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare2))
 <BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;escinit_task
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 </UL>
 
-<P><STRONG><a name="[123]"></a>TIM_SetCompare3</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare3))
+<P><STRONG><a name="[c8]"></a>TIM_SetCompare3</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare3))
 <BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;escinit_task
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 </UL>
 
-<P><STRONG><a name="[124]"></a>TIM_SetCompare4</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare4))
+<P><STRONG><a name="[c9]"></a>TIM_SetCompare4</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(i.TIM_SetCompare4))
 <BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;escinit_task
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 </UL>
 
-<P><STRONG><a name="[d8]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
+<P><STRONG><a name="[dc]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, stm32f4xx_tim.o(i.TIM_TimeBaseInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_TimeBaseInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
 </UL>
 
-<P><STRONG><a name="[33]"></a>USART2_IRQHandler</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, sbus.o(i.USART2_IRQHandler))
+<P><STRONG><a name="[33]"></a>USART2_IRQHandler</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, sbus.o(i.USART2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = USART2_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[d2]"></a>USART_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_Cmd))
+<P><STRONG><a name="[d6]"></a>USART_Cmd</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_Cmd))
 <BR><BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
 <P><STRONG><a name="[17f]"></a>USART_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_GetFlagStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_send_char
 </UL>
 
-<P><STRONG><a name="[e8]"></a>USART_GetITStatus</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_GetITStatus))
+<P><STRONG><a name="[ec]"></a>USART_GetITStatus</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, stm32f4xx_usart.o(i.USART_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[d1]"></a>USART_ITConfig</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, stm32f4xx_usart.o(i.USART_ITConfig))
+<P><STRONG><a name="[d5]"></a>USART_ITConfig</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, stm32f4xx_usart.o(i.USART_ITConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART_ITConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
-<P><STRONG><a name="[cf]"></a>USART_Init</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, stm32f4xx_usart.o(i.USART_Init))
+<P><STRONG><a name="[d3]"></a>USART_Init</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, stm32f4xx_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
+<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
 <P><STRONG><a name="[180]"></a>USART_SendData</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f4xx_usart.o(i.USART_SendData))
@@ -1504,110 +1513,110 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[ef]"></a>__ARM_fpclassify</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, fpclassify.o(i.__ARM_fpclassify))
+<P><STRONG><a name="[f3]"></a>__ARM_fpclassify</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, fpclassify.o(i.__ARM_fpclassify))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __ARM_fpclassify
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[ea]"></a>__hardfp_asin</STRONG> (Thumb, 770 bytes, Stack size 88 bytes, asin.o(i.__hardfp_asin))
+<P><STRONG><a name="[ee]"></a>__hardfp_asin</STRONG> (Thumb, 770 bytes, Stack size 88 bytes, asin.o(i.__hardfp_asin))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = __hardfp_asin &rArr; sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dneg
+<BR>[Calls]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dneg
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
-<P><STRONG><a name="[f8]"></a>__hardfp_atan</STRONG> (Thumb, 622 bytes, Stack size 48 bytes, atan.o(i.__hardfp_atan))
+<P><STRONG><a name="[fc]"></a>__hardfp_atan</STRONG> (Thumb, 622 bytes, Stack size 48 bytes, atan.o(i.__hardfp_atan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dneg
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassify
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dneg
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
+<BR>[Called By]<UL><LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
 </UL>
 
-<P><STRONG><a name="[f9]"></a>__hardfp_atan2</STRONG> (Thumb, 448 bytes, Stack size 56 bytes, atan2.o(i.__hardfp_atan2))
+<P><STRONG><a name="[fd]"></a>__hardfp_atan2</STRONG> (Thumb, 448 bytes, Stack size 56 bytes, atan2.o(i.__hardfp_atan2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
-<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dneg
+<BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fabs
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
+<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan
+<LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dneg
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
-<P><STRONG><a name="[f1]"></a>__kernel_poly</STRONG> (Thumb, 248 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
+<P><STRONG><a name="[f5]"></a>__kernel_poly</STRONG> (Thumb, 248 bytes, Stack size 24 bytes, poly.o(i.__kernel_poly))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[eb]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan))
+<P><STRONG><a name="[ef]"></a>__mathlib_dbl_infnan</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __mathlib_dbl_infnan &rArr; __aeabi_dadd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[fa]"></a>__mathlib_dbl_infnan2</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan2))
+<P><STRONG><a name="[fe]"></a>__mathlib_dbl_infnan2</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_infnan2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __mathlib_dbl_infnan2 &rArr; __aeabi_dadd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
 </UL>
 
-<P><STRONG><a name="[ee]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_invalid))
+<P><STRONG><a name="[f2]"></a>__mathlib_dbl_invalid</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_invalid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __mathlib_dbl_invalid &rArr; __aeabi_ddiv
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<BR>[Calls]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[f0]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_underflow))
+<P><STRONG><a name="[f4]"></a>__mathlib_dbl_underflow</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, dunder.o(i.__mathlib_dbl_underflow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = __mathlib_dbl_underflow &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[8b]"></a>_is_digit</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, __printf_wp.o(i._is_digit))
@@ -1618,25 +1627,25 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit_exit
 </UL>
 
-<P><STRONG><a name="[fb]"></a>atan</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, atan.o(i.atan))
+<P><STRONG><a name="[ff]"></a>atan</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, atan.o(i.atan))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
 </UL>
 
 <P><STRONG><a name="[9f]"></a>bmp280_compensate_P_double</STRONG> (Thumb, 534 bytes, Stack size 56 bytes, bmp280.o(i.bmp280_compensate_P_double))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = bmp280_compensate_P_double &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP280_Get_Pressure
 </UL>
@@ -1644,21 +1653,21 @@ Global Symbols
 <P><STRONG><a name="[a1]"></a>bmp280_compensate_T_double</STRONG> (Thumb, 304 bytes, Stack size 72 bytes, bmp280.o(i.bmp280_compensate_T_double))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = bmp280_compensate_T_double &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
-<LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
+<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
+<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP280_Get_Temperature
 </UL>
 
-<P><STRONG><a name="[102]"></a>delay_init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, delay.o(i.delay_init))
+<P><STRONG><a name="[106]"></a>delay_init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, delay.o(i.delay_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_CLKSourceConfig
+<BR>[Calls]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_CLKSourceConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1668,14 +1677,14 @@ Global Symbols
 <LI>Call Chain = delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_us
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 </UL>
 
@@ -1692,207 +1701,207 @@ Global Symbols
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_Ack
 </UL>
 
-<P><STRONG><a name="[104]"></a>dmp_enable_6x_lp_quat</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_6x_lp_quat))
+<P><STRONG><a name="[108]"></a>dmp_enable_6x_lp_quat</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_6x_lp_quat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = dmp_enable_6x_lp_quat &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[107]"></a>dmp_enable_feature</STRONG> (Thumb, 468 bytes, Stack size 24 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_feature))
+<P><STRONG><a name="[10b]"></a>dmp_enable_feature</STRONG> (Thumb, 468 bytes, Stack size 24 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_feature))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
 <LI>Call Chain = dmp_enable_feature &rArr; dmp_enable_lp_quat &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 </UL>
 
-<P><STRONG><a name="[108]"></a>dmp_enable_gyro_cal</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_gyro_cal))
+<P><STRONG><a name="[10c]"></a>dmp_enable_gyro_cal</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_gyro_cal))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = dmp_enable_gyro_cal &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[111]"></a>dmp_enable_lp_quat</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_lp_quat))
+<P><STRONG><a name="[115]"></a>dmp_enable_lp_quat</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_enable_lp_quat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = dmp_enable_lp_quat &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[112]"></a>dmp_load_motion_driver_firmware</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_load_motion_driver_firmware))
+<P><STRONG><a name="[116]"></a>dmp_load_motion_driver_firmware</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_load_motion_driver_firmware))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = dmp_load_motion_driver_firmware &rArr; mpu_load_firmware &rArr; mpu_read_mem &rArr; MPU_Read_Len &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 </UL>
 
-<P><STRONG><a name="[114]"></a>dmp_read_fifo</STRONG> (Thumb, 360 bytes, Stack size 88 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_read_fifo))
+<P><STRONG><a name="[118]"></a>dmp_read_fifo</STRONG> (Thumb, 360 bytes, Stack size 88 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_read_fifo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 368 + Unknown Stack Size
 <LI>Call Chain = dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
-<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mget_ms
+<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
+<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mget_ms
 </UL>
 <BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
 </UL>
 
-<P><STRONG><a name="[117]"></a>dmp_set_accel_bias</STRONG> (Thumb, 210 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_accel_bias))
+<P><STRONG><a name="[11b]"></a>dmp_set_accel_bias</STRONG> (Thumb, 210 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_accel_bias))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = dmp_set_accel_bias &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
 
-<P><STRONG><a name="[119]"></a>dmp_set_fifo_rate</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_fifo_rate))
+<P><STRONG><a name="[11d]"></a>dmp_set_fifo_rate</STRONG> (Thumb, 82 bytes, Stack size 32 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_fifo_rate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = dmp_set_fifo_rate &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 </UL>
 
-<P><STRONG><a name="[11a]"></a>dmp_set_gyro_bias</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_gyro_bias))
+<P><STRONG><a name="[11e]"></a>dmp_set_gyro_bias</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_gyro_bias))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = dmp_set_gyro_bias &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
 
-<P><STRONG><a name="[11b]"></a>dmp_set_orientation</STRONG> (Thumb, 246 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_orientation))
+<P><STRONG><a name="[11f]"></a>dmp_set_orientation</STRONG> (Thumb, 246 bytes, Stack size 40 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_orientation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = dmp_set_orientation &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 </UL>
 
-<P><STRONG><a name="[10e]"></a>dmp_set_shake_reject_thresh</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_shake_reject_thresh))
+<P><STRONG><a name="[112]"></a>dmp_set_shake_reject_thresh</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_shake_reject_thresh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_shake_reject_thresh &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[10f]"></a>dmp_set_shake_reject_time</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_shake_reject_time))
+<P><STRONG><a name="[113]"></a>dmp_set_shake_reject_time</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_shake_reject_time))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_shake_reject_time &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[110]"></a>dmp_set_shake_reject_timeout</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_shake_reject_timeout))
+<P><STRONG><a name="[114]"></a>dmp_set_shake_reject_timeout</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_shake_reject_timeout))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_shake_reject_timeout &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[10a]"></a>dmp_set_tap_axes</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_axes))
+<P><STRONG><a name="[10e]"></a>dmp_set_tap_axes</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_axes))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_tap_axes &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[10b]"></a>dmp_set_tap_count</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_count))
+<P><STRONG><a name="[10f]"></a>dmp_set_tap_count</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_count))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_tap_count &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[109]"></a>dmp_set_tap_thresh</STRONG> (Thumb, 314 bytes, Stack size 32 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_thresh))
+<P><STRONG><a name="[10d]"></a>dmp_set_tap_thresh</STRONG> (Thumb, 314 bytes, Stack size 32 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_thresh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = dmp_set_tap_thresh &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[10c]"></a>dmp_set_tap_time</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_time))
+<P><STRONG><a name="[110]"></a>dmp_set_tap_time</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_time))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_tap_time &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[10d]"></a>dmp_set_tap_time_multi</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_time_multi))
+<P><STRONG><a name="[111]"></a>dmp_set_tap_time_multi</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, inv_mpu_dmp_motion_driver.o(i.dmp_set_tap_time_multi))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dmp_set_tap_time_multi &rArr; mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 </UL>
 
-<P><STRONG><a name="[11d]"></a>eTaskGetState</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, tasks.o(i.eTaskGetState))
+<P><STRONG><a name="[121]"></a>eTaskGetState</STRONG> (Thumb, 90 bytes, Stack size 16 bytes, tasks.o(i.eTaskGetState))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
 <LI>Call Chain = eTaskGetState &rArr; vPortExitCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[165]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetInfo
 </UL>
 
-<P><STRONG><a name="[66]"></a>escinit_task</STRONG> (Thumb, 142 bytes, Stack size 0 bytes, main.o(i.escinit_task))
+<P><STRONG><a name="[66]"></a>escinit_task</STRONG> (Thumb, 134 bytes, Stack size 0 bytes, main.o(i.escinit_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = escinit_task &rArr; vTaskDelete &rArr; prvDeleteTCB &rArr; vPortFree &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
+<BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelete
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
-<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
-<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
+<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.startTask)
 </UL>
-<P><STRONG><a name="[f3]"></a>fabs</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, fabs.o(i.fabs))
+<P><STRONG><a name="[f7]"></a>fabs</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, fabs.o(i.fabs))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = fabs
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[63]"></a>fputc</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, usart.o(i.fputc))
@@ -1902,7 +1911,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = getSysTickCnt
 </UL>
 <BR>[Calls]<UL><LI><a href="#[126]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetTickCount
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensors_task
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
@@ -1939,8 +1948,8 @@ Global Symbols
 <LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pid_param_Init
 <LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 <LI><a href="#[12c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledInit
-<LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
-<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
+<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
 <LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUSInit
 <LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Init
@@ -1951,8 +1960,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[116]"></a>mget_ms</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, inv_mpu.o(i.mget_ms))
-<BR><BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
+<P><STRONG><a name="[11a]"></a>mget_ms</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, inv_mpu.o(i.mget_ms))
+<BR><BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
 </UL>
 
 <P><STRONG><a name="[134]"></a>mpu6050_send_data</STRONG> (Thumb, 78 bytes, Stack size 32 bytes, upper.o(i.mpu6050_send_data))
@@ -1968,7 +1977,7 @@ Global Symbols
 <LI>Call Chain = mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[137]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_int_enable
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
@@ -1980,11 +1989,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 488 + Unknown Stack Size
 <LI>Call Chain = mpu_dmp_get_data &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Calls]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[13a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensors_task
@@ -1994,10 +2003,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 464 + Unknown Stack Size
 <LI>Call Chain = mpu_dmp_init &rArr; run_self_test &rArr; mpu_run_self_test &rArr; mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_orientation
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
-<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_load_motion_driver_firmware
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_orientation
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
+<LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_load_motion_driver_firmware
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
@@ -2009,13 +2018,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[11c]"></a>mpu_get_accel_fsr</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, inv_mpu.o(i.mpu_get_accel_fsr))
-<BR><BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<P><STRONG><a name="[120]"></a>mpu_get_accel_fsr</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, inv_mpu.o(i.mpu_get_accel_fsr))
+<BR><BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
-<P><STRONG><a name="[118]"></a>mpu_get_accel_sens</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, inv_mpu.o(i.mpu_get_accel_sens))
-<BR><BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
+<P><STRONG><a name="[11c]"></a>mpu_get_accel_sens</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, inv_mpu.o(i.mpu_get_accel_sens))
+<BR><BR>[Called By]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
 <LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
 </UL>
 
@@ -2054,15 +2063,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 </UL>
 
-<P><STRONG><a name="[113]"></a>mpu_load_firmware</STRONG> (Thumb, 158 bytes, Stack size 72 bytes, inv_mpu.o(i.mpu_load_firmware))
+<P><STRONG><a name="[117]"></a>mpu_load_firmware</STRONG> (Thumb, 158 bytes, Stack size 72 bytes, inv_mpu.o(i.mpu_load_firmware))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = mpu_load_firmware &rArr; mpu_read_mem &rArr; MPU_Read_Len &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
-<LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
+<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_write_mem
 <LI><a href="#[144]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_mem
 <LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;memcmp
 </UL>
-<BR>[Called By]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_load_motion_driver_firmware
+<BR>[Called By]<UL><LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_load_motion_driver_firmware
 </UL>
 
 <P><STRONG><a name="[146]"></a>mpu_lp_accel_mode</STRONG> (Thumb, 178 bytes, Stack size 32 bytes, inv_mpu.o(i.mpu_lp_accel_mode))
@@ -2077,14 +2086,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 </UL>
 
-<P><STRONG><a name="[115]"></a>mpu_read_fifo_stream</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, inv_mpu.o(i.mpu_read_fifo_stream))
+<P><STRONG><a name="[119]"></a>mpu_read_fifo_stream</STRONG> (Thumb, 140 bytes, Stack size 32 bytes, inv_mpu.o(i.mpu_read_fifo_stream))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
 <LI>Call Chain = mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
-<BR>[Called By]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
+<BR>[Called By]<UL><LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
 </UL>
 
 <P><STRONG><a name="[144]"></a>mpu_read_mem</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_read_mem))
@@ -2093,22 +2102,22 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
-<P><STRONG><a name="[106]"></a>mpu_reset_fifo</STRONG> (Thumb, 344 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_reset_fifo))
+<P><STRONG><a name="[10a]"></a>mpu_reset_fifo</STRONG> (Thumb, 344 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_reset_fifo))
 <BR><BR>[Stack]<UL><LI>Max Depth = 248 + Unknown Stack Size
 <LI>Call Chain = mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
-<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<BR>[Called By]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_read_fifo
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
 <LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_dmp_state
-<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
+<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_read_fifo_stream
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
 </UL>
 
@@ -2118,7 +2127,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gyro_self_test
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_st_biases
-<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
+<LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sensors
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_lpf
@@ -2128,7 +2137,7 @@ Global Symbols
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_sample_rate
 <LI><a href="#[14a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_lpf
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_gyro_fsr
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
+<LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_fsr
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_configure_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;run_self_test
@@ -2163,7 +2172,7 @@ Global Symbols
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 <LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_sample_rate
 <LI><a href="#[143]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_set_bypass
-<LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_reset_fifo
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
@@ -2225,41 +2234,41 @@ Global Symbols
 <LI><a href="#[13b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_init
 </UL>
 
-<P><STRONG><a name="[105]"></a>mpu_write_mem</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_write_mem))
+<P><STRONG><a name="[109]"></a>mpu_write_mem</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, inv_mpu.o(i.mpu_write_mem))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = mpu_write_mem &rArr; MPU_Write_Len &rArr; IIC_Wait_Ack &rArr; IIC_Stop &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Write_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
-<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
-<LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
-<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
-<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
-<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
-<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
-<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
-<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_orientation
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
-<LI><a href="#[119]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
-<LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
-<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
+<BR>[Called By]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time_multi
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_time
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_thresh
+<LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_count
+<LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_tap_axes
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_timeout
+<LI><a href="#[113]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_time
+<LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_shake_reject_thresh
+<LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_lp_quat
+<LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_gyro_cal
+<LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_6x_lp_quat
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_orientation
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
+<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_fifo_rate
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_enable_feature
+<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_load_firmware
 </UL>
 
 <P><STRONG><a name="[14c]"></a>pidRest</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, flight_system.o(i.pidRest))
 <BR><BR>[Called By]<UL><LI><a href="#[131]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pid_param_Init
 </UL>
 
-<P><STRONG><a name="[ac]"></a>pidUpdate</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, flight_system.o(i.pidUpdate))
+<P><STRONG><a name="[ac]"></a>pidUpdate</STRONG> (Thumb, 186 bytes, Stack size 0 bytes, flight_system.o(i.pidUpdate))
 <BR><BR>[Called By]<UL><LI><a href="#[179]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CascadePID
 </UL>
 
-<P><STRONG><a name="[131]"></a>pid_param_Init</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, flight_system.o(i.pid_param_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = pid_param_Init
+<P><STRONG><a name="[131]"></a>pid_param_Init</STRONG> (Thumb, 174 bytes, Stack size 12 bytes, flight_system.o(i.pid_param_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = pid_param_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pidRest
 </UL>
@@ -2278,7 +2287,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupCreate
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTimerCreate
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
 </UL>
@@ -2297,16 +2306,16 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 456 + Unknown Stack Size
 <LI>Call Chain = run_self_test &rArr; mpu_run_self_test &rArr; mpu_set_dmp_state &rArr; mpu_set_sample_rate &rArr; mpu_lp_accel_mode &rArr; mpu_configure_fifo &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
+<BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_gyro_bias
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dmp_set_accel_bias
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 <LI><a href="#[178]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_gyro_sens
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_get_accel_sens
 </UL>
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_init
 </UL>
 
-<P><STRONG><a name="[67]"></a>sensors_task</STRONG> (Thumb, 274 bytes, Stack size 64 bytes, main.o(i.sensors_task))
+<P><STRONG><a name="[67]"></a>sensors_task</STRONG> (Thumb, 272 bytes, Stack size 64 bytes, main.o(i.sensors_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 552 + Unknown Stack Size
 <LI>Call Chain = sensors_task &rArr; mpu_dmp_get_data &rArr; dmp_read_fifo &rArr; mpu_read_fifo_stream &rArr; mpu_reset_fifo &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2323,23 +2332,23 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.startTask)
 </UL>
-<P><STRONG><a name="[f5]"></a>sqrt</STRONG> (Thumb, 110 bytes, Stack size 32 bytes, sqrt.o(i.sqrt))
+<P><STRONG><a name="[f9]"></a>sqrt</STRONG> (Thumb, 110 bytes, Stack size 32 bytes, sqrt.o(i.sqrt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = sqrt &rArr; _dsqrt &rArr; __fpl_dnaninf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[179]"></a>state_control</STRONG> (Thumb, 556 bytes, Stack size 32 bytes, flight_system.o(i.state_control))
+<P><STRONG><a name="[179]"></a>state_control</STRONG> (Thumb, 588 bytes, Stack size 32 bytes, flight_system.o(i.state_control))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176 + Unknown Stack Size
 <LI>Call Chain = state_control &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
-<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
-<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
+<BR>[Calls]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
+<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pidUpdate
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CascadePID
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -2352,12 +2361,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
+<LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2411,7 +2420,7 @@ Global Symbols
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvListTasksWithinSingleList
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 </UL>
 
 <P><STRONG><a name="[18e]"></a>uxTaskResetEventItemValue</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, tasks.o(i.uxTaskResetEventItemValue))
@@ -2453,7 +2462,7 @@ Global Symbols
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventListRestricted
 </UL>
 
-<P><STRONG><a name="[11e]"></a>vPortEnterCritical</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, port.o(i.vPortEnterCritical))
+<P><STRONG><a name="[122]"></a>vPortEnterCritical</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, port.o(i.vPortEnterCritical))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144 + Unknown Stack Size
 <LI>Call Chain = vPortEnterCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2467,7 +2476,7 @@ Global Symbols
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckForValidListAndQueue
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckTasksWaitingTermination
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCheckForTimeOut
@@ -2477,7 +2486,7 @@ Global Symbols
 <LI><a href="#[16e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vQueueWaitForMessageRestricted
 </UL>
 
-<P><STRONG><a name="[11f]"></a>vPortExitCritical</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, port.o(i.vPortExitCritical))
+<P><STRONG><a name="[123]"></a>vPortExitCritical</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, port.o(i.vPortExitCritical))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = vPortExitCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2491,7 +2500,7 @@ Global Symbols
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckForValidListAndQueue
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCheckTasksWaitingTermination
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvAddNewTaskToReadyList
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCheckForTimeOut
@@ -2511,7 +2520,7 @@ Global Symbols
 <LI><a href="#[177]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInsertBlockIntoFreeList
 </UL>
 <BR>[Called By]<UL><LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskCreate
-<LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvProcessReceivedCommands
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvDeleteTCB
 </UL>
@@ -2540,15 +2549,15 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = vQueueWaitForMessageRestricted &rArr; prvUnlockQueue &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventListRestricted
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvProcessTimerOrBlockTask
 </UL>
 
-<P><STRONG><a name="[c7]"></a>vTaskDelay</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, tasks.o(i.vTaskDelay))
+<P><STRONG><a name="[cb]"></a>vTaskDelay</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, tasks.o(i.vTaskDelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208 + Unknown Stack Size
 <LI>Call Chain = vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2579,8 +2588,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = vTaskDelete &rArr; prvDeleteTCB &rArr; vPortFree &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -2597,12 +2606,12 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
-<LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eTaskGetState
 </UL>
 <BR>[Called By]<UL><LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvListTasksWithinSingleList
 </UL>
 
-<P><STRONG><a name="[c9]"></a>vTaskGetRunTimeStats</STRONG> (Thumb, 146 bytes, Stack size 32 bytes, tasks.o(i.vTaskGetRunTimeStats))
+<P><STRONG><a name="[cd]"></a>vTaskGetRunTimeStats</STRONG> (Thumb, 146 bytes, Stack size 32 bytes, tasks.o(i.vTaskGetRunTimeStats))
 <BR><BR>[Stack]<UL><LI>Max Depth = 320 + Unknown Stack Size
 <LI>Call Chain = vTaskGetRunTimeStats &rArr; uxTaskGetSystemState &rArr; prvListTasksWithinSingleList &rArr; vTaskGetInfo &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2689,9 +2698,9 @@ Global Symbols
 
 <P><STRONG><a name="[157]"></a>vTaskSuspendAll</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, tasks.o(i.vTaskSuspendAll))
 <BR><BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupWaitBits
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvProcessTimerOrBlockTask
@@ -2715,8 +2724,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
 <LI>Call Chain = xEventGroupClearBits &rArr; vPortExitCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
@@ -2732,7 +2741,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTask
 </UL>
 
-<P><STRONG><a name="[c6]"></a>xEventGroupSetBits</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, event_groups.o(i.xEventGroupSetBits))
+<P><STRONG><a name="[ca]"></a>xEventGroupSetBits</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, event_groups.o(i.xEventGroupSetBits))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
 <LI>Call Chain = xEventGroupSetBits &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2749,9 +2758,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 232 + Unknown Stack Size
 <LI>Call Chain = xEventGroupWaitBits &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
 <LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnUnorderedEventList
@@ -2759,7 +2768,8 @@ Global Symbols
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvTestWaitCondition
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunTimeStats_task
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 </UL>
 
 <P><STRONG><a name="[17d]"></a>xPortGetFreeHeapSize</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, heap_4.o(i.xPortGetFreeHeapSize))
@@ -2778,7 +2788,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[133]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskStartScheduler
 </UL>
 
-<P><STRONG><a name="[d4]"></a>xPortSysTickHandler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, port.o(i.xPortSysTickHandler))
+<P><STRONG><a name="[d8]"></a>xPortSysTickHandler</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, port.o(i.xPortSysTickHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176 + Unknown Stack Size
 <LI>Call Chain = xPortSysTickHandler &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -2802,9 +2812,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 304 + Unknown Stack Size
 <LI>Call Chain = xQueueGenericReceive &rArr; prvUnlockQueue &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvIsQueueEmpty
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCopyDataFromQueue
@@ -2825,8 +2835,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
 <LI>Call Chain = xQueueGenericReset &rArr; xTaskRemoveFromEventList &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInitialise
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
@@ -2838,9 +2848,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 304 + Unknown Stack Size
 <LI>Call Chain = xQueueGenericSend &rArr; prvUnlockQueue &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
-<LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
 <LI><a href="#[170]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 <LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvNotifyQueueSetContainer
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCopyDataToQueue
@@ -2872,8 +2882,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 168 + Unknown Stack Size
 <LI>Call Chain = xTaskCheckForTimeOut &rArr; vPortExitCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[189]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSetTimeOutState
 </UL>
@@ -2896,7 +2906,7 @@ Global Symbols
 <LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTimerCreateTimerTask
 </UL>
 
-<P><STRONG><a name="[d3]"></a>xTaskGetSchedulerState</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, tasks.o(i.xTaskGetSchedulerState))
+<P><STRONG><a name="[d7]"></a>xTaskGetSchedulerState</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, tasks.o(i.xTaskGetSchedulerState))
 <BR><BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupWaitBits
 <LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSysTickCnt
@@ -2920,7 +2930,7 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvResetNextTaskUnblockTime
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortSysTickHandler
+<BR>[Called By]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortSysTickHandler
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 </UL>
 
@@ -2959,15 +2969,15 @@ Global Symbols
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
+<BR>[Called By]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
 </UL>
 
 <P><STRONG><a name="[158]"></a>xTaskResumeAll</STRONG> (Thumb, 180 bytes, Stack size 32 bytes, tasks.o(i.xTaskResumeAll))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
 <LI>Call Chain = xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
@@ -2975,9 +2985,9 @@ Global Symbols
 <LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvResetNextTaskUnblockTime
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupWaitBits
-<LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
+<LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupSetBits
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[15e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortFree
 <LI><a href="#[175]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pvPortMalloc
 <LI><a href="#[16d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvProcessTimerOrBlockTask
@@ -3010,7 +3020,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 352 + Unknown Stack Size
 <LI>Call Chain = xTimerGenericCommand &rArr; xQueueGenericSend &rArr; prvUnlockQueue &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
+<BR>[Calls]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskGetSchedulerState
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[197]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSendFromISR
 <LI><a href="#[196]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
@@ -3020,10 +3030,10 @@ Global Symbols
 <LI><a href="#[168]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvProcessExpiredTimer
 </UL>
 
-<P><STRONG><a name="[f7]"></a>__aeabi_dneg</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, basic.o(x$fpl$basic))
-<BR><BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<P><STRONG><a name="[fb]"></a>__aeabi_dneg</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, basic.o(x$fpl$basic))
+<BR><BR>[Called By]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[1e1]"></a>_dneg</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, basic.o(x$fpl$basic), UNUSED)
@@ -3047,16 +3057,16 @@ Global Symbols
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[ed]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
+<P><STRONG><a name="[f1]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
-<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan2
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_infnan
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[19c]"></a>_dadd</STRONG> (Thumb, 332 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd), UNUSED)
@@ -3069,15 +3079,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dcmpeq
 </UL>
 
-<P><STRONG><a name="[f2]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
+<P><STRONG><a name="[f6]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_ddiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_invalid
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[19f]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
@@ -3085,11 +3095,11 @@ Global Symbols
 <LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[fc]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, deqf.o(x$fpl$deqf))
+<P><STRONG><a name="[100]"></a>__aeabi_cdcmpeq</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, deqf.o(x$fpl$deqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_cdcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
 </UL>
 
 <P><STRONG><a name="[1a0]"></a>_dcmpeq</STRONG> (Thumb, 120 bytes, Stack size 32 bytes, deqf.o(x$fpl$deqf), UNUSED)
@@ -3097,7 +3107,7 @@ Global Symbols
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dcmp_Inf
 </UL>
 
-<P><STRONG><a name="[101]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
+<P><STRONG><a name="[105]"></a>__aeabi_d2iz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfix.o(x$fpl$dfix))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2iz
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
@@ -3107,30 +3117,30 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[ff]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
+<P><STRONG><a name="[103]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
 </UL>
 
 <P><STRONG><a name="[1e6]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
 
-<P><STRONG><a name="[100]"></a>__aeabi_ui2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu))
+<P><STRONG><a name="[104]"></a>__aeabi_ui2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu))
 <BR><BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
 </UL>
 
 <P><STRONG><a name="[1e7]"></a>_dfltu</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dfltu), UNUSED)
 
-<P><STRONG><a name="[ec]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
+<P><STRONG><a name="[f0]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
 <LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_dmp_get_data
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__kernel_poly
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_dbl_underflow
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[1a3]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -3158,13 +3168,13 @@ Global Symbols
 <LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dadd
 </UL>
 
-<P><STRONG><a name="[f4]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
+<P><STRONG><a name="[f8]"></a>__aeabi_drsub</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_drsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[1a4]"></a>_drsb</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, daddsub_clz.o(x$fpl$drsb), UNUSED)
@@ -3177,17 +3187,17 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[19b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
+<BR>[Called By]<UL><LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
 </UL>
 
-<P><STRONG><a name="[f6]"></a>__aeabi_dsub</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub))
+<P><STRONG><a name="[fa]"></a>__aeabi_dsub</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_T_double
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bmp280_compensate_P_double
-<LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
-<LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
-<LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
+<LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan
+<LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
 <P><STRONG><a name="[1a6]"></a>_dsub</STRONG> (Thumb, 464 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub), UNUSED)
@@ -3233,13 +3243,13 @@ Local Symbols
 <LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xPortGetFreeHeapSize
 <LI><a href="#[17c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xEventGroupCreate
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelete
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.main)
 </UL>
-<P><STRONG><a name="[d5]"></a>SetSysClock</STRONG> (Thumb, 162 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
+<P><STRONG><a name="[d9]"></a>SetSysClock</STRONG> (Thumb, 162 bytes, Stack size 12 bytes, system_stm32f4xx.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClock
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
@@ -3271,20 +3281,20 @@ Local Symbols
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Bmp_Init
 </UL>
 
-<P><STRONG><a name="[fd]"></a>accel_self_test</STRONG> (Thumb, 126 bytes, Stack size 32 bytes, inv_mpu.o(i.accel_self_test))
+<P><STRONG><a name="[101]"></a>accel_self_test</STRONG> (Thumb, 126 bytes, Stack size 32 bytes, inv_mpu.o(i.accel_self_test))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = accel_self_test &rArr; get_accel_prod_shift &rArr; MPU_Read_Len &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
+<BR>[Calls]<UL><LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_accel_prod_shift
 </UL>
 <BR>[Called By]<UL><LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mpu_run_self_test
 </UL>
 
-<P><STRONG><a name="[fe]"></a>get_accel_prod_shift</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, inv_mpu.o(i.get_accel_prod_shift))
+<P><STRONG><a name="[102]"></a>get_accel_prod_shift</STRONG> (Thumb, 162 bytes, Stack size 16 bytes, inv_mpu.o(i.get_accel_prod_shift))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = get_accel_prod_shift &rArr; MPU_Read_Len &rArr; IIC_Read_Byte &rArr; IIC_NAck &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MPU_Read_Len
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
+<BR>[Called By]<UL><LI><a href="#[101]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;accel_self_test
 </UL>
 
 <P><STRONG><a name="[127]"></a>get_st_biases</STRONG> (Thumb, 784 bytes, Stack size 48 bytes, inv_mpu.o(i.get_st_biases))
@@ -3344,8 +3354,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = prvIsQueueEmpty &rArr; vPortExitCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReceive
 </UL>
@@ -3367,8 +3377,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = prvUnlockQueue &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[166]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvNotifyQueueSetContainer
 <LI><a href="#[167]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
 <LI><a href="#[171]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskMissedYield
@@ -3386,7 +3396,7 @@ Local Symbols
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
-<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[187]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnUnorderedEventList
 <LI><a href="#[184]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventListRestricted
 <LI><a href="#[186]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskPlaceOnEventList
@@ -3396,8 +3406,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 176 + Unknown Stack Size
 <LI>Call Chain = prvAddNewTaskToReadyList &rArr; vPortExitCritical &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsertEnd
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInitialise
 </UL>
@@ -3408,8 +3418,8 @@ Local Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 240 + Unknown Stack Size
 <LI>Call Chain = prvCheckTasksWaitingTermination &rArr; prvDeleteTCB &rArr; vPortFree &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 <LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskSuspendAll
@@ -3469,15 +3479,15 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[174]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 <LI><a href="#[173]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strcpy
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
+<BR>[Called By]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskGetRunTimeStats
 </UL>
 
 <P><STRONG><a name="[153]"></a>prvCheckForValidListAndQueue</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, timers.o(i.prvCheckForValidListAndQueue))
 <BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = prvCheckForValidListAndQueue &rArr; xQueueGenericCreate &rArr; pvPortMalloc &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
-<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
+<BR>[Calls]<UL><LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
+<LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInitialise
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericCreate
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vQueueAddToRegistry
