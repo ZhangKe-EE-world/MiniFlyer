@@ -15,8 +15,6 @@
 #include "myiic.h"
 #include "led.h"
 #include "mpu6050_iic.h"
-#include "inv_mpu.h"
-#include "inv_mpu_dmp_motion_driver.h" 
 #include "bmp280.h"
 #include "pwm.h"
 #include "Upper.h"
@@ -102,10 +100,6 @@ int main()
 	IIC_Init();
 	while(	MPU_Init()	);
 	Bmp_Init ();
-//	while(mpu_dmp_init())
-//	{
-//		printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
-//	}
 	pid_param_Init();
 
 	//全局标志初始化
@@ -137,7 +131,7 @@ void startTask(void *arg)
 							(UBaseType_t    )ESCinit_TASK_PRIO,	
 							(TaskHandle_t*  )&ESCinitTask_Handler); 
 
-		//创建传感器获取任务			
+		//创建传感器数据获取任务			
 	xTaskCreate((TaskFunction_t )sensors_task,     	
 							(const char*    )"sensors_task",   	
 							(uint16_t       )SENSORS_STK_SIZE, 
@@ -196,7 +190,7 @@ void escinit_task(void *pvParameters)
 		TIM_SetCompare1(TIM3,ESC_MAX);
 
 
-		vTaskDelay(4000);
+		vTaskDelay(4000);//可酌情减短延时时间
 		TIM_SetCompare4(TIM3,ESC_MIN);
 		TIM_SetCompare3(TIM3,ESC_MIN);
 		TIM_SetCompare2(TIM3,ESC_MIN);
@@ -224,17 +218,17 @@ void sensors_task(void *pvParameters)
 		vTaskDelayUntil(&lastWakeTime, 5);
 		BMP_Pressure = BMP280_Get_Pressure();
 		MpuGetData(); //读取mpu数据并滤波
-		GetAngle(&MPU6050,&Angle,0.005f);
+		GetAngle(&MPU6050,&Angle,0.005f);//加速度计和陀螺仪数据解算为欧拉角
 		if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>(RC_L1MIN+DELTA))//当解锁并且油门值大于最小值进入主状态控制
 		{
 			state_control(MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ,Angle.pitch,Angle.roll,Angle.yaw,0.005f);
 		}
 
-		if(0)//调试用
+		if(1)//调试用
 		{
-			printf("YAW--%f\nPITCH--%f\nROLL--%f\n",Angle.yaw,Angle.pitch,Angle.roll);
+			printf("YAW：%f\nPITCH：%f\nROLL：%f\n",Angle.yaw,Angle.pitch,Angle.roll);
 		}
-		if(report)mpu6050_send_data(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ);//用自定义帧发送加速度和陀螺仪原始数据，report决定是否开启
+		if(report)mpu6050_send_data(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ);//用自定义帧发送加速度和陀螺仪数据，report决定是否开启
 		if(report)usart1_report_imu(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ,(int)(Angle.roll*100),(int)(Angle.pitch*100),(int)(Angle.yaw*10));
 
 	}
@@ -279,10 +273,9 @@ void RunTimeStats_task(void *pvParameters)
 void RC_task(void *pvParameters)
 {
 	u8 t=0;
-	u8 report=0;
+	u8 report=0;//遥控器通道上报开关
 	u16 FlightUnlockCnt=0;
 	u16 FlightLockCnt=0;
-//	u16 Throttle=0;
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
@@ -299,7 +292,6 @@ void RC_task(void *pvParameters)
 			if(CH[2]<=(RC_L1MIN+DELTA)&&CH[3]>=(RC_L2MAX-DELTA))//左摇杆往右下打3s即可解锁飞行
 			{
 				FlightUnlockCnt++;
-//				printf("test1\n");
 				if(FlightUnlockCnt>=60)
 				{
 					xEventGroupSetBits(RCtask_Handle,Flight_Unlocked);//标志飞行已解锁

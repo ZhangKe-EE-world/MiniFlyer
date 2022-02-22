@@ -13,8 +13,8 @@ _st_Mpu MPU6050;   //MPU6050原始数据
 _st_AngE Angle;    //当前角度姿态值
 static volatile int16_t *pMpu = (int16_t *)&MPU6050;
 
-#define  Acc_Read() IIC_read_Bytes(0xD0, 0X3B,mpu_buffer,6)
-#define  Gyro_Read() IIC_read_Bytes(0xD0, 0x43,&mpu_buffer[6],6)
+//#define  Acc_Read() IIC_read_Bytes(0xD0, 0X3B,mpu_buffer,6)
+//#define  Gyro_Read() IIC_read_Bytes(0xD0, 0x43,&mpu_buffer[6],6)
 
 //初始化MPU6050
 //返回值:0,成功

@@ -39,4 +39,6 @@
 ..\obj\flight_system.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\flight_system.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\flight_system.o: ..\HARDWARE\FlightSystem\flight_system.h
+..\obj\flight_system.o: ..\HARDWARE\MPU6050_IIC\mpu6050_iic.h
+..\obj\flight_system.o: ..\HARDWARE\IIC\myiic.h
 ..\obj\flight_system.o: ..\HARDWARE\My_Math\myMath.h

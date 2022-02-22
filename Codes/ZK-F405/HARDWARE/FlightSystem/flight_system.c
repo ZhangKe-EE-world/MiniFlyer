@@ -2,13 +2,8 @@
 
 #include "sbus.h"
 #include "flight_system.h" 
-
+#include "mpu6050_iic.h"
 #include "myMath.h"
-//const float M_PI = 3.1415926535f;
-//const float RtA = 57.2957795f;
-//const float AtR = 0.0174532925f;
-//const float Gyro_G = 0.03051756f*2;	  	//陀螺仪初始化量程+-2000度每秒于1 / (65536 / 4000) = 0.03051756*2		
-//const float Gyro_Gr = 0.0005326f*2;     //面计算度每秒,转换弧度每秒则 2*0.03051756	 * 0.0174533f = 0.0005326*2
 
 
 PidObject pidRateX; //内环PID数据
@@ -68,7 +63,7 @@ void pid_param_Init(void)//PID参数初始化
 	
 	pidRest(pPidObject,6); //批量复位PID数据，防止上次遗留的数据影响本次控制
 
-	pidYaw.desired =  pidYaw.measured = 0;   //锁定偏航角
+	Angle.yaw = pidYaw.desired =  pidYaw.measured = 0;   //锁定偏航角
 	
 	
 }
@@ -186,7 +181,7 @@ void state_control(float gx,float gy,float gz,float pitch,float roll,float yaw,f
 	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,949));
 	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,949));
 	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,949));
-	printf("1--%d\n2--%d\n3--%d\n4--%d\n",LIMIT(MOTOR1,499,949),LIMIT(MOTOR2,499,949),LIMIT(MOTOR3,499,949),LIMIT(MOTOR4,499,949));
+	if(0)printf("1--%d\n2--%d\n3--%d\n4--%d\n",LIMIT(MOTOR1,499,949),LIMIT(MOTOR2,499,949),LIMIT(MOTOR3,499,949),LIMIT(MOTOR4,499,949));
 
 }
 

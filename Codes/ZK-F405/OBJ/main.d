@@ -55,8 +55,6 @@
 ..\obj\main.o: ..\HARDWARE\IIC\myiic.h
 ..\obj\main.o: ..\HARDWARE\LED\led.h
 ..\obj\main.o: ..\HARDWARE\MPU6050_IIC\mpu6050_iic.h
-..\obj\main.o: ..\HARDWARE\MPU6050_IIC\eMPL\inv_mpu.h
-..\obj\main.o: ..\HARDWARE\MPU6050_IIC\eMPL\inv_mpu_dmp_motion_driver.h
 ..\obj\main.o: ..\HARDWARE\BMP280\bmp280.h
 ..\obj\main.o: ..\SYSTEM\pwm\pwm.h
 ..\obj\main.o: ..\HARDWARE\Upper_Computer\Upper.h

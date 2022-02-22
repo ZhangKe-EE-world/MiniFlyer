@@ -1,4 +1,4 @@
-//匿名四轴上位机
+//匿名四轴上位机版本V2.6
 #include "sys.h"
 #include "Upper.h"
 

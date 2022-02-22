@@ -453,11 +453,6 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\FlightSystem\flight_system.c</FilePath>
             </File>
-            <File>
-              <FileName>kalman.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\Kalman\kalman.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -512,6 +507,11 @@
               <FileName>myMath.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\My_Math\myMath.c</FilePath>
+            </File>
+            <File>
+              <FileName>kalman.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Kalman\kalman.c</FilePath>
             </File>
           </Files>
         </Group>
