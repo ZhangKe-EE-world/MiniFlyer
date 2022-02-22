@@ -2,6 +2,19 @@
 #include "delay.h"
 #include "mpu6050_iic.h"
 #include "stdio.h"
+#include "kalman.h"
+#include "myMath.h"
+#include <math.h>
+#include <string.h>
+
+
+int16_t MpuOffset[6] = {0};
+_st_Mpu MPU6050;   //MPU6050原始数据
+_st_AngE Angle;    //当前角度姿态值
+static volatile int16_t *pMpu = (int16_t *)&MPU6050;
+
+#define  Acc_Read() IIC_read_Bytes(0xD0, 0X3B,mpu_buffer,6)
+#define  Gyro_Read() IIC_read_Bytes(0xD0, 0x43,&mpu_buffer[6],6)
 
 //初始化MPU6050
 //返回值:0,成功
@@ -11,10 +24,10 @@ u8 MPU_Init(void)
 	u8 res; 
 
 	MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X80);	//复位MPU6050
-    delay_ms(100);
+  delay_ms(100);
 	MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X00);	//唤醒MPU6050 
 	MPU_Set_Gyro_Fsr(3);					//陀螺仪传感器,±2000dps
-	MPU_Set_Accel_Fsr(0);					//加速度传感器,±2g
+	MPU_Set_Accel_Fsr(1);					//加速度传感器,±4g
 	MPU_Set_Rate(500);						//设置采样率500Hz
 	MPU_Write_Byte(MPU_INT_EN_REG,0X00);	//关闭所有中断
 	MPU_Write_Byte(MPU_USER_CTRL_REG,0X00);	//I2C主模式关闭
@@ -25,7 +38,7 @@ u8 MPU_Init(void)
 	{
 		MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X01);	//设置CLKSEL,PLL X轴为参考
 		MPU_Write_Byte(MPU_PWR_MGMT2_REG,0X00);	//加速度与陀螺仪都工作
-		MPU_Set_Rate(50);						//设置采样率为50Hz
+		MPU_Set_Rate(500);						//设置采样率为500Hz
  	}else return 1;
 	return 0;
 }
@@ -233,35 +246,181 @@ u8 MPU_Read_Byte(u8 reg)
 void MpuGetData(void) //读取陀螺仪数据加滤波
 {
 	  uint8_t i;
-    uint8_t buffer[12];
-
-		
-	  Acc_Read();//去读加速度
-		Gyro_Read();//读取角速度
-		for(i=0;i<12;i++)
-	{
-		printf("the data is %d\n",buffer[i]);
-	}
+		int16_t mpu_buffer[6];
+		MPU_Get_Accelerometer(&mpu_buffer[0],&mpu_buffer[1],&mpu_buffer[2]);	//得到加速度传感器数据
+		MPU_Get_Gyroscope(&mpu_buffer[3],&mpu_buffer[4],&mpu_buffer[5]);	//得到陀螺仪数据
 	
-//		for(i=0;i<6;i++)
-//		{
-//			pMpu[i] = (((int16_t)buffer[i<<1] << 8) | buffer[(i<<1)+1])-MpuOffset[i];		//整合为16bit，并减去水平静止校准值
-//			if(i < 3)//以下对加速度做卡尔曼滤波
-//			{
-//				{
-//					static struct _1_ekf_filter ekf[3] = {{0.02,0,0,0,0.001,0.543},{0.02,0,0,0,0.001,0.543},{0.02,0,0,0,0.001,0.543}};	
-//					kalman_1(&ekf[i],(float)pMpu[i]);  //一维卡尔曼
-//					pMpu[i] = (int16_t)ekf[i].out;
-//				}
-//		}
-//		if(i > 2)//以下对角速度做一阶低通滤波
-//		{	
-//			uint8_t k=i-3;
-//			const float factor = 0.15f;  //滤波因素			
-//			static float tBuff[3];		
+		for(i=0;i<6;i++)
+		{
+//			pMpu[i] = (((int16_t)mpu_buffer[i<<1] << 8) | mpu_buffer[(i<<1)+1])-MpuOffset[i];		//整合为16bit，并减去水平静止校准值
+			pMpu[i] = mpu_buffer[i]-MpuOffset[i];
+			if(i < 3)//以下对加速度做卡尔曼滤波
+			{
+				{
+					static struct _1_ekf_filter ekf[3] = {{0.02,0,0,0,0.001,0.543},{0.02,0,0,0,0.001,0.543},{0.02,0,0,0,0.001,0.543}};	
+					kalman_1(&ekf[i],(float)pMpu[i]);  //一维卡尔曼
+					pMpu[i] = (int16_t)ekf[i].out;
+				}
+		}
+		if(i > 2)//以下对角速度做一阶低通滤波
+		{	
+			uint8_t k=i-3;
+			const float factor = 0.15f;  //滤波因素			
+			static float tBuff[3];		
 
-//			pMpu[i] = tBuff[k] = tBuff[k] * (1 - factor) + pMpu[i] * factor;                
-//		}
-//	}
+			pMpu[i] = tBuff[k] = tBuff[k] * (1 - factor) + pMpu[i] * factor;                
+		}
+	}
 }
 
+static float NormAcc;
+
+
+//输入是六轴传感器数据，输出是三轴角度
+
+
+void GetAngle(const _st_Mpu *pMpu,_st_AngE *pAngE, float dt) 
+{		
+	volatile struct V{
+				float x;
+				float y;
+				float z;
+				} Gravity,Acc,Gyro,AccGravity;
+
+	static struct V GyroIntegError = {0};
+	static  float KpDef = 0.8f ;
+	static  float KiDef = 0.0003f;
+	static Quaternion NumQ = {1, 0, 0, 0};
+	float q0_t,q1_t,q2_t,q3_t;
+  //float NormAcc;	
+	float NormQuat; 
+	float HalfTime = dt * 0.5f;
+
+	
+
+	// 提取等效旋转矩阵中的重力分量 
+	Gravity.x = 2*(NumQ.q1 * NumQ.q3 - NumQ.q0 * NumQ.q2);								
+	Gravity.y = 2*(NumQ.q0 * NumQ.q1 + NumQ.q2 * NumQ.q3);						  
+	Gravity.z = 1-2*(NumQ.q1 * NumQ.q1 + NumQ.q2 * NumQ.q2);	
+	// 加速度归一化
+ NormAcc = Q_rsqrt(squa(MPU6050.accX)+ squa(MPU6050.accY) +squa(MPU6050.accZ));
+	
+    Acc.x = pMpu->accX * NormAcc;
+    Acc.y = pMpu->accY * NormAcc;
+    Acc.z = pMpu->accZ * NormAcc;	
+ 	//向量差乘得出的值
+	AccGravity.x = (Acc.y * Gravity.z - Acc.z * Gravity.y);
+	AccGravity.y = (Acc.z * Gravity.x - Acc.x * Gravity.z);
+	AccGravity.z = (Acc.x * Gravity.y - Acc.y * Gravity.x);
+	//再做加速度积分补偿角速度的补偿值
+    GyroIntegError.x += AccGravity.x * KiDef;
+    GyroIntegError.y += AccGravity.y * KiDef;
+    GyroIntegError.z += AccGravity.z * KiDef;
+	//角速度融合加速度积分补偿值
+    Gyro.x = pMpu->gyroX * Gyro_Gr + KpDef * AccGravity.x  +  GyroIntegError.x;//弧度制
+    Gyro.y = pMpu->gyroY * Gyro_Gr + KpDef * AccGravity.y  +  GyroIntegError.y;
+    Gyro.z = pMpu->gyroZ * Gyro_Gr + KpDef * AccGravity.z  +  GyroIntegError.z;		
+	// 一阶龙格库塔法, 更新四元数
+
+	q0_t = (-NumQ.q1*Gyro.x - NumQ.q2*Gyro.y - NumQ.q3*Gyro.z) * HalfTime;
+	q1_t = ( NumQ.q0*Gyro.x - NumQ.q3*Gyro.y + NumQ.q2*Gyro.z) * HalfTime;
+	q2_t = ( NumQ.q3*Gyro.x + NumQ.q0*Gyro.y - NumQ.q1*Gyro.z) * HalfTime;
+	q3_t = (-NumQ.q2*Gyro.x + NumQ.q1*Gyro.y + NumQ.q0*Gyro.z) * HalfTime;
+	
+	NumQ.q0 += q0_t;
+	NumQ.q1 += q1_t;
+	NumQ.q2 += q2_t;
+	NumQ.q3 += q3_t;
+	// 四元数归一化
+	NormQuat = Q_rsqrt(squa(NumQ.q0) + squa(NumQ.q1) + squa(NumQ.q2) + squa(NumQ.q3));
+	NumQ.q0 *= NormQuat;
+	NumQ.q1 *= NormQuat;
+	NumQ.q2 *= NormQuat;
+	NumQ.q3 *= NormQuat;	
+	
+
+		// 四元数转欧拉角
+	{
+		 
+			#ifdef	YAW_GYRO
+			*(float *)pAngE = atan2f(2 * NumQ.q1 *NumQ.q2 + 2 * NumQ.q0 * NumQ.q3, 1 - 2 * NumQ.q2 *NumQ.q2 - 2 * NumQ.q3 * NumQ.q3) * RtA;  //yaw
+			#else
+				float yaw_G = pMpu->gyroZ * Gyro_G;
+				if((yaw_G > 1.2f) || (yaw_G < -1.2f)) //数据太小可以认为是干扰，不是偏航动作
+				{
+					pAngE->yaw  += yaw_G * dt;			
+				}
+			#endif
+			pAngE->pitch  =  asin(2 * NumQ.q0 *NumQ.q2 - 2 * NumQ.q1 * NumQ.q3) * RtA;						
+		
+			pAngE->roll	= atan2(2 * NumQ.q2 *NumQ.q3 + 2 * NumQ.q0 * NumQ.q1, 1 - 2 * NumQ.q1 *NumQ.q1 - 2 * NumQ.q2 * NumQ.q2) * RtA;	//PITCH 			
+	}
+}
+
+/****************************************************************************************
+*@brief   get mpu offset
+*@brief   initial and cmd call this
+*@param[in]
+*****************************************************************************************/
+void MpuGetOffset(void) //校准
+{
+	int32_t buffer[6]={0};
+	int16_t i;  
+	uint8_t k=30;
+	const int8_t MAX_GYRO_QUIET = 5;
+	const int8_t MIN_GYRO_QUIET = -5;	
+/*           wait for calm down    	                                                          */
+	int16_t LastGyro[3] = {0};
+	int16_t ErrorGyro[3];	
+	/*           set offset initial to zero    		*/
+	
+	memset(MpuOffset,0,12);
+	MpuOffset[2] = 8192;   //set offset from the 8192  
+	
+	TIM_ITConfig(  //使能或者失能指定的TIM中断
+		TIM1,
+		TIM_IT_Update ,
+		DISABLE  //使能
+		);	
+	while(k--)//30次静止则判定飞行器处于静止状态
+	{
+		do
+		{
+			delay_ms(10);
+			MpuGetData();
+			for(i=0;i<3;i++)
+			{
+				ErrorGyro[i] = pMpu[i+3] - LastGyro[i];
+				LastGyro[i] = pMpu[i+3];	
+			}			
+		}while ((ErrorGyro[0] >  MAX_GYRO_QUIET )|| (ErrorGyro[0] < MIN_GYRO_QUIET)//标定静止
+					||(ErrorGyro[1] > MAX_GYRO_QUIET )|| (ErrorGyro[1] < MIN_GYRO_QUIET)
+					||(ErrorGyro[2] > MAX_GYRO_QUIET )|| (ErrorGyro[2] < MIN_GYRO_QUIET)
+						);
+	}	
+
+/*           throw first 100  group data and make 256 group average as offset                    */	
+	for(i=0;i<356;i++)//水平校准
+	{		
+		MpuGetData();
+		if(100 <= i)//取256组数据进行平均
+		{
+			uint8_t k;
+			for(k=0;k<6;k++)
+			{
+				buffer[k] += pMpu[k];
+			}
+		}
+	}
+
+	for(i=0;i<6;i++)
+	{
+		MpuOffset[i] = buffer[i]>>8;
+	}
+	TIM_ITConfig(  //使能或者失能指定的TIM中断
+		TIM1, 
+		TIM_IT_Update ,
+		ENABLE  //使能
+		);
+//	FLASH_write(MpuOffset,6);//将数据写到FLASH中，一共有6个int16数据
+}

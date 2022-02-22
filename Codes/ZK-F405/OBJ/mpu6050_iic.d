@@ -39,3 +39,7 @@
 ..\obj\mpu6050_iic.o: ..\SYSTEM\delay\delay.h
 ..\obj\mpu6050_iic.o: ..\HARDWARE\MPU6050_IIC\mpu6050_iic.h
 ..\obj\mpu6050_iic.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\mpu6050_iic.o: ..\HARDWARE\Kalman\kalman.h
+..\obj\mpu6050_iic.o: ..\HARDWARE\My_Math\myMath.h
+..\obj\mpu6050_iic.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\mpu6050_iic.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\string.h

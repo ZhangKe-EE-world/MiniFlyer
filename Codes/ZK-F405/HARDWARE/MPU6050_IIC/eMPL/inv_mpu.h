@@ -23,7 +23,7 @@
 #include "stm32f4xx.h"
 
 //定义输出速度
-#define DEFAULT_MPU_HZ  (100)		//100Hz
+#define DEFAULT_MPU_HZ  (200)		//200Hz
 
 #define INV_X_GYRO      (0x40)
 #define INV_Y_GYRO      (0x20)

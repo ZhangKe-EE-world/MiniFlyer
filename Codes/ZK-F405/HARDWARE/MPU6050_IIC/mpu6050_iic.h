@@ -2,7 +2,7 @@
 #define __MPUIIC_H
 #include "sys.h"
 #include "myiic.h"
-
+#include "stdio.h"
   
 //#define MPU_ACCEL_OFFS_REG		0X06	//accel_offs寄存器,可读取版本号,寄存器手册未提到
 //#define MPU_PROD_ID_REG			0X0C	//prod id寄存器,在寄存器手册未提到
@@ -77,6 +77,29 @@
 //如果接V3.3,则IIC地址为0X69(不包含最低位).
 #define MPU_ADDR				0X68
 
+typedef struct{
+	int16_t accX;
+	int16_t accY;
+	int16_t accZ;
+	int16_t gyroX;
+	int16_t gyroY;
+	int16_t gyroZ;
+}_st_Mpu;
+
+typedef struct{
+	float roll;
+	float pitch;
+	float yaw;
+}_st_AngE;
+
+
+typedef volatile struct {
+  float q0;
+  float q1;
+  float q2;
+  float q3;
+} Quaternion;//四元数结构体
+
 
 ////因为模块AD0默认接GND,所以转为读写地址后,为0XD1和0XD0(如果接VCC,则为0XD3和0XD2)  
 //#define MPU_READ    0XD1
@@ -98,20 +121,19 @@ u8 MPU_Set_Fifo(u8 sens);
 short MPU_Get_Temperature(void);
 u8 MPU_Get_Gyroscope(short *gx,short *gy,short *gz);
 u8 MPU_Get_Accelerometer(short *ax,short *ay,short *az);
+void MpuGetData(void); //读取陀螺仪数据加滤波
+void GetAngle(const _st_Mpu *pMpu,_st_AngE *pAngE, float dt) ;//传感器原始数据解算为欧拉角
 
 
 
-
-#define  Acc_Read() IIC_read_Bytes(0xD0, 0X3B,buffer,6)
-#define  Gyro_Read() IIC_read_Bytes(0xD0, 0x43,&buffer[6],6)
 void MpuGetData(void);
 
 
 
 
 
-
-
+extern	_st_AngE Angle;    //当前角度姿态值
+extern	_st_Mpu MPU6050;   //MPU6050原始数据
 
 
 

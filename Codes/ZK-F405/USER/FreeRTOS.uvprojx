@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\FreeRTOS\include;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\HARDWARE\BMP280;..\HARDWARE\IIC;..\HARDWARE\LED;..\HARDWARE\MPU6050_IIC;..\HARDWARE\MPU6050_IIC\eMPL;..\SYSTEM\pwm;..\HARDWARE\PID;..\HARDWARE\Upper_Computer;..\HARDWARE\TimerforOS;..\HARDWARE\S-BUS;..\HARDWARE\FlightSystem</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\FWLIB\inc;..\FreeRTOS\include;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\HARDWARE\BMP280;..\HARDWARE\IIC;..\HARDWARE\LED;..\HARDWARE\MPU6050_IIC;..\HARDWARE\MPU6050_IIC\eMPL;..\SYSTEM\pwm;..\HARDWARE\PID;..\HARDWARE\Upper_Computer;..\HARDWARE\TimerforOS;..\HARDWARE\S-BUS;..\HARDWARE\FlightSystem;..\HARDWARE\Kalman;..\HARDWARE\My_Math;..\HARDWARE\Flash</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -453,6 +453,11 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\FlightSystem\flight_system.c</FilePath>
             </File>
+            <File>
+              <FileName>kalman.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Kalman\kalman.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -478,6 +483,11 @@
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\pwm\pwm.c</FilePath>
             </File>
+            <File>
+              <FileName>FLASH.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Flash\FLASH.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -492,6 +502,16 @@
               <FileName>stm32f4xx_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\src\stm32f4xx_tim.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MATH</GroupName>
+          <Files>
+            <File>
+              <FileName>myMath.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\My_Math\myMath.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -522,6 +542,11 @@
               <FileName>stm32f4xx_usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\src\stm32f4xx_usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\src\stm32f4xx_flash.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -594,5 +619,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>FreeRTOS</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

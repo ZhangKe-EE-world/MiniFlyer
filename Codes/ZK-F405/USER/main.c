@@ -102,10 +102,10 @@ int main()
 	IIC_Init();
 	while(	MPU_Init()	);
 	Bmp_Init ();
-	while(mpu_dmp_init())
-	{
-		printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
-	}
+//	while(mpu_dmp_init())
+//	{
+//		printf("dmp 初始化失败！-----%d\n",mpu_dmp_init());
+//	}
 	pid_param_Init();
 
 	//全局标志初始化
@@ -215,28 +215,28 @@ void escinit_task(void *pvParameters)
 //传感器处理任务
 void sensors_task(void *pvParameters)
 {
-	double	BMP_Pressure,BMP_Temperature;
-	float pitch,roll,yaw; 		//欧拉角
-	short aacx,aacy,aacz;		//加速度传感器原始数据
-	short gyrox,gyroy,gyroz;	//陀螺仪原始数据 short型用于上位机，在做内环PID计算时需要强制转换为float型
+	double	BMP_Pressure;
 	u8 report=0;
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
-		//5ms运行一次,IIC速率较慢且底层采用的是while，导致该任务运行占用较长时间
+		//5ms运行一次
 		vTaskDelayUntil(&lastWakeTime, 5);
-		BMP_Temperature = BMP280_Get_Temperature();
 		BMP_Pressure = BMP280_Get_Pressure();
-		if(mpu_dmp_get_data(&pitch,&roll,&yaw)==0)//需要速率足够大才能防止dmp队列溢出，故取队列频率最好和传感器DMP解算速率协调
-		{ 
-			MPU_Get_Accelerometer(&aacx,&aacy,&aacz);	//得到加速度传感器数据
-			MPU_Get_Gyroscope(&gyrox,&gyroy,&gyroz);	//得到陀螺仪数据
-			if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>RC_L1MIN)
-				state_control(gyrox,gyroy,gyroz,pitch,roll,yaw,0.005f);
-			if(0)printf("yaw -- %f\npitch -- %f\nroll -- %f\n",yaw,pitch,roll);
-			if(report)mpu6050_send_data(aacx,aacy,aacz,gyrox,gyroy,gyroz);//用自定义帧发送加速度和陀螺仪原始数据，report决定是否开启
-			if(report)usart1_report_imu(aacx,aacy,aacz,gyrox,gyroy,gyroz,(int)(roll*100),(int)(pitch*100),(int)(yaw*10));
+		MpuGetData(); //读取mpu数据并滤波
+		GetAngle(&MPU6050,&Angle,0.005f);
+		if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>(RC_L1MIN+DELTA))//当解锁并且油门值大于最小值进入主状态控制
+		{
+			state_control(MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ,Angle.pitch,Angle.roll,Angle.yaw,0.005f);
 		}
+
+		if(0)//调试用
+		{
+			printf("YAW--%f\nPITCH--%f\nROLL--%f\n",Angle.yaw,Angle.pitch,Angle.roll);
+		}
+		if(report)mpu6050_send_data(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ);//用自定义帧发送加速度和陀螺仪原始数据，report决定是否开启
+		if(report)usart1_report_imu(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ,(int)(Angle.roll*100),(int)(Angle.pitch*100),(int)(Angle.yaw*10));
+
 	}
 }
 
