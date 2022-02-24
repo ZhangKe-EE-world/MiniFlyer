@@ -57,7 +57,7 @@ void SBUS_Configuration(void)
 	GPIO_PinAFConfig(GPIOA,GPIO_PinSource3,GPIO_AF_USART2);
 
 
-	//  波特率100000 8个数据位 偶校验位 2个停止位
+	//  波特率100000 9个数据位 偶校验位 1个停止位
 	USART_InitStructure.USART_BaudRate = 100000;
 	USART_InitStructure.USART_WordLength = USART_WordLength_9b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
@@ -68,7 +68,7 @@ void SBUS_Configuration(void)
 	USART_Init(USART2, &USART_InitStructure);
 
 	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 5;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
@@ -81,7 +81,7 @@ void SBUS_Configuration(void)
 
 
 uint8_t USART2_RX_BUF[26];
-
+uint16_t time=0;
 /**
   * @name   USART2_IRQHandler
   * @brief  This function handles USART2 Handler

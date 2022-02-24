@@ -180,7 +180,7 @@ double BMP280_Get_Temperature(void)
 	temperature = bmp280_compensate_T_double(Bit32);
 	return temperature;
 }
-/***************************************END OF LINE*********************************************/
+
 
 
 /**************************传感器值转定点值*************************************/

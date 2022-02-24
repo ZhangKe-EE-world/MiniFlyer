@@ -96,7 +96,7 @@ int main()
 	ledInit();			/*led初始化*/
 	uart_init(500000);
 	TIM3_PWM_Init();/*PWM初始化为50Hz*/
-	SBUSInit();//SBUS
+	SBUSInit();
 	IIC_Init();
 	while(	MPU_Init()	);
 	Bmp_Init ();
@@ -199,6 +199,10 @@ void escinit_task(void *pvParameters)
 		
 		xEventGroupSetBits(RCtask_Handle,Esc_Unlocked);//标志电调已解锁
 		LED0_OFF;
+
+//		MpuGetData();
+//		printf("mpu		%d,	%d,	%d,	%d,	%d,	%d\n",MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ);
+//		
 		vTaskDelete (ESCinitTask_Handler);
 	}   
 }
@@ -209,22 +213,24 @@ void escinit_task(void *pvParameters)
 //传感器处理任务
 void sensors_task(void *pvParameters)
 {
-	double	BMP_Pressure;
+//	double	BMP_Pressure;
 	u8 report=0;
+
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
 		//5ms运行一次
+
 		vTaskDelayUntil(&lastWakeTime, 5);
-		BMP_Pressure = BMP280_Get_Pressure();
+
+//		BMP_Pressure = BMP280_Get_Pressure();
 		MpuGetData(); //读取mpu数据并滤波
 		GetAngle(&MPU6050,&Angle,0.005f);//加速度计和陀螺仪数据解算为欧拉角
 		if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>(RC_L1MIN+DELTA))//当解锁并且油门值大于最小值进入主状态控制
 		{
-			state_control(MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ,Angle.pitch,Angle.roll,Angle.yaw,0.005f);
+			state_control(0.005f);
 		}
-
-		if(1)//调试用
+		if(0)//调试用
 		{
 			printf("YAW：%f\nPITCH：%f\nROLL：%f\n",Angle.yaw,Angle.pitch,Angle.roll);
 		}
@@ -239,7 +245,7 @@ void sensors_task(void *pvParameters)
 //RunTimeStats任务
 void RunTimeStats_task(void *pvParameters)
 {
-	u8 report=0;
+	u8 report=1;
 	while(1)
 	{
 		//等电调解锁后开启
@@ -264,7 +270,7 @@ void RunTimeStats_task(void *pvParameters)
 		}
 		else
 		{
-			LED0_OFF;
+//			LED0_OFF;
 		}
 	}
 }
@@ -276,6 +282,7 @@ void RC_task(void *pvParameters)
 	u8 report=0;//遥控器通道上报开关
 	u16 FlightUnlockCnt=0;
 	u16 FlightLockCnt=0;
+	u16 OffsetCnt=0;
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
@@ -285,14 +292,14 @@ void RC_task(void *pvParameters)
 												pdFALSE, /* 退出时不清除事件位 */ 
 												pdTRUE, /* 满足感兴趣的所有事件 */ 
 												portMAX_DELAY);/* 指定超时时间,一直等 */ 
-		vTaskDelayUntil(&lastWakeTime, 50);
+		vTaskDelayUntil(&lastWakeTime, 5);
 		Sbus_Data_Count(USART2_RX_BUF);
 		if(FlightSystemFlag.byte.FlightUnlock==0)//飞行锁定时
 		{
 			if(CH[2]<=(RC_L1MIN+DELTA)&&CH[3]>=(RC_L2MAX-DELTA))//左摇杆往右下打3s即可解锁飞行
 			{
 				FlightUnlockCnt++;
-				if(FlightUnlockCnt>=60)
+				if(FlightUnlockCnt>=SET_TIME)
 				{
 					xEventGroupSetBits(RCtask_Handle,Flight_Unlocked);//标志飞行已解锁
 					FlightSystemFlag.byte.FlightUnlock=1;
@@ -303,6 +310,23 @@ void RC_task(void *pvParameters)
 			else
 			{
 				FlightUnlockCnt=0;
+				if(CH[2]>=(RC_L1MAX-DELTA)&&CH[3]<=(RC_L2MIN+DELTA))//左摇杆往左上打3s
+				{
+					OffsetCnt++;
+					if(OffsetCnt>=SET_TIME)
+					{
+						vTaskSuspend(SENSORS_Task_Handler);
+						MpuGetOffset(); //校准
+						OffsetCnt=0;
+						LED0_ON;
+						printf("offseted!\n");
+						vTaskResume(SENSORS_Task_Handler);
+					}
+				}
+				else
+				{
+					OffsetCnt=0;
+				}
 			}
 		}
 		else//飞行解锁时
@@ -310,7 +334,7 @@ void RC_task(void *pvParameters)
 			if(CH[2]<=(RC_L1MIN+DELTA)&&CH[3]<=(RC_L2MIN+DELTA))//左摇杆往左下打3s即可锁定飞行
 			{
 				FlightLockCnt++;
-				if(FlightLockCnt>=60)
+				if(FlightLockCnt>=SET_TIME)
 				{
 					xEventGroupClearBits(RCtask_Handle,Flight_Unlocked);//清解锁标志
 					FlightSystemFlag.byte.FlightUnlock=0;
@@ -318,6 +342,7 @@ void RC_task(void *pvParameters)
 					TIM_SetCompare2(TIM3,499);
 					TIM_SetCompare3(TIM3,499);
 					TIM_SetCompare4(TIM3,499);
+					LED0_OFF;
 					printf("Flight locked!!\n");
 					FlightLockCnt=0;
 				}
@@ -327,12 +352,12 @@ void RC_task(void *pvParameters)
 				FlightLockCnt=0;
 			}
 		}
-		if(CH[2]<=(RC_OFF+DELTA))//遥控器不在线时
+		if(CH[2]<=(RC_L1OFF+DELTA))//遥控器不在线时
 		{
 			FlightSystemFlag.byte.RCOnline=0;
 		}
 		else
-			if(CH[2]>=(RC_ON-DELTA))
+			if(CH[2]>=(RC_L1MIN-DELTA))
 			{
 				FlightSystemFlag.byte.RCOnline=1;
 			}

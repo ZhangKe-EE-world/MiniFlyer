@@ -122,11 +122,7 @@ short MPU_Get_Temperature(void);
 u8 MPU_Get_Gyroscope(short *gx,short *gy,short *gz);
 u8 MPU_Get_Accelerometer(short *ax,short *ay,short *az);
 void MpuGetData(void); //读取陀螺仪数据加滤波
-void GetAngle(const _st_Mpu *pMpu,_st_AngE *pAngE, float dt) ;//传感器原始数据解算为欧拉角
-
-
-
-void MpuGetData(void);
+void MpuGetOffset(void); //校准
 
 
 
@@ -134,7 +130,6 @@ void MpuGetData(void);
 
 extern	_st_AngE Angle;    //当前角度姿态值
 extern	_st_Mpu MPU6050;   //MPU6050原始数据
-
 
 
 

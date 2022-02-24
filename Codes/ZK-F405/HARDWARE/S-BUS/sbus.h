@@ -5,6 +5,7 @@
 
 extern uint16_t CH[18];
 extern uint8_t USART2_RX_BUF[26];
+extern uint16_t time;
 
 void SBUSInit(void);
 void SBUS_Configuration(void);

@@ -6,8 +6,6 @@
 "..\obj\myiic.o"
 "..\obj\bmp280.o"
 "..\obj\mpu6050_iic.o"
-"..\obj\inv_mpu.o"
-"..\obj\inv_mpu_dmp_motion_driver.o"
 "..\obj\upper.o"
 "..\obj\timer.o"
 "..\obj\sbus.o"

@@ -2,19 +2,19 @@
 #define __FS_H
 #include "sys.h"
 #include "stdio.h"
-
+#include "mpu6050_iic.h"
 
 #define DELTA 5
 #define RC_L1MIN (312)
 #define RC_L1MAX (1912)
-#define RC_L2MIN (608)
-#define RC_L2MAX (1408)
-#define RC_R1MIN (312)
-#define RC_R1MAX (1912)
-#define RC_OFF	 (40)
-#define RC_ON		 (312)
+#define RC_L2MIN (216)
+#define RC_L2MAX (1812)
+#define RC_R1MIN (120)
+#define RC_R1MAX (1720)
+#define RC_L1OFF	 (40)
 #define RC_RANGE (1600)
 
+#define SET_TIME 600
 
 //参数宏
 #define ESC_MAX (1000-1)
@@ -65,8 +65,8 @@ void pidRest(PidObject **pid,const uint8_t len);
 void pid_param_Init(void);//PID参数初始化
 void pidUpdate(PidObject* pid,const float dt);
 void CascadePID(PidObject* pidRate,PidObject* pidAngE,const float dt);  //串级PID
-void state_control(float gx,float gy,float gz,float pitch,float roll,float yaw,float dt);
-
+void GetAngle(const _st_Mpu *pMpu,_st_AngE *pAngE, float dt);
+void state_control(float dt);
 
 
 

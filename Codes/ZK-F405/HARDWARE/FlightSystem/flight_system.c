@@ -113,7 +113,7 @@ void pidUpdate(PidObject* pid,const float dt)
 
 	pid->out = pid->kp * error + pid->ki * pid->integ + pid->kd * deriv;//PID输出
 
-//	pid->out = LIMIT(pid->out,pid->OutLimitLow,pid->OutLimitHigh); //输出限幅
+	pid->out = LIMIT(pid->out,pid->OutLimitLow,pid->OutLimitHigh); //输出限幅
 	
 	pid->prevError = error;  //更新上次的误差
 		
@@ -139,19 +139,20 @@ void CascadePID(PidObject* pidRate,PidObject* pidAngE,const float dt)  //串级PID
  * @param[out] 
  * @return     
  ***************************************************************/	
-void state_control(float gx,float gy,float gz,float pitch,float roll,float yaw,float dt)
+void state_control(float dt)
 {
 	u16 Throttle=0;
 	Throttle=(ESC_MAX-ESC_MIN)*(CH[2]-RC_L1MIN)/RC_RANGE+ESC_MIN;//获取基础油门值
-	if(Throttle>560)//飞行最小油门，即飞机起飞时开启PID
+	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849);//留100给姿态控制
+	if(CH[5]>=1780)//拨杆ch6下拨开启PID自稳
 	{
-		pidRateX.measured = gx * Gyro_G; //内环测量值 角度/秒
-		pidRateY.measured = gy * Gyro_G;
-		pidRateZ.measured = gz * Gyro_G;
+		pidRateX.measured = MPU6050.gyroX * Gyro_G; //内环测量值 角度/秒
+		pidRateY.measured = MPU6050.gyroY * Gyro_G;
+		pidRateZ.measured = MPU6050.gyroZ * Gyro_G;
 
-		pidPitch.measured = pitch; //外环测量值 单位：角度
-		pidRoll.measured = roll;
-		pidYaw.measured = yaw;
+		pidPitch.measured = Angle.pitch; //外环测量值 单位：角度
+		pidRoll.measured = Angle.roll;
+		pidYaw.measured = Angle.yaw;
 		
 		pidUpdate(&pidRoll,dt);    //调用PID处理函数来处理外环	横滚角PID		
 		pidRateX.desired = pidRoll.out; //将外环的PID输出作为内环PID的期望值即为串级PID
@@ -162,18 +163,15 @@ void state_control(float gx,float gy,float gz,float pitch,float roll,float yaw,f
 		pidUpdate(&pidRateY,dt); //再调用内环
 		
 		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
-		
-		MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849);//留100给姿态控制
+
+		if(0)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
 		
 		MOTOR1 +=    + pidRateX.out - pidRateY.out - pidRateZ.out;// 姿态输出分配给各个电机的控制量
 		MOTOR2 +=    - pidRateX.out - pidRateY.out + pidRateZ.out ;//
 		MOTOR3 +=    - pidRateX.out + pidRateY.out - pidRateZ.out;
 		MOTOR4 +=    + pidRateX.out + pidRateY.out + pidRateZ.out;//
 	}
-	else
-	{
-		MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849); 
-	}
+
 
 
 	

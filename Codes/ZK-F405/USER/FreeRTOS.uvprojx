@@ -424,16 +424,6 @@
               <FilePath>..\HARDWARE\MPU6050_IIC\mpu6050_iic.c</FilePath>
             </File>
             <File>
-              <FileName>inv_mpu.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\MPU6050_IIC\eMPL\inv_mpu.c</FilePath>
-            </File>
-            <File>
-              <FileName>inv_mpu_dmp_motion_driver.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\MPU6050_IIC\eMPL\inv_mpu_dmp_motion_driver.c</FilePath>
-            </File>
-            <File>
               <FileName>Upper.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\Upper_Computer\Upper.c</FilePath>

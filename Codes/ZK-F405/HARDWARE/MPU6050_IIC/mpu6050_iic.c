@@ -12,6 +12,7 @@ int16_t MpuOffset[6] = {0};
 _st_Mpu MPU6050;   //MPU6050原始数据
 _st_AngE Angle;    //当前角度姿态值
 static volatile int16_t *pMpu = (int16_t *)&MPU6050;
+//static volatile float *pAngel = (float *)&Angle;
 
 //#define  Acc_Read() IIC_read_Bytes(0xD0, 0X3B,mpu_buffer,6)
 //#define  Gyro_Read() IIC_read_Bytes(0xD0, 0x43,&mpu_buffer[6],6)
@@ -364,24 +365,18 @@ void GetAngle(const _st_Mpu *pMpu,_st_AngE *pAngE, float dt)
 *****************************************************************************************/
 void MpuGetOffset(void) //校准
 {
-	int32_t buffer[6]={0};
 	int16_t i;  
+
+	int32_t buffer[6]={0};
 	uint8_t k=30;
 	const int8_t MAX_GYRO_QUIET = 5;
 	const int8_t MIN_GYRO_QUIET = -5;	
-/*           wait for calm down    	                                                          */
 	int16_t LastGyro[3] = {0};
 	int16_t ErrorGyro[3];	
-	/*           set offset initial to zero    		*/
-	
 	memset(MpuOffset,0,12);
-	MpuOffset[2] = 8192;   //set offset from the 8192  
-	
-	TIM_ITConfig(  //使能或者失能指定的TIM中断
-		TIM1,
-		TIM_IT_Update ,
-		DISABLE  //使能
-		);	
+	MpuOffset[2] = 8192;   //set offset from the 8192  因为32768/4g = 8192 LSB/g，是Z轴自身的重力加速度
+
+/*           throw first 100  group data and make 256 group average as offset                    */	
 	while(k--)//30次静止则判定飞行器处于静止状态
 	{
 		do
@@ -398,8 +393,7 @@ void MpuGetOffset(void) //校准
 					||(ErrorGyro[2] > MAX_GYRO_QUIET )|| (ErrorGyro[2] < MIN_GYRO_QUIET)
 						);
 	}	
-
-/*           throw first 100  group data and make 256 group average as offset                    */	
+	
 	for(i=0;i<356;i++)//水平校准
 	{		
 		MpuGetData();
@@ -411,16 +405,9 @@ void MpuGetOffset(void) //校准
 				buffer[k] += pMpu[k];
 			}
 		}
-	}
-
+	}  
 	for(i=0;i<6;i++)
 	{
 		MpuOffset[i] = buffer[i]>>8;
 	}
-	TIM_ITConfig(  //使能或者失能指定的TIM中断
-		TIM1, 
-		TIM_IT_Update ,
-		ENABLE  //使能
-		);
-//	FLASH_write(MpuOffset,6);//将数据写到FLASH中，一共有6个int16数据
 }
