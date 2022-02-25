@@ -409,5 +409,18 @@ void MpuGetOffset(void) //У׼
 	for(i=0;i<6;i++)
 	{
 		MpuOffset[i] = buffer[i]>>8;
+		printf("offset[%d]:%d\n",i,MpuOffset[i]);
 	}
+	
 }
+
+void OffsetInit(void)
+{
+	MpuOffset[0]=448;
+	MpuOffset[1]=-64;
+	MpuOffset[2]=376;
+	MpuOffset[3]=2;
+	MpuOffset[4]=-19;
+	MpuOffset[5]=1;
+}
+

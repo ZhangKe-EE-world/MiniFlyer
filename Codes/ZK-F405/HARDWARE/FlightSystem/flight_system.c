@@ -28,38 +28,60 @@ PidObject *(pPidObject[])={&pidRateX,&pidRateY,&pidRateZ,&pidRoll,&pidPitch,&pid
 //PID在此处修改
 void pid_param_Init(void)//PID参数初始化
 {
-	pidRateX.kp = 1.5f;
-	pidRateY.kp = 1.5f;
-	pidRateZ.kp = 3.0f;
+	pidRateX.kp = 1.50f;//内环P将四轴从偏差角速度纠正回期望角速度
+	pidRateY.kp = 1.50f;
+	pidRateZ.kp = 0.0f;
 	
-//	pidRateX.ki = 0.05f;
-//	pidRateY.ki = 0.05f;
-//	pidRateZ.ki = 0.02f;	
+	pidRateX.ki = 0.1f;//内环I消除角速度控制静差
+	pidRateY.ki = 0.1f;
+	pidRateZ.ki = 0.0f;	
 	
-	pidRateX.kd = 0.3f;
-	pidRateY.kd = 0.3f;
-	pidRateZ.kd = 0.3f;	
+	pidRateX.kd = 0.4f;//内环D抑制系统运动
+	pidRateY.kd = 0.4f;
+	pidRateZ.kd = 0.0f;	
 	
-	pidPitch.kp = 5.0f;
-	pidRoll.kp = 5.0f;
-	pidYaw.kp = 4.0f;	
 
+	pidRoll.kp = 0.50f;
+	pidPitch.kp = 0.50f;//外环P将四轴从偏差角度纠正回期望角度
+	pidYaw.kp = 0.0f;	
+
+
+	pidRoll.ki = 0.01f;
+	pidPitch.ki = 0.01f;//外环I消除角度控制静差
+	pidYaw.ki = 0.0f;	
 	
-	pidRateX.IntegLimitHigh  = 30.0f;
-	pidRateY.IntegLimitHigh = 30.0f;
-	pidRateZ.IntegLimitHigh= 30.0f;
 	
-	pidRateX.OutLimitHigh  = 100.0f;
-	pidRateY.OutLimitHigh = 100.0f;
-	pidRateZ.OutLimitHigh= 100.0f;
+	pidRateX.IntegLimitHigh  = PID_IMAX;
+	pidRateY.IntegLimitHigh = PID_IMAX;
+	pidRateZ.IntegLimitHigh= PID_IMAX;
 	
-	pidPitch.IntegLimitHigh  = 30.0f;
-	pidRoll.IntegLimitHigh = 30.0f;
-	pidYaw.IntegLimitHigh= 30.0f;
+	pidRateX.OutLimitHigh  = PIDMAX;
+	pidRateY.OutLimitHigh = PIDMAX;
+	pidRateZ.OutLimitHigh= PIDMAX;
 	
-	pidPitch.OutLimitHigh  = 100.0f;
-	pidRoll.OutLimitHigh = 100.0f;
-	pidYaw.OutLimitHigh= 100.0f;
+	pidPitch.IntegLimitHigh  = PID_IMAX;
+	pidRoll.IntegLimitHigh = PID_IMAX;
+	pidYaw.IntegLimitHigh= PID_IMAX;
+	
+	pidPitch.OutLimitHigh  = PIDMAX;
+	pidRoll.OutLimitHigh = PIDMAX;
+	pidYaw.OutLimitHigh= PIDMAX;
+	
+	pidRateX.IntegLimitLow  = PID_IMIN;
+	pidRateY.IntegLimitLow = PID_IMIN;
+	pidRateZ.IntegLimitLow= PID_IMIN;
+	
+	pidRateX.OutLimitLow  = PIDMIN;
+	pidRateY.OutLimitLow = PIDMIN;
+	pidRateZ.OutLimitLow= PIDMIN;
+	
+	pidPitch.IntegLimitLow  = PID_IMIN;
+	pidRoll.IntegLimitLow = PID_IMIN;
+	pidYaw.IntegLimitLow= PID_IMIN;
+	
+	pidPitch.OutLimitLow  = PIDMIN;
+	pidRoll.OutLimitLow = PIDMIN;
+	pidYaw.OutLimitLow= PIDMIN;
 	
 	pidRest(pPidObject,6); //批量复位PID数据，防止上次遗留的数据影响本次控制
 
@@ -107,7 +129,7 @@ void pidUpdate(PidObject* pid,const float dt)
 
 	pid->integ += error * dt;	 //误差积分累加值
 
-//	pid->integ = LIMIT(pid->integ,pid->IntegLimitLow,pid->IntegLimitHigh); //进行积分限幅
+	pid->integ = LIMIT(pid->integ,pid->IntegLimitLow,pid->IntegLimitHigh); //进行积分限幅
 
 	deriv = (error - pid->prevError)/dt;  //前后两次误差做微分
 
@@ -143,7 +165,7 @@ void state_control(float dt)
 {
 	u16 Throttle=0;
 	Throttle=(ESC_MAX-ESC_MIN)*(CH[2]-RC_L1MIN)/RC_RANGE+ESC_MIN;//获取基础油门值
-	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,849);//留100给姿态控制
+	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,600);//留100给姿态控制
 	if(CH[5]>=1780)//拨杆ch6下拨开启PID自稳
 	{
 		pidRateX.measured = MPU6050.gyroX * Gyro_G; //内环测量值 角度/秒
@@ -154,6 +176,8 @@ void state_control(float dt)
 		pidRoll.measured = Angle.roll;
 		pidYaw.measured = Angle.yaw;
 		
+		
+		
 		pidUpdate(&pidRoll,dt);    //调用PID处理函数来处理外环	横滚角PID		
 		pidRateX.desired = pidRoll.out; //将外环的PID输出作为内环PID的期望值即为串级PID
 		pidUpdate(&pidRateX,dt);  //再调用内环
@@ -161,10 +185,10 @@ void state_control(float dt)
 		pidUpdate(&pidPitch,dt);    //调用PID处理函数来处理外环	俯仰角PID	
 		pidRateY.desired = pidPitch.out;  
 		pidUpdate(&pidRateY,dt); //再调用内环
-		
-		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
 
-		if(0)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
+//		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
+
+		if(1)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
 		
 		MOTOR1 +=    + pidRateX.out - pidRateY.out - pidRateZ.out;// 姿态输出分配给各个电机的控制量
 		MOTOR2 +=    - pidRateX.out - pidRateY.out + pidRateZ.out ;//
@@ -175,11 +199,11 @@ void state_control(float dt)
 
 
 	
-	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,499,949));
-	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,949));
-	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,949));
-	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,949));
-	if(0)printf("1--%d\n2--%d\n3--%d\n4--%d\n",LIMIT(MOTOR1,499,949),LIMIT(MOTOR2,499,949),LIMIT(MOTOR3,499,949),LIMIT(MOTOR4,499,949));
+	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,499,600));
+	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,600));
+	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,600));
+	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,600));
+	if(1)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,499,949),LIMIT(MOTOR2,499,949),LIMIT(MOTOR3,499,949),LIMIT(MOTOR4,499,949));
 
 }
 

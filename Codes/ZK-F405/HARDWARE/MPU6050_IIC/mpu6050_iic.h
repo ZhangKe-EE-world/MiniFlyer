@@ -123,7 +123,7 @@ u8 MPU_Get_Gyroscope(short *gx,short *gy,short *gz);
 u8 MPU_Get_Accelerometer(short *ax,short *ay,short *az);
 void MpuGetData(void); //读取陀螺仪数据加滤波
 void MpuGetOffset(void); //校准
-
+void OffsetInit(void);//校准初始化
 
 
 

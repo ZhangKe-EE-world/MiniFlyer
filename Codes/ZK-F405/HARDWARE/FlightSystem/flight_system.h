@@ -20,6 +20,12 @@
 #define ESC_MAX (1000-1)
 #define ESC_MIN (500-1)
 
+//PIDÏÞ·ù
+#define PIDMAX (200.0f)
+#define PIDMIN (-200.0f)
+#define PID_IMAX (60.0f)
+#define PID_IMIN (-60.0f)
+
 
 //ÊÂ¼þºê
 #define Esc_Unlocked 			(0x01<<0)
@@ -27,6 +33,7 @@
 #define RC_Connected		 	(0x01<<2)
 
 #define LIMIT( x,min,max ) ( (x) < (min)  ? (min) : ( (x) > (max) ? (max) : (x) ) )
+
 
 
 

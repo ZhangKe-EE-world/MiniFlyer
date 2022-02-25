@@ -101,7 +101,8 @@ int main()
 	while(	MPU_Init()	);
 	Bmp_Init ();
 	pid_param_Init();
-
+	OffsetInit();
+	
 	//全局标志初始化
 	FlightSystemFlag.all=0;
 	
@@ -200,9 +201,6 @@ void escinit_task(void *pvParameters)
 		xEventGroupSetBits(RCtask_Handle,Esc_Unlocked);//标志电调已解锁
 		LED0_OFF;
 
-//		MpuGetData();
-//		printf("mpu		%d,	%d,	%d,	%d,	%d,	%d\n",MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ);
-//		
 		vTaskDelete (ESCinitTask_Handler);
 	}   
 }
@@ -213,7 +211,7 @@ void escinit_task(void *pvParameters)
 //传感器处理任务
 void sensors_task(void *pvParameters)
 {
-//	double	BMP_Pressure;
+	double	BMP_Pressure;
 	u8 report=0;
 
 	u32 lastWakeTime = getSysTickCnt();
@@ -223,10 +221,10 @@ void sensors_task(void *pvParameters)
 
 		vTaskDelayUntil(&lastWakeTime, 5);
 
-//		BMP_Pressure = BMP280_Get_Pressure();
+		BMP_Pressure = BMP280_Get_Pressure();
 		MpuGetData(); //读取mpu数据并滤波
 		GetAngle(&MPU6050,&Angle,0.005f);//加速度计和陀螺仪数据解算为欧拉角
-		if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>(RC_L1MIN+DELTA))//当解锁并且油门值大于最小值进入主状态控制
+		if(FlightSystemFlag.byte.FlightUnlock==1&&CH[2]>(RC_L1MIN-DELTA))//当解锁并且油门值大于最小值进入主状态控制
 		{
 			state_control(0.005f);
 		}
@@ -245,7 +243,7 @@ void sensors_task(void *pvParameters)
 //RunTimeStats任务
 void RunTimeStats_task(void *pvParameters)
 {
-	u8 report=1;
+	u8 report=0;
 	while(1)
 	{
 		//等电调解锁后开启
