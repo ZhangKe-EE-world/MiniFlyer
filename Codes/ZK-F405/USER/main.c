@@ -191,7 +191,7 @@ void escinit_task(void *pvParameters)
 		TIM_SetCompare1(TIM3,ESC_MAX);
 
 
-		vTaskDelay(4000);//可酌情减短延时时间
+		vTaskDelay(1000);//可酌情减短延时时间
 		TIM_SetCompare4(TIM3,ESC_MIN);
 		TIM_SetCompare3(TIM3,ESC_MIN);
 		TIM_SetCompare2(TIM3,ESC_MIN);

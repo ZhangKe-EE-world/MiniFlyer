@@ -21,10 +21,10 @@
 #define ESC_MIN (500-1)
 
 //PIDÏÞ·ù
-#define PIDMAX (200.0f)
-#define PIDMIN (-200.0f)
-#define PID_IMAX (60.0f)
-#define PID_IMIN (-60.0f)
+#define PIDMAX (400.0f)
+#define PIDMIN (-400.0f)
+#define PID_IMAX (200.0f)
+#define PID_IMIN (-200.0f)
 
 
 //ÊÂ¼þºê

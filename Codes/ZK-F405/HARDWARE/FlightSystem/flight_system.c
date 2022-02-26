@@ -28,22 +28,22 @@ PidObject *(pPidObject[])={&pidRateX,&pidRateY,&pidRateZ,&pidRoll,&pidPitch,&pid
 //PID在此处修改
 void pid_param_Init(void)//PID参数初始化
 {
-	pidRateX.kp = 1.50f;//内环P将四轴从偏差角速度纠正回期望角速度
-	pidRateY.kp = 1.50f;
-	pidRateZ.kp = 0.0f;
+	pidRateX.kp = 0.4f;//内环P将四轴从偏差角速度纠正回期望角速度
+	pidRateY.kp = 0.4f;
+	pidRateZ.kp = 0.02f;
 	
-	pidRateX.ki = 0.1f;//内环I消除角速度控制静差
-	pidRateY.ki = 0.1f;
-	pidRateZ.ki = 0.0f;	
+	pidRateX.ki = 0.013f;//内环I消除角速度控制静差
+	pidRateY.ki = 0.013f;
+	pidRateZ.ki = 0.00f;	
 	
-	pidRateX.kd = 0.4f;//内环D抑制系统运动
-	pidRateY.kd = 0.4f;
-	pidRateZ.kd = 0.0f;	
+	pidRateX.kd = 0.1f;//内环D抑制系统运动,在偏差刚刚出现时产生很大的控制作用，加快系统响应速度，减少调整时间，从而改善系统快速性，并且有助于减小超调，克服振荡，从而提高系统稳定性，但不能消除静态偏差
+	pidRateY.kd = 0.1f;
+	pidRateZ.kd = 0.01f;	
 	
 
-	pidRoll.kp = 0.50f;
-	pidPitch.kp = 0.50f;//外环P将四轴从偏差角度纠正回期望角度
-	pidYaw.kp = 0.0f;	
+	pidRoll.kp = 0.70f;
+	pidPitch.kp = 0.70f;//外环P将四轴从偏差角度纠正回期望角度
+	pidYaw.kp = 0.01f;	
 
 
 	pidRoll.ki = 0.01f;
@@ -165,7 +165,7 @@ void state_control(float dt)
 {
 	u16 Throttle=0;
 	Throttle=(ESC_MAX-ESC_MIN)*(CH[2]-RC_L1MIN)/RC_RANGE+ESC_MIN;//获取基础油门值
-	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,600);//留100给姿态控制
+	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,799);//留200给姿态控制
 	if(CH[5]>=1780)//拨杆ch6下拨开启PID自稳
 	{
 		pidRateX.measured = MPU6050.gyroX * Gyro_G; //内环测量值 角度/秒
@@ -176,8 +176,7 @@ void state_control(float dt)
 		pidRoll.measured = Angle.roll;
 		pidYaw.measured = Angle.yaw;
 		
-		
-		
+
 		pidUpdate(&pidRoll,dt);    //调用PID处理函数来处理外环	横滚角PID		
 		pidRateX.desired = pidRoll.out; //将外环的PID输出作为内环PID的期望值即为串级PID
 		pidUpdate(&pidRateX,dt);  //再调用内环
@@ -186,7 +185,7 @@ void state_control(float dt)
 		pidRateY.desired = pidPitch.out;  
 		pidUpdate(&pidRateY,dt); //再调用内环
 
-//		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
+		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
 
 		if(1)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
 		
@@ -195,15 +194,19 @@ void state_control(float dt)
 		MOTOR3 +=    - pidRateX.out + pidRateY.out - pidRateZ.out;
 		MOTOR4 +=    + pidRateX.out + pidRateY.out + pidRateZ.out;//
 	}
+	else
+	{
+		pidRest(pPidObject,6);
+	}
 
 
 
 	
-	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,499,600));
-	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,600));
-	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,600));
-	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,600));
-	if(1)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,499,949),LIMIT(MOTOR2,499,949),LIMIT(MOTOR3,499,949),LIMIT(MOTOR4,499,949));
+	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,499,999));
+	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,999));
+	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,999));
+	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,999));
+	if(0)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,499,999),LIMIT(MOTOR2,499,999),LIMIT(MOTOR3,499,999),LIMIT(MOTOR4,499,999));
 
 }
 
