@@ -30,20 +30,20 @@ void pid_param_Init(void)//PID参数初始化
 {
 	pidRateX.kp = 5.0f;//内环P将四轴从偏差角速度纠正回期望角速度
 	pidRateY.kp = 5.0f;
-	pidRateZ.kp = 0.8f;
+	pidRateZ.kp = 0.6f;
 	
 	pidRateX.ki = 5.0f;//内环I消除角速度控制静差
 	pidRateY.ki = 5.0f;
-	pidRateZ.ki = 0.8f;	
+	pidRateZ.ki = 0.6f;	
 	
 	pidRateX.kd = 0.07f;//内环D抑制系统运动,在偏差刚刚出现时产生很大的控制作用，加快系统响应速度，减少调整时间，从而改善系统快速性，并且有助于减小超调，克服振荡，从而提高系统稳定性，但不能消除静态偏差
 	pidRateY.kd = 0.07f;
-	pidRateZ.kd = 0.0f;	
+	pidRateZ.kd = 0.00225f;	
 	
 
-	pidRoll.kp = 0.1f;
-	pidPitch.kp = 0.1f;//外环P将四轴从偏差角度纠正回期望角度
-	pidYaw.kp = 0.0f;	
+	pidRoll.kp = 0.5f;
+	pidPitch.kp = 0.5f;//外环P将四轴从偏差角度纠正回期望角度
+	pidYaw.kp = 0.1f;	
 
 
 	pidRoll.ki = 0.0f;
