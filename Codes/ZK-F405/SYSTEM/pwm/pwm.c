@@ -30,8 +30,8 @@ void TIM3_PWM_Init(void)
 	GPIO_InitStructure.GPIO_PuPd=GPIO_PuPd_UP;
 	GPIO_Init(GPIOC,&GPIO_InitStructure); 	
 	
-	TIM_TimeBaseStructure.TIM_Period = 9999;			//自动重装载值
-	TIM_TimeBaseStructure.TIM_Prescaler = 167;		//定时器分频
+	TIM_TimeBaseStructure.TIM_Period = 79999;			//自动重装载值
+	TIM_TimeBaseStructure.TIM_Prescaler = 20;		//定时器分频
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;		//向上计数模式	
 	TIM_TimeBaseStructure.TIM_ClockDivision=0; 						//时钟分频
 	TIM_TimeBaseStructure.TIM_RepetitionCounter=0;					//重复计数次数

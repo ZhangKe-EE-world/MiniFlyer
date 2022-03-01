@@ -7,24 +7,34 @@
 #define DELTA 5
 #define RC_L1MIN (312)
 #define RC_L1MAX (1912)
+#define RC_L1OFF	 (40)
+
 #define RC_L2MIN (216)
 #define RC_L2MAX (1812)
+
 #define RC_R1MIN (120)
 #define RC_R1MAX (1720)
-#define RC_L1OFF	 (40)
+
+#define RC_R2MIN (152)
+#define RC_R2MAX (1752)
+
 #define RC_RANGE (1600)
 
 #define SET_TIME 600
 
 //参数宏
-#define ESC_MAX (1000-1)
-#define ESC_MIN (500-1)
+#define ESC_MAX (8000-1)
+#define ESC_MIN (4000-1)
 
 //PID限幅
-#define PIDMAX (400.0f)
-#define PIDMIN (-400.0f)
-#define PID_IMAX (200.0f)
-#define PID_IMIN (-200.0f)
+#define PIDMAX (1000.0f)
+#define PIDMIN (-1000.0f)
+#define PID_IMAX (500.0f)
+#define PID_IMIN (-500.0f)
+
+//欧拉角限制
+#define ANGLE_MAX (30.0f)
+#define ANGLE_MIN (-30.0f)
 
 
 //事件宏

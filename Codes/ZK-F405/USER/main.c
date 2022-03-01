@@ -336,10 +336,10 @@ void RC_task(void *pvParameters)
 				{
 					xEventGroupClearBits(RCtask_Handle,Flight_Unlocked);//清解锁标志
 					FlightSystemFlag.byte.FlightUnlock=0;
-					TIM_SetCompare1(TIM3,499);
-					TIM_SetCompare2(TIM3,499);
-					TIM_SetCompare3(TIM3,499);
-					TIM_SetCompare4(TIM3,499);
+					TIM_SetCompare1(TIM3,ESC_MIN);
+					TIM_SetCompare2(TIM3,ESC_MIN);
+					TIM_SetCompare3(TIM3,ESC_MIN);
+					TIM_SetCompare4(TIM3,ESC_MIN);
 					LED0_OFF;
 					printf("Flight locked!!\n");
 					FlightLockCnt=0;

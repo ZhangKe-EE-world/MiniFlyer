@@ -22,32 +22,32 @@ int16_t motor_PWM_Value[4];//
 #define MOTOR4 motor_PWM_Value[3] 
 uint16_t low_thr_cnt;
 
-PidObject *(pPidObject[])={&pidRateX,&pidRateY,&pidRateZ,&pidRoll,&pidPitch,&pidYaw   //结构体数组，将每一个数组放一个pid结构体，这样就可以批量操作各个PID的数据了  比如解锁时批量复位pid控制数据，新手明白这句话的作用就可以了
+PidObject *(pPidObject[])={&pidRateX,&pidRateY,&pidRateZ,&pidRoll,&pidPitch,&pidYaw   //结构体数组，将每一个数组放一个pid结构体，这样就可以批量操作各个PID的数据了  比如解锁时批量复位pid控制数据
 };
 
 //PID在此处修改
 void pid_param_Init(void)//PID参数初始化
 {
-	pidRateX.kp = 0.4f;//内环P将四轴从偏差角速度纠正回期望角速度
-	pidRateY.kp = 0.4f;
-	pidRateZ.kp = 0.02f;
+	pidRateX.kp = 5.0f;//内环P将四轴从偏差角速度纠正回期望角速度
+	pidRateY.kp = 5.0f;
+	pidRateZ.kp = 0.8f;
 	
-	pidRateX.ki = 0.013f;//内环I消除角速度控制静差
-	pidRateY.ki = 0.013f;
-	pidRateZ.ki = 0.00f;	
+	pidRateX.ki = 5.0f;//内环I消除角速度控制静差
+	pidRateY.ki = 5.0f;
+	pidRateZ.ki = 0.8f;	
 	
-	pidRateX.kd = 0.1f;//内环D抑制系统运动,在偏差刚刚出现时产生很大的控制作用，加快系统响应速度，减少调整时间，从而改善系统快速性，并且有助于减小超调，克服振荡，从而提高系统稳定性，但不能消除静态偏差
-	pidRateY.kd = 0.1f;
-	pidRateZ.kd = 0.01f;	
+	pidRateX.kd = 0.07f;//内环D抑制系统运动,在偏差刚刚出现时产生很大的控制作用，加快系统响应速度，减少调整时间，从而改善系统快速性，并且有助于减小超调，克服振荡，从而提高系统稳定性，但不能消除静态偏差
+	pidRateY.kd = 0.07f;
+	pidRateZ.kd = 0.0f;	
 	
 
-	pidRoll.kp = 0.70f;
-	pidPitch.kp = 0.70f;//外环P将四轴从偏差角度纠正回期望角度
-	pidYaw.kp = 0.01f;	
+	pidRoll.kp = 0.1f;
+	pidPitch.kp = 0.1f;//外环P将四轴从偏差角度纠正回期望角度
+	pidYaw.kp = 0.0f;	
 
 
-	pidRoll.ki = 0.01f;
-	pidPitch.ki = 0.01f;//外环I消除角度控制静差
+	pidRoll.ki = 0.0f;
+	pidPitch.ki = 0.0f;//外环I消除角度控制静差
 	pidYaw.ki = 0.0f;	
 	
 	
@@ -165,7 +165,22 @@ void state_control(float dt)
 {
 	u16 Throttle=0;
 	Throttle=(ESC_MAX-ESC_MIN)*(CH[2]-RC_L1MIN)/RC_RANGE+ESC_MIN;//获取基础油门值
-	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,499,799);//留200给姿态控制
+	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,ESC_MIN,ESC_MAX-PIDMAX);//留给姿态控制一定量
+	
+	pidPitch.desired=(ANGLE_MAX-ANGLE_MIN)*(CH[1]-RC_R1MIN)/RC_RANGE+ANGLE_MIN;//根据最大角范围和遥控器设定角度
+	pidRoll.desired=-((ANGLE_MAX-ANGLE_MIN)*(CH[0]-RC_R1MIN)/RC_RANGE+ANGLE_MIN);//根据最大角范围和遥控器设定角度
+	
+	if(pidPitch.desired>-2&&pidPitch.desired<2)
+	{
+		pidPitch.desired=0;
+	}
+	if(pidRoll.desired>-2&&pidRoll.desired<2)
+	{
+		pidRoll.desired=0;
+	}
+	
+	printf("desire pitch is %f\ndesire roll is %f\n",pidPitch.desired,pidRoll.desired);
+	
 	if(CH[5]>=1780)//拨杆ch6下拨开启PID自稳
 	{
 		pidRateX.measured = MPU6050.gyroX * Gyro_G; //内环测量值 角度/秒
@@ -176,7 +191,6 @@ void state_control(float dt)
 		pidRoll.measured = Angle.roll;
 		pidYaw.measured = Angle.yaw;
 		
-
 		pidUpdate(&pidRoll,dt);    //调用PID处理函数来处理外环	横滚角PID		
 		pidRateX.desired = pidRoll.out; //将外环的PID输出作为内环PID的期望值即为串级PID
 		pidUpdate(&pidRateX,dt);  //再调用内环
@@ -187,7 +201,7 @@ void state_control(float dt)
 
 		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
 
-		if(1)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
+		if(0)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
 		
 		MOTOR1 +=    + pidRateX.out - pidRateY.out - pidRateZ.out;// 姿态输出分配给各个电机的控制量
 		MOTOR2 +=    - pidRateX.out - pidRateY.out + pidRateZ.out ;//
@@ -202,11 +216,11 @@ void state_control(float dt)
 
 
 	
-	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,499,999));
-	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,499,999));
-	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,499,999));
-	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,499,999));
-	if(0)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,499,999),LIMIT(MOTOR2,499,999),LIMIT(MOTOR3,499,999),LIMIT(MOTOR4,499,999));
+	TIM_SetCompare1(TIM3,LIMIT(MOTOR1,ESC_MIN,ESC_MAX));
+	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,ESC_MIN,ESC_MAX));
+	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,ESC_MIN,ESC_MAX));
+	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
+	if(1)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,ESC_MIN,ESC_MAX),LIMIT(MOTOR2,ESC_MIN,ESC_MAX),LIMIT(MOTOR3,ESC_MIN,ESC_MAX),LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
 
 }
 
