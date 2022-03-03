@@ -211,7 +211,7 @@ void escinit_task(void *pvParameters)
 //传感器处理任务
 void sensors_task(void *pvParameters)
 {
-	double	BMP_Pressure;
+	volatile double	BMP_Pressure;
 	u8 report=0;
 
 	u32 lastWakeTime = getSysTickCnt();

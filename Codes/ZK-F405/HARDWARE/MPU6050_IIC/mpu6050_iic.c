@@ -1,14 +1,15 @@
 #include "myiic.h"
 #include "delay.h"
 #include "mpu6050_iic.h"
+#include "stmflash.h"
 #include "stdio.h"
 #include "kalman.h"
 #include "myMath.h"
 #include <math.h>
 #include <string.h>
+#include "flight_system.h" 
 
-
-int16_t MpuOffset[6] = {0};
+int32_t MpuOffset[6] = {0};
 _st_Mpu MPU6050;   //MPU6050原始数据
 _st_AngE Angle;    //当前角度姿态值
 static volatile int16_t *pMpu = (int16_t *)&MPU6050;
@@ -254,7 +255,7 @@ void MpuGetData(void) //读取陀螺仪数据加滤波
 		for(i=0;i<6;i++)
 		{
 //			pMpu[i] = (((int16_t)mpu_buffer[i<<1] << 8) | mpu_buffer[(i<<1)+1])-MpuOffset[i];		//整合为16bit，并减去水平静止校准值
-			pMpu[i] = mpu_buffer[i]-MpuOffset[i];
+			pMpu[i] = mpu_buffer[i]-(int16_t)MpuOffset[i];
 			if(i < 3)//以下对加速度做卡尔曼滤波
 			{
 				{
@@ -412,15 +413,29 @@ void MpuGetOffset(void) //校准
 		printf("offset[%d]:%d\n",i,MpuOffset[i]);
 	}
 	
+	if(0)//整定PID参数时,悬挂四轴时使用
+	{
+		MpuOffset[0]=448;
+		MpuOffset[1]=-64;
+		MpuOffset[2]=376;
+		MpuOffset[3]=2;
+		MpuOffset[4]=-19;
+		MpuOffset[5]=1;
+	}
+	
+
+	
+	STMFLASH_Write(CONFIG_PARAM_ADDR,(u32 *)&MpuOffset, 6);
+
 }
 
 void OffsetInit(void)
 {
-	MpuOffset[0]=448;
-	MpuOffset[1]=-64;
-	MpuOffset[2]=376;
-	MpuOffset[3]=2;
-	MpuOffset[4]=-19;
-	MpuOffset[5]=1;
+	u8 i;
+	STMFLASH_Read(CONFIG_PARAM_ADDR, (u32 *)&MpuOffset, 6);
+	if(1)for(i=0;i<6;i++)
+	{
+		printf("offset[%d]:%d\n",i,MpuOffset[i]);
+	}
 }
 

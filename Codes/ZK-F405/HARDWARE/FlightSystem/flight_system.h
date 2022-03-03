@@ -3,6 +3,7 @@
 #include "sys.h"
 #include "stdio.h"
 #include "mpu6050_iic.h"
+#include "stm32f4xx.h"  
 
 #define DELTA 5
 #define RC_L1MIN (312)
@@ -44,7 +45,9 @@
 
 #define LIMIT( x,min,max ) ( (x) < (min)  ? (min) : ( (x) > (max) ? (max) : (x) ) )
 
-
+/*参数保存地址配置*/
+#define CONFIG_PARAM_SIZE	(1020*1024)
+#define CONFIG_PARAM_ADDR 	(FLASH_BASE + CONFIG_PARAM_SIZE)	
 
 
 //飞行状态标志位

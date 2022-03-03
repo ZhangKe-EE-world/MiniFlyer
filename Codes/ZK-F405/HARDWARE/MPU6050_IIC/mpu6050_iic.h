@@ -77,6 +77,10 @@
 //如果接V3.3,则IIC地址为0X69(不包含最低位).
 #define MPU_ADDR				0X68
 
+
+//#define YAW_GYRO
+
+
 typedef struct{
 	int16_t accX;
 	int16_t accY;

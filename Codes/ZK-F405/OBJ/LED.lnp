@@ -14,7 +14,7 @@
 "..\obj\sys.o"
 "..\obj\usart.o"
 "..\obj\pwm.o"
-"..\obj\flash.o"
+"..\obj\stmflash.o"
 "..\obj\startup_stm32f40_41xxx.o"
 "..\obj\stm32f4xx_tim.o"
 "..\obj\mymath.o"
