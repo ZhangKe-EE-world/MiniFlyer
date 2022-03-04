@@ -157,7 +157,7 @@ void CascadePID(PidObject* pidRate,PidObject* pidAngE,const float dt)  //串级PID
 
 /**************************************************************
  *  state_control
- * @param[in] 滤波后的陀螺仪数据、融合后的欧拉角、运行间隔
+ * @param[in] 
  * @param[out] 
  * @return     
  ***************************************************************/	
@@ -169,16 +169,16 @@ void state_control(float dt)
 	pidPitch.desired=(ANGLE_MAX-ANGLE_MIN)*(CH[1]-RC_R1MIN)/RC_RANGE+ANGLE_MIN;//根据最大角范围和遥控器设定角度
 	pidRoll.desired=-((ANGLE_MAX-ANGLE_MIN)*(CH[0]-RC_R1MIN)/RC_RANGE+ANGLE_MIN);//根据最大角范围和遥控器设定角度
 	
-	if(pidPitch.desired>-2&&pidPitch.desired<2)
+	if(pidPitch.desired>-1.8f&&pidPitch.desired<1.8f)
 	{
 		pidPitch.desired=0;
 	}
-	if(pidRoll.desired>-2&&pidRoll.desired<2)
+	if(pidRoll.desired>-1.8f&&pidRoll.desired<1.8f)
 	{
 		pidRoll.desired=0;
 	}
 	
-	if(0)printf("desire pitch is %f\ndesire roll is %f\n",pidPitch.desired,pidRoll.desired);
+//	if(1)printf("desire pitch is %f\ndesire roll is %f\n",pidPitch.desired,pidRoll.desired);
 
 	if(CH[5]>=1780)//拨杆ch6下拨开启PID自稳
 	{
@@ -201,7 +201,7 @@ void state_control(float dt)
 
 		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
 
-		if(0)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
+//		if(0)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
 		
 		MOTOR1 +=    + pidRateX.out - pidRateY.out + pidRateZ.out;// 姿态输出分配给各个电机的控制量
 		MOTOR2 +=    - pidRateX.out - pidRateY.out - pidRateZ.out ;//
@@ -221,7 +221,7 @@ void state_control(float dt)
 	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,ESC_MIN,ESC_MAX));
 	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,ESC_MIN,ESC_MAX));
 	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
-	if(0)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,ESC_MIN,ESC_MAX),LIMIT(MOTOR2,ESC_MIN,ESC_MAX),LIMIT(MOTOR3,ESC_MIN,ESC_MAX),LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
+//	if(0)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,ESC_MIN,ESC_MAX),LIMIT(MOTOR2,ESC_MIN,ESC_MAX),LIMIT(MOTOR3,ESC_MIN,ESC_MAX),LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
 
 }
 

@@ -227,10 +227,10 @@ void sensors_task(void *pvParameters)
 		{
 			state_control(0.005f);
 		}
-		if(1)//调试用
-		{
-			printf("YAW：%f\nPITCH：%f\nROLL：%f\n",Angle.yaw,Angle.pitch,Angle.roll);
-		}
+//		if(0)//调试用
+//		{
+//			printf("YAW：%f\nPITCH：%f\nROLL：%f\n",Angle.yaw,Angle.pitch,Angle.roll);
+//		}
 		if(report)mpu6050_send_data(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ);//用自定义帧发送加速度和陀螺仪数据，report决定是否开启
 		if(report)usart1_report_imu(MPU6050.accX,MPU6050.accY,MPU6050.accZ,MPU6050.gyroX,MPU6050.gyroY,MPU6050.gyroZ,(int)(Angle.roll*100),(int)(Angle.pitch*100),(int)(Angle.yaw*10));
 
@@ -275,8 +275,8 @@ void RunTimeStats_task(void *pvParameters)
 //RC任务
 void RC_task(void *pvParameters)
 {
-	u8 t=0;
-	u8 report=0;//遥控器通道上报开关
+//	u8 t=0;
+//	u8 report=0;//遥控器通道上报开关
 	u16 FlightUnlockCnt=0;
 	u16 FlightLockCnt=0;
 	u16 OffsetCnt=0;
@@ -289,6 +289,7 @@ void RC_task(void *pvParameters)
 												pdFALSE, /* 退出时不清除事件位 */ 
 												pdTRUE, /* 满足感兴趣的所有事件 */ 
 												portMAX_DELAY);/* 指定超时时间,一直等 */ 
+		
 		vTaskDelayUntil(&lastWakeTime, 5);
 		Sbus_Data_Count(USART2_RX_BUF);
 		if(FlightSystemFlag.byte.FlightUnlock==0)//飞行锁定时
@@ -364,15 +365,15 @@ void RC_task(void *pvParameters)
 			}
 
 		
-		//通道数据上传
-		if(report)
-		{
-			for(t=0;t<18;t++)
-			{
-				printf("%d--%d ",t,CH[t]);
-			}
-			printf("\n");
-		}
+//		//通道数据上传
+//		if(report)
+//		{
+//			for(t=0;t<18;t++)
+//			{
+//				printf("%d--%d ",t,CH[t]);
+//			}
+//			printf("\n");
+//		}
 	}
 }
 
