@@ -48,7 +48,7 @@
 /*参数保存地址配置*/
 #define CONFIG_PARAM_SIZE	(1020*1024)
 #define CONFIG_PARAM_ADDR 	(FLASH_BASE + CONFIG_PARAM_SIZE)	
-
+//#define CONFIG_PARAM_ADDR 0x08010000
 
 //飞行状态标志位
 typedef union
@@ -87,7 +87,7 @@ void pidUpdate(PidObject* pid,const float dt);
 void CascadePID(PidObject* pidRate,PidObject* pidAngE,const float dt);  //串级PID
 void GetAngle(const _st_Mpu *pMpu,_st_AngE *pAngE, float dt);
 void state_control(float dt);
-
+//void LockYaw(void);
 
 
 

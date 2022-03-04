@@ -54,7 +54,7 @@ CH0 左--右 减 min---152 	 max--1752     	off---1000		mid---958
 以下为PID参数说明
 滚转角ROLL		左倾减、右倾增	左倾	PIDX增	X1和X4增、X2和X3减
 俯仰角PITCH		上仰减、下俯增	上仰	PIDY增	Y1和Y2减、Y3和Y4增
-偏航角YAW		右转减、左转增	右转	PIDZ增	Z1和Z3减、Z2和Z4增
+偏航角YAW		右转减、左转增	右转	PIDZ增	Z1和Z3增、Z2和Z4减（力学分析）
 
 
 

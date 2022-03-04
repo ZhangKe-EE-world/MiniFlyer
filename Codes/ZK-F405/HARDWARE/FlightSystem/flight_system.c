@@ -30,20 +30,20 @@ void pid_param_Init(void)//PID参数初始化
 {
 	pidRateX.kp = 5.0f;//内环P将四轴从偏差角速度纠正回期望角速度
 	pidRateY.kp = 5.0f;
-	pidRateZ.kp = 0.6f;
+	pidRateZ.kp = 10.0f;
 	
 	pidRateX.ki = 5.0f;//内环I消除角速度控制静差
 	pidRateY.ki = 5.0f;
-	pidRateZ.ki = 0.6f;	
+	pidRateZ.ki = 10.0f;	
 	
 	pidRateX.kd = 0.07f;//内环D抑制系统运动,在偏差刚刚出现时产生很大的控制作用，加快系统响应速度，减少调整时间，从而改善系统快速性，并且有助于减小超调，克服振荡，从而提高系统稳定性，但不能消除静态偏差
 	pidRateY.kd = 0.07f;
-	pidRateZ.kd = 0.00225f;	
+	pidRateZ.kd = 0.01f;	
 	
 
 	pidRoll.kp = 0.5f;
 	pidPitch.kp = 0.5f;//外环P将四轴从偏差角度纠正回期望角度
-	pidYaw.kp = 0.1f;	
+	pidYaw.kp = 0.5f;	
 
 
 	pidRoll.ki = 0.0f;
@@ -165,8 +165,7 @@ void state_control(float dt)
 {
 	u16 Throttle=0;
 	Throttle=(ESC_MAX-ESC_MIN)*(CH[2]-RC_L1MIN)/RC_RANGE+ESC_MIN;//获取基础油门值
-	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,ESC_MIN,ESC_MAX-PIDMAX);//留给姿态控制一定量
-	
+	MOTOR1 = MOTOR2 = MOTOR3 = MOTOR4 = LIMIT(Throttle,ESC_MIN,ESC_MAX-PIDMAX);//留给姿态控制一定余量
 	pidPitch.desired=(ANGLE_MAX-ANGLE_MIN)*(CH[1]-RC_R1MIN)/RC_RANGE+ANGLE_MIN;//根据最大角范围和遥控器设定角度
 	pidRoll.desired=-((ANGLE_MAX-ANGLE_MIN)*(CH[0]-RC_R1MIN)/RC_RANGE+ANGLE_MIN);//根据最大角范围和遥控器设定角度
 	
@@ -179,8 +178,8 @@ void state_control(float dt)
 		pidRoll.desired=0;
 	}
 	
-	printf("desire pitch is %f\ndesire roll is %f\n",pidPitch.desired,pidRoll.desired);
-	
+	if(0)printf("desire pitch is %f\ndesire roll is %f\n",pidPitch.desired,pidRoll.desired);
+
 	if(CH[5]>=1780)//拨杆ch6下拨开启PID自稳
 	{
 		pidRateX.measured = MPU6050.gyroX * Gyro_G; //内环测量值 角度/秒
@@ -198,19 +197,21 @@ void state_control(float dt)
 		pidUpdate(&pidPitch,dt);    //调用PID处理函数来处理外环	俯仰角PID	
 		pidRateY.desired = pidPitch.out;  
 		pidUpdate(&pidRateY,dt); //再调用内环
+		
 
 		CascadePID(&pidRateZ,&pidYaw,dt);	//直接调用串级PID函数来处理
 
 		if(0)printf("PIDX：%f\tPIDY：%f\tPIDZ：%f\t\n",pidRateX.out,pidRateY.out,pidRateZ.out);
 		
-		MOTOR1 +=    + pidRateX.out - pidRateY.out - pidRateZ.out;// 姿态输出分配给各个电机的控制量
-		MOTOR2 +=    - pidRateX.out - pidRateY.out + pidRateZ.out ;//
-		MOTOR3 +=    - pidRateX.out + pidRateY.out - pidRateZ.out;
-		MOTOR4 +=    + pidRateX.out + pidRateY.out + pidRateZ.out;//
+		MOTOR1 +=    + pidRateX.out - pidRateY.out + pidRateZ.out;// 姿态输出分配给各个电机的控制量
+		MOTOR2 +=    - pidRateX.out - pidRateY.out - pidRateZ.out ;//
+		MOTOR3 +=    - pidRateX.out + pidRateY.out + pidRateZ.out;
+		MOTOR4 +=    + pidRateX.out + pidRateY.out - pidRateZ.out;//
 	}
 	else
 	{
 		pidRest(pPidObject,6);
+		Angle.yaw = pidYaw.desired =  pidYaw.measured = 0;
 	}
 
 
@@ -220,8 +221,9 @@ void state_control(float dt)
 	TIM_SetCompare2(TIM3,LIMIT(MOTOR2,ESC_MIN,ESC_MAX));
 	TIM_SetCompare3(TIM3,LIMIT(MOTOR3,ESC_MIN,ESC_MAX));
 	TIM_SetCompare4(TIM3,LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
-	if(1)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,ESC_MIN,ESC_MAX),LIMIT(MOTOR2,ESC_MIN,ESC_MAX),LIMIT(MOTOR3,ESC_MIN,ESC_MAX),LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
+	if(0)printf("1--%d\t2--%d\t3--%d\t4--%d\t\n",LIMIT(MOTOR1,ESC_MIN,ESC_MAX),LIMIT(MOTOR2,ESC_MIN,ESC_MAX),LIMIT(MOTOR3,ESC_MIN,ESC_MAX),LIMIT(MOTOR4,ESC_MIN,ESC_MAX));
 
 }
+
 
 

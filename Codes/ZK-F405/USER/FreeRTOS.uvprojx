@@ -429,11 +429,6 @@
               <FilePath>..\HARDWARE\Upper_Computer\Upper.c</FilePath>
             </File>
             <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TimerforOS\timer.c</FilePath>
-            </File>
-            <File>
               <FileName>sbus.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\S-BUS\sbus.c</FilePath>
@@ -472,6 +467,11 @@
               <FileName>stmflash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\StmFlash\stmflash.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TimerforOS\timer.c</FilePath>
             </File>
           </Files>
         </Group>

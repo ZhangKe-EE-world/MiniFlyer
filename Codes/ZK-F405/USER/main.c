@@ -213,7 +213,6 @@ void sensors_task(void *pvParameters)
 {
 	volatile double	BMP_Pressure;
 	u8 report=0;
-
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
@@ -228,7 +227,7 @@ void sensors_task(void *pvParameters)
 		{
 			state_control(0.005f);
 		}
-		if(0)//调试用
+		if(1)//调试用
 		{
 			printf("YAW：%f\nPITCH：%f\nROLL：%f\n",Angle.yaw,Angle.pitch,Angle.roll);
 		}

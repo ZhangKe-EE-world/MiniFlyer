@@ -78,7 +78,7 @@
 #define MPU_ADDR				0X68
 
 
-//#define YAW_GYRO
+//#define YAW_GYRO 1
 
 
 typedef struct{

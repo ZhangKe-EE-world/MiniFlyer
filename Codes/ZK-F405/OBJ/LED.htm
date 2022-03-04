@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\LED.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LED.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Mar 03 18:48:05 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Mar 04 13:15:22 2022
 <BR><P>
 <H3>Maximum Stack Usage =        416 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -611,9 +611,9 @@ Global Symbols
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortExitCritical
 <LI><a href="#[129]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortEnterCritical
-<LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OffsetInit
 <LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MpuGetOffset
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensors_task
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunTimeStats_task
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RC_task
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;startTask
@@ -1323,7 +1323,7 @@ Global Symbols
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensors_task
 </UL>
 
-<P><STRONG><a name="[dc]"></a>MpuGetOffset</STRONG> (Thumb, 272 bytes, Stack size 72 bytes, mpu6050_iic.o(i.MpuGetOffset))
+<P><STRONG><a name="[dc]"></a>MpuGetOffset</STRONG> (Thumb, 240 bytes, Stack size 72 bytes, mpu6050_iic.o(i.MpuGetOffset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 280 + Unknown Stack Size
 <LI>Call Chain = MpuGetOffset &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -1343,8 +1343,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = NVIC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
 <P><STRONG><a name="[12e]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(i.NVIC_PriorityGroupConfig))
@@ -1376,8 +1376,8 @@ Global Symbols
 <P><STRONG><a name="[f4]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphClockCmd))
 <BR><BR>[Called By]<UL><LI><a href="#[12f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_PWM_Init
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Int_Init
+<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SBUS_Configuration
 </UL>
 
 <P><STRONG><a name="[112]"></a>RCC_APB1PeriphResetCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f4xx_rcc.o(i.RCC_APB1PeriphResetCmd))
@@ -1440,9 +1440,9 @@ Global Symbols
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 </UL>
 
 <P><STRONG><a name="[fc]"></a>STMFLASH_GetFlashSector</STRONG> (Thumb, 114 bytes, Stack size 0 bytes, stmflash.o(i.STMFLASH_GetFlashSector))
@@ -1503,8 +1503,8 @@ Global Symbols
 <P><STRONG><a name="[bd]"></a>TIM2_Int_Init</STRONG> (Thumb, 88 bytes, Stack size 32 bytes, timer.o(i.TIM2_Int_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = TIM2_Int_Init &rArr; TIM_TimeBaseInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<BR>[Calls]<UL><LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
@@ -1517,6 +1517,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_AHB1PeriphClockCmd
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4PreloadConfig
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4Init
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3PreloadConfig
@@ -1526,11 +1527,10 @@ Global Symbols
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1PreloadConfig
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1Init
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_DeInit
-<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ARRPreloadConfig
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1952,7 +1952,7 @@ Global Symbols
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CascadePID
 </UL>
 
-<P><STRONG><a name="[131]"></a>pid_param_Init</STRONG> (Thumb, 248 bytes, Stack size 12 bytes, flight_system.o(i.pid_param_Init))
+<P><STRONG><a name="[131]"></a>pid_param_Init</STRONG> (Thumb, 244 bytes, Stack size 12 bytes, flight_system.o(i.pid_param_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = pid_param_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pidRest
@@ -1987,7 +1987,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
 </UL>
 
-<P><STRONG><a name="[67]"></a>sensors_task</STRONG> (Thumb, 218 bytes, Stack size 32 bytes, main.o(i.sensors_task))
+<P><STRONG><a name="[67]"></a>sensors_task</STRONG> (Thumb, 284 bytes, Stack size 32 bytes, main.o(i.sensors_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 296 + Unknown Stack Size
 <LI>Call Chain = sensors_task &rArr; GetAngle &rArr; __hardfp_atan2 &rArr; atan &rArr; __hardfp_atan &rArr; __kernel_poly &rArr; __aeabi_dmul
 </UL>
@@ -1999,6 +1999,8 @@ Global Symbols
 <LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MpuGetData
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngle
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BMP280_Get_Pressure
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.startTask)
 </UL>
@@ -2011,9 +2013,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_asin
 </UL>
 
-<P><STRONG><a name="[163]"></a>state_control</STRONG> (Thumb, 892 bytes, Stack size 48 bytes, flight_system.o(i.state_control))
-<BR><BR>[Stack]<UL><LI>Max Depth = 176 + Unknown Stack Size
-<LI>Call Chain = state_control &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
+<P><STRONG><a name="[163]"></a>state_control</STRONG> (Thumb, 764 bytes, Stack size 32 bytes, flight_system.o(i.state_control))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = state_control &rArr; CascadePID
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
@@ -2022,8 +2023,6 @@ Global Symbols
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pidUpdate
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pidRest
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CascadePID
-<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
 <BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensors_task
 </UL>
@@ -2036,9 +2035,9 @@ Global Symbols
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 <LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 <LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinAFConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -2909,8 +2908,8 @@ Global Symbols
 <P><STRONG><a name="[c4]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;state_control
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngle
+<BR>[Called By]<UL><LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetAngle
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensors_task
 </UL>
 
 <P><STRONG><a name="[191]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
