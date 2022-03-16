@@ -1,10 +1,10 @@
 ..\obj\mymath.o: ..\HARDWARE\My_Math\myMath.c
 ..\obj\mymath.o: ..\HARDWARE\My_Math\myMath.h
-..\obj\mymath.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\mymath.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\mymath.o: ..\SYSTEM\sys\sys.h
 ..\obj\mymath.o: ..\USER\stm32f4xx.h
 ..\obj\mymath.o: ..\CORE\core_cm4.h
-..\obj\mymath.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\mymath.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\mymath.o: ..\CORE\core_cmInstr.h
 ..\obj\mymath.o: ..\CORE\core_cmFunc.h
 ..\obj\mymath.o: ..\CORE\core_cm4_simd.h

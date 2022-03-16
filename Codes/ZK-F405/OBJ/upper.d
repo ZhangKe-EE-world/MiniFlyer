@@ -2,7 +2,7 @@
 ..\obj\upper.o: ..\SYSTEM\sys\sys.h
 ..\obj\upper.o: ..\USER\stm32f4xx.h
 ..\obj\upper.o: ..\CORE\core_cm4.h
-..\obj\upper.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\upper.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\upper.o: ..\CORE\core_cmInstr.h
 ..\obj\upper.o: ..\CORE\core_cmFunc.h
 ..\obj\upper.o: ..\CORE\core_cm4_simd.h

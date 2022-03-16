@@ -1,11 +1,11 @@
 ..\obj\bmp280.o: ..\HARDWARE\BMP280\bmp280.c
-..\obj\bmp280.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\math.h
-..\obj\bmp280.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\bmp280.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\bmp280.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\bmp280.o: ..\SYSTEM\delay\delay.h
 ..\obj\bmp280.o: ..\SYSTEM\sys\sys.h
 ..\obj\bmp280.o: ..\USER\stm32f4xx.h
 ..\obj\bmp280.o: ..\CORE\core_cm4.h
-..\obj\bmp280.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\bmp280.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\bmp280.o: ..\CORE\core_cmInstr.h
 ..\obj\bmp280.o: ..\CORE\core_cmFunc.h
 ..\obj\bmp280.o: ..\CORE\core_cm4_simd.h

@@ -1,10 +1,10 @@
 ..\obj\kalman.o: ..\HARDWARE\Kalman\kalman.c
 ..\obj\kalman.o: ..\HARDWARE\Kalman\kalman.h
-..\obj\kalman.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\math.h
+..\obj\kalman.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\kalman.o: ..\SYSTEM\sys\sys.h
 ..\obj\kalman.o: ..\USER\stm32f4xx.h
 ..\obj\kalman.o: ..\CORE\core_cm4.h
-..\obj\kalman.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\kalman.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\kalman.o: ..\CORE\core_cmInstr.h
 ..\obj\kalman.o: ..\CORE\core_cmFunc.h
 ..\obj\kalman.o: ..\CORE\core_cm4_simd.h

@@ -1,10 +1,10 @@
 ..\obj\flight_system.o: ..\HARDWARE\FlightSystem\flight_system.c
-..\obj\flight_system.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\flight_system.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\flight_system.o: ..\HARDWARE\S-BUS\sbus.h
 ..\obj\flight_system.o: ..\SYSTEM\sys\sys.h
 ..\obj\flight_system.o: ..\USER\stm32f4xx.h
 ..\obj\flight_system.o: ..\CORE\core_cm4.h
-..\obj\flight_system.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\flight_system.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\flight_system.o: ..\CORE\core_cmInstr.h
 ..\obj\flight_system.o: ..\CORE\core_cmFunc.h
 ..\obj\flight_system.o: ..\CORE\core_cm4_simd.h
@@ -37,7 +37,7 @@
 ..\obj\flight_system.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\flight_system.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\flight_system.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\flight_system.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\flight_system.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\flight_system.o: ..\HARDWARE\FlightSystem\flight_system.h
 ..\obj\flight_system.o: ..\HARDWARE\MPU6050_IIC\mpu6050_iic.h
 ..\obj\flight_system.o: ..\HARDWARE\IIC\myiic.h

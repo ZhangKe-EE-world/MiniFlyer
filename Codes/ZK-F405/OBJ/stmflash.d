@@ -2,7 +2,7 @@
 ..\obj\stmflash.o: ..\HARDWARE\StmFlash\stmflash.h
 ..\obj\stmflash.o: ..\USER\stm32f4xx.h
 ..\obj\stmflash.o: ..\CORE\core_cm4.h
-..\obj\stmflash.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\stmflash.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\stmflash.o: ..\CORE\core_cmInstr.h
 ..\obj\stmflash.o: ..\CORE\core_cmFunc.h
 ..\obj\stmflash.o: ..\CORE\core_cm4_simd.h

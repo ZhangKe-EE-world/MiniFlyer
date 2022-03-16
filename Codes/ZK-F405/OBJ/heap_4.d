@@ -1,8 +1,8 @@
 ..\obj\heap_4.o: ..\FreeRTOS\portable\MemMang\heap_4.c
-..\obj\heap_4.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\heap_4.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\heap_4.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\heap_4.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stddef.h
-..\obj\heap_4.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\heap_4.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\heap_4.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\heap_4.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 ..\obj\heap_4.o: ..\SYSTEM\sys\sys.h
 ..\obj\heap_4.o: ..\USER\stm32f4xx.h
@@ -40,7 +40,7 @@
 ..\obj\heap_4.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\heap_4.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\heap_4.o: ..\SYSTEM\usart\usart.h
-..\obj\heap_4.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\heap_4.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\heap_4.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\heap_4.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\heap_4.o: ..\FreeRTOS\include\portable.h

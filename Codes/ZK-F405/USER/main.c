@@ -216,7 +216,7 @@ void sensors_task(void *pvParameters)
 	u32 lastWakeTime = getSysTickCnt();
 	while(1)
 	{
-		//5ms运行一次
+		//每5ms运行一次
 
 		vTaskDelayUntil(&lastWakeTime, 5);
 

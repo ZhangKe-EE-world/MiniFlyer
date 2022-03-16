@@ -1,7 +1,7 @@
 ..\obj\sbus.o: ..\HARDWARE\S-BUS\sbus.c
 ..\obj\sbus.o: ..\USER\stm32f4xx.h
 ..\obj\sbus.o: ..\CORE\core_cm4.h
-..\obj\sbus.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\sbus.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\sbus.o: ..\CORE\core_cmInstr.h
 ..\obj\sbus.o: ..\CORE\core_cmFunc.h
 ..\obj\sbus.o: ..\CORE\core_cm4_simd.h
@@ -34,15 +34,15 @@
 ..\obj\sbus.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\sbus.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\sbus.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
-..\obj\sbus.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\sbus.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\sbus.o: ..\HARDWARE\S-BUS\sbus.h
 ..\obj\sbus.o: ..\SYSTEM\sys\sys.h
 ..\obj\sbus.o: ..\SYSTEM\delay\delay.h
 ..\obj\sbus.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\sbus.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\sbus.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\sbus.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 ..\obj\sbus.o: ..\SYSTEM\usart\usart.h
-..\obj\sbus.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\sbus.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\sbus.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\sbus.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\sbus.o: ..\FreeRTOS\include\portable.h

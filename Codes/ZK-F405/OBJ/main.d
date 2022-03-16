@@ -2,7 +2,7 @@
 ..\obj\main.o: ..\SYSTEM\sys\sys.h
 ..\obj\main.o: ..\USER\stm32f4xx.h
 ..\obj\main.o: ..\CORE\core_cm4.h
-..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\main.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\main.o: ..\CORE\core_cmInstr.h
 ..\obj\main.o: ..\CORE\core_cmFunc.h
 ..\obj\main.o: ..\CORE\core_cm4_simd.h
@@ -36,12 +36,12 @@
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\main.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
-..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\main.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\main.o: ..\FreeRTOS\include\FreeRTOS.h
-..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stddef.h
+..\obj\main.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\main.o: ..\FreeRTOS\include\FreeRTOSConfig.h
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
-..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: ..\HARDWARE\TimerforOS\timer.h
 ..\obj\main.o: ..\FreeRTOS\include\projdefs.h
 ..\obj\main.o: ..\FreeRTOS\include\portable.h
@@ -59,5 +59,5 @@
 ..\obj\main.o: ..\SYSTEM\pwm\pwm.h
 ..\obj\main.o: ..\HARDWARE\Upper_Computer\Upper.h
 ..\obj\main.o: ..\HARDWARE\S-BUS\sbus.h
-..\obj\main.o: C:\Program Files (x86)\Keil\ARM\ARMCC\Bin\..\include\stdbool.h
+..\obj\main.o: C:\Program Files\Keil5\ARM\ARMCC\Bin\..\include\stdbool.h
 ..\obj\main.o: ..\HARDWARE\FlightSystem\flight_system.h
